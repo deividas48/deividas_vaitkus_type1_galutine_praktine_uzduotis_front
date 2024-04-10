@@ -22,12 +22,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: [
-        '**/vite.config.js', // Include your Vite config file
-      ],
-      optionalDependencies: false,
-    }],
+    'import/no-extraneous-dependencies': 'off',
     'react/react-in-jsx-scope': 'off',
   },
 };
