@@ -1,0 +1,11 @@
+:root {
+    --color-primary: #ff3c48;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+  }
+
+.gray {
+    color: rgb(100, 100, 100);
+}

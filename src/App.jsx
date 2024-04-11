@@ -7,6 +7,7 @@ import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
 import AddAdPage from './pages/AddAdPage';
 import UserPage from './pages/UserPage';
+import SingleAdPage from './pages/SingleAdPage';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/town/:id" element={<TownPage />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/skelbimas/:id" element={<AddAdPage />} />
+        <Route path="/skelbimas/:id" element={<SingleAdPage />} />
+        <Route path="/skelbimas/sukurti" element={<AddAdPage />} />
         <Route path="/user/:id" element={<UserPage />} />
       </Routes>
     </div>

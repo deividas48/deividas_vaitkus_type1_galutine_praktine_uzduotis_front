@@ -7,6 +7,12 @@ export default {
         center: true,
         padding: '1rem',
       },
+      screens: {
+        sm: '350px', // mobilus iki
+        md: '768px', // plansetes iki
+        lg: '1024px', // desktopas iki
+        xl: '1500px', // super platus iki
+      },
     },
   },
   plugins: [],

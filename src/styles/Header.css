@@ -1,0 +1,31 @@
+:root {
+    --color-secondary: #CC1119;
+    --color-body: #646464;
+    --color-heading: #111111;
+  }
+
+.nav-list {
+    padding: 20px 10px;
+    color: rgb(100, 100, 100);
+    transition: color 0.3s ease-in-out 0.1s;
+}
+
+.nav-list:hover {
+    color: var(--color-primary);
+  }
+  
+  .hover-bg-gradient::before {
+    content: '';
+    border-radius: 30px;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(to right, rgb(185, 28, 28), rgb(226, 64, 64) 50%, rgb(239, 68, 68) 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    z-index: -1;
+    transition: background-position 0.5s ease-out;
+  }
+  
+  .hover-bg-gradient:hover::before {
+    background-position: left bottom;
+  }
