@@ -13,6 +13,10 @@ export default {
         lg: '1024px', // desktopas iki
         xl: '1500px', // super platus iki
       },
+      colors: {
+        'custom-primary-color': '#ff3c48',
+        'custom-gray-color': '#646464',
+      },
     },
   },
   plugins: [],

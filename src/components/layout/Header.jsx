@@ -12,9 +12,8 @@ export default function Header() {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <header className="bg-white border-gray-200 dark:bg-gray-900">
-      {/* Container */}
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <header className="bg-white border-gray-200 dark:bg-gray-900 ">
+      <div className="flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/">
           <img
             src="../../../public/img/ShopLogo.png"
