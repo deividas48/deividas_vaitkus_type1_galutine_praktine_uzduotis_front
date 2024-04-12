@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import TownsList from '../components/towns/TownsList';
+import CategoryList from './CategoryList';
 
-function TownsPage() {
-  const [townsArr, settownsArr] = useState([]);
+function CategoryPage() {
+  const [categoriesArr, setcategoriesArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -13,10 +13,10 @@ function TownsPage() {
     axios
       .get(url)
       .then((resp) => {
-        settownsArr(resp.data);
+        setcategoriesArr(resp.data);
       })
       .catch((error) => {
-        console.warn('Error fetching towns:', error);
+        console.warn('Error fetching categories:', error);
         setIsError(true);
       })
       .finally(() => {
@@ -25,16 +25,16 @@ function TownsPage() {
   }
 
   useEffect(() => {
-    getPosts('http://localhost:3000/api/towns');
+    getPosts('http://localhost:3000/api/categories');
   }, []);
 
   return (
     <div>
       {isLoading && <p>Loading...</p>}
-      {isError && <p>Failed to fetch towns</p>}
-      {!isLoading && !isError && <TownsList list={townsArr} />}
+      {isError && <p>Failed to fetch categories</p>}
+      {!isLoading && !isError && <CategoryList list={categoriesArr} />}
     </div>
   );
 }
 
-export default TownsPage;
+export default CategoryPage;
