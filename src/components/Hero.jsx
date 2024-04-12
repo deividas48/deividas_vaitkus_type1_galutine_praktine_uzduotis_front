@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="md:py-12 text-center hidden sm:block">
+    <section className="md:py-12 text-center hidden sm:block bg-white container-workaround">
       <h2 className="leading-6 text-custom-primary-color uppercase font-medium">
         Our Latest Listing
       </h2>

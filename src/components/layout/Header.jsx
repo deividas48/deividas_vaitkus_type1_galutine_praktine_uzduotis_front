@@ -12,8 +12,8 @@ export default function Header() {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <header className="bg-white border-gray-200 dark:bg-gray-900 ">
-      <div className="flex flex-wrap items-center justify-between mx-auto p-4">
+    <header className="bg-white border-gray-200 dark:bg-gray-900 container-workaround">
+      <div className="container flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/">
           <img
             src="../../../public/img/ShopLogo.png"
@@ -21,7 +21,7 @@ export default function Header() {
             className="w-20 flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
           />
         </Link>
-        <nav className="items-center justify-between hidden w-full sm:flex sm:w-auto">
+        <nav className="items-center justify-between hidden w-full md:flex md:w-auto">
           <ul className="flex pl-2">
             <li className="nav-list .nav-list:hover">
               <NavLink to="/">Home</NavLink>
@@ -53,10 +53,10 @@ export default function Header() {
               />
             </span>
           )}
-          <span className="ml-2 mr-2">Add Listing</span>
+          <span className="ml-2 mr-2 hidden sm:block">Add Listing</span>
         </NavLink>
 
-        <div className="sm:hidden">
+        <div className="md:hidden">
           <button // Button to toggle the menu
             type="button" // Specify the button type just for good practice
             onClick={() => setIsMenuOpen(!isMenuOpen)}
