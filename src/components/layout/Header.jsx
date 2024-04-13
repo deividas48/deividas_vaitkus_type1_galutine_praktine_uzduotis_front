@@ -7,12 +7,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Navigacijos(meniu) elementai
   const mySnippet = (
-    <ul className={cl('flex pl-2', {
-      'flex-col': isMenuOpen, // This will be `flex-col` when the menu is not open
-      'flex-row': !isMenuOpen, // This will be `flex-row` when the menu is open
-    })}
-    >
+    <>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
       </li>
@@ -22,11 +19,12 @@ export default function Header() {
       <li className="nav-list">
         <NavLink to="/towns">Towns</NavLink>
       </li>
-    </ul>
+    </>
   );
 
   return (
-    <header className="bg-white border-gray-200 dark:bg-gray-900 container-workaround">
+    <header className="bg-white border-gray-200 dark:bg-gray-900 container-workaround header-apatinė-linija">
+      {/* Įmonės logo */}
       <div className="container flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/">
           <img
@@ -35,21 +33,37 @@ export default function Header() {
             className="w-20 flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
           />
         </Link>
+        {/* Navigacija */}
+        {/* Navigacija. Kai ekranas didelis */}
         <nav>
+          <div className="uždarytas-meniu items-center justify-between w-full hidden md:flex md:w-auto relative">
+            <ul className="flex pl-2 flex-row nav-meniu-didelis">
+              {mySnippet}
+            </ul>
+          </div>
+          {/* Navigacija. Kai ekranas yra mažas ir yra paspaustas mygtukas */}
           {
-  !isMenuOpen
+  isMenuOpen
     ? (
-      <div className="items-center justify-between w-full hidden md:flex md:w-auto relative">
-        {mySnippet}
+      <div className="atidarytas-meniu bg-white absolute mt-11 left-0 md:hidden w-full z-10">
+        <div className="container uždarytas-meniu items-center justify-between w-full md:w-auto relative">
+          <ul className={cl('flex pl-2 nav-meniu-mažas nav-meniu-mažas-ul', {
+            'flex-col': isMenuOpen, // This will be `flex-col` when the menu is not open
+            'flex-row': !isMenuOpen, // This will be `flex-row` when the menu is open
+          })}
+          >
+            {mySnippet}
+          </ul>
+        </div>
       </div>
     )
     : (
-      <div className="absolute mt-11 left-0 bg-red-800 md:hidden p-4 w-full z-10">
-        {mySnippet}
-      </div>
+      <div />
     )
 }
         </nav>
+
+        {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
         <NavLink
           to="/skelbimas/sukurti"
           className="bg-red-500 hover:bg-red-700 text-white rounded-full hover-bg-gradient relative z-10 font-black flex items-center"
@@ -68,12 +82,13 @@ export default function Header() {
           <span className="ml-2 mr-2 hidden sm:block">Add Listing</span>
         </NavLink>
 
+        {/* Navigacijos (meniu) paleidimo mygtukas */}
         <div className="md:hidden">
           <button // Button to toggle the menu
             type="button" // Specify the button type just for good practice
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="btn"
-            aria-label="Toggle menu" // Specify the label just for screen readers
+            aria-label="Toggle menu"
           >
             <i className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3`} />
           </button>

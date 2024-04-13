@@ -5,13 +5,13 @@
     --color-primary: #ff3c48;
   }
 
-.nav-list {
+.nav-meniu-didelis > li {
     padding: 20px 10px;
     color: rgb(100, 100, 100);
     transition: color 0.3s ease-in-out 0.1s;
 }
 
-.nav-list:hover {
+.nav-meniu-didelis > li:hover {
     color: var(--color-primary);
   }
   
@@ -27,6 +27,33 @@
     transition: background-position 0.5s ease-out;
   }
   
-  .hover-bg-gradient:hover::before {
+  /* .hover-bg-gradient:hover::before {
     background-position: left bottom;
+  } */
+
+  .nav-meniu-mažas > li {
+    background-color: white;
+    color: #000;
+    padding: 0.438rem;
+    /* border-top: 1px solid #dfe7ff; */
+    border-bottom: 1px solid #dfe7ff;
+    padding-left: 0.938rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .nav-meniu-mažas > li:last-child {
+    border-bottom: none; /* This disables the bottom border for the last element */
+  }
+
+  .nav-meniu-mažas > li:hover {
+    background-color: #f3f8fd;
+  }
+
+  .nav-meniu-mažas-ul {
+    border-top: #000 0.5px solid;
+  }
+
+  .header-apatinė-linija {
+    border-bottom: 1px solid rgba(255,255,255,.102);
   }
