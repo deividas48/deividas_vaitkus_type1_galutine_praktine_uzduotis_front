@@ -30,7 +30,7 @@ export default function Header() {
           <img
             src="../../../public/img/ShopLogo.png"
             alt="EveryShop logo"
-            className="w-20 flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
+            className="logoo flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
           />
         </Link>
         {/* Navigacija */}
