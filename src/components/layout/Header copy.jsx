@@ -1,29 +1,15 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../../styles/Header.css';
-import cl from 'classnames';
+
+// function closeMenu() {
+//   setIsMenuOpen(false);
+// }
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
-  const mySnippet = (
-    <ul className={cl('flex pl-2', {
-      'flex-col': isMenuOpen, // This will be `flex-col` when the menu is not open
-      'flex-row': !isMenuOpen, // This will be `flex-row` when the menu is open
-    })}
-    >
-      <li className="nav-list">
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li className="nav-list">
-        <NavLink to="/towns">Towns</NavLink>
-      </li>
-      <li className="nav-list">
-        <NavLink to="/towns">Towns</NavLink>
-      </li>
-    </ul>
-  );
+  const [isHovered, setIsHovered] = React.useState(false);
 
   return (
     <header className="bg-white border-gray-200 dark:bg-gray-900 container-workaround">
@@ -35,20 +21,18 @@ export default function Header() {
             className="w-20 flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
           />
         </Link>
-        <nav>
-          {
-  !isMenuOpen
-    ? (
-      <div className="items-center justify-between w-full hidden md:flex md:w-auto relative">
-        {mySnippet}
-      </div>
-    )
-    : (
-      <div className="absolute mt-11 left-0 bg-red-800 md:hidden p-4 w-full z-10">
-        {mySnippet}
-      </div>
-    )
-}
+        <nav className="items-center justify-between hidden w-full md:flex md:w-auto">
+          <ul className="flex pl-2">
+            <li className="nav-list .nav-list:hover">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="nav-list .nav-list:hover">
+              <NavLink to="/towns">Towns</NavLink>
+            </li>
+            <li className="nav-list .nav-list:hover">
+              <NavLink to="/towns">Towns</NavLink>
+            </li>
+          </ul>
         </nav>
         <NavLink
           to="/skelbimas/sukurti"
@@ -58,11 +42,15 @@ export default function Header() {
         >
           {isHovered ? (
             <span className="inline-grid rounded-full bg-red-500 duration-500 rotate-180 text-2xl">
-              <i className="bi bi-plus-lg py-2 px-4" />
+              <i
+                className="bi bi-plus-lg py-2 px-4"
+              />
             </span>
           ) : (
             <span className="inline-grid rounded-full bg-red-700 text-2xl">
-              <i className="bi bi-plus-lg py-2 px-4 rounded-full" />
+              <i
+                className="bi bi-plus-lg py-2 px-4 rounded-full"
+              />
             </span>
           )}
           <span className="ml-2 mr-2 hidden sm:block">Add Listing</span>
@@ -75,7 +63,9 @@ export default function Header() {
             className="btn"
             aria-label="Toggle menu" // Specify the label just for screen readers
           >
-            <i className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3`} />
+            <i
+              className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3`}
+            />
           </button>
         </div>
       </div>
