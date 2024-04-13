@@ -20,16 +20,16 @@
     border-radius: 30px;
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
-    background: linear-gradient(to right, rgb(185, 28, 28), rgb(226, 64, 64) 50%, rgb(239, 68, 68) 50%);
+    background: linear-gradient(to right, rgb(204,17,25), rgb(204,17,25) 50%, rgb(255, 60, 72) 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     z-index: -1;
     transition: background-position 0.5s ease-out;
   }
   
-  /* .hover-bg-gradient:hover::before {
+  .hover-bg-gradient:hover::before {
     background-position: left bottom;
-  } */
+  }
 
   .nav-meniu-mažas > li {
     background-color: white;
@@ -56,4 +56,18 @@
 
   .header-apatinė-linija {
     border-bottom: 1px solid rgba(255,255,255,.102);
+  }
+
+  .header-įdėti-button {
+    padding: 0.375rem 0.625rem;
+    font-weight: 900;
+  }
+
+  .header-įdėti-button2 {
+    padding: 0.625rem;
+  }
+
+  .header-įdėti-button-pavadinimas {
+    padding-right: 0.938rem;
+    font-size: 0.938rem;
   }
