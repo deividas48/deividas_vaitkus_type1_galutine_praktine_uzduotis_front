@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import AddAdPage from './pages/AddAdPage';
 import UserPage from './pages/UserPage';
 import SingleAdPage from './pages/SingleAdPage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/skelbimas/:id" element={<SingleAdPage />} />
         <Route path="/skelbimas/sukurti" element={<AddAdPage />} />
         <Route path="/user/:id" element={<UserPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

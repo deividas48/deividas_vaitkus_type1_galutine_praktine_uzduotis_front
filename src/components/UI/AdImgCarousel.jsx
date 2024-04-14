@@ -9,18 +9,6 @@ import { Carousel } from 'react-responsive-carousel';
 export default function AdImgCarousel({ images }) {
   return (
     <Carousel dynamicHeight>
-      <div>
-        <img src="/img/sell/cd.png" alt="CD" />
-        {/* <p className="legend">Legend 1</p> */}
-      </div>
-      <div>
-        <img src="/img/sell/gun.jpeg" alt="Gun" />
-        {/* <p className="legend">Legend 2</p> */}
-      </div>
-      <div>
-        <img src="/img/sell/macintosh.png" alt="Macintosh" />
-        {/* <p className="legend">Legend 3</p> */}
-      </div>
       {images.map((imgUrl, i) => (
         <div key={i}>
           <img src={`/img/sell/${imgUrl}`} alt="Ad" />

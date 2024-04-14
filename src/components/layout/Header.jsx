@@ -18,7 +18,10 @@ export default function Header() {
         <NavLink to="/towns">Towns</NavLink>
       </li>
       <li className="nav-list">
-        <NavLink to="/towns">Towns</NavLink>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li className="nav-list">
+        <NavLink to="/register">Register</NavLink>
       </li>
     </>
   );
