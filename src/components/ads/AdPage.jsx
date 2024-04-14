@@ -40,7 +40,7 @@ export default function AdPage({ item }) {
               {item.price}
             </p>
           </div>
-          <Link to={`/${item.id}`}>
+          <Link to={`/skelbimas/${item.id}`}>
             <span className="text-custom-gray-color hover:text-custom-primary-color font-semibold text-lg md:mt-4">
               Read More
             </span>

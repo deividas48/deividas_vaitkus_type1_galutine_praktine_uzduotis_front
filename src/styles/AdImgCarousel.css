@@ -1,0 +1,27 @@
+/* Visos css klasės yra nurodytos package karuselės, todėl nereikia nustatinėti prie norimų paveikti elementų tiesiogiai. Original link: .../node_modules/react-responsive-carousel/lib/styles/carousel.min.css */
+
+/* Nuotraukos */
+.slide img {
+  width: 193px;
+  height: 193px;
+  object-fit: contain;
+  align-items: center;
+}
+
+/* Nuotraukos thumbnail'inės */
+.thumb img {
+  border-radius: 0.5rem;
+  position: none;
+}
+
+/* Nuotraukos thumbnail'inės */
+.carousel .thumbs {
+    display: flex;
+    justify-content: center;  /* Flexbox centering */
+    align-items: center;
+    position: none;
+}
+
+.carousel-status {
+  display: none;
+}
