@@ -17,6 +17,7 @@ export default {
         'custom-primary-color': '#ff3c48',
         'custom-gray-color': '#646464',
         'custom-color-secondary': '#CC1119',
+        'custom-color-grey2': '#CCCCCC',
       },
     },
   },
