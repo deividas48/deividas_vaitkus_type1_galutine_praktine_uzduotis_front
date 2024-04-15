@@ -70,9 +70,9 @@ export default function SingleAdPage() {
           <AdImgCarousel
             images={[
               ad.main_image_url || '',
-              ad.main_image_url || '',
-              ad.main_image_url || '',
-              ad.main_image_url || '',
+              ad.main_image_url_1 || '',
+              ad.main_image_url_2 || '',
+              ad.main_image_url_3 || '',
             ]}
           />
         </section>

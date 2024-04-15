@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable no-console */
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -13,7 +14,8 @@ function AdsPage() {
     axios
       .get(url)
       .then((resp) => {
-        setadsArr(resp.data);
+        const sortedAds = resp.data.sort((a, b) => a.title.localeCompare(b.title));
+        setadsArr(sortedAds);
       })
       .catch((error) => {
         console.warn('Error fetching ads:', error);
@@ -28,11 +30,14 @@ function AdsPage() {
     getPosts('http://localhost:3000/api/ads');
   }, []);
 
+  // Filter the ads array by the is_published property. Its for avoiding to show unpublished ads
+  const unpublishedAds = adsArr.filter(ad => ad.is_published === 1);
+
   return (
     <div>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Failed to fetch ads</p>}
-      {!isLoading && !isError && <AdsList list={adsArr} />}
+      {!isLoading && !isError && <AdsList list={unpublishedAds} />}
     </div>
   );
 }
