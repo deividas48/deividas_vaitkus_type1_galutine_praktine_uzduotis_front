@@ -8,7 +8,7 @@ export default function ErrorPage() {
         <p>Sorry, the page you are looking for does not exist.</p>
         <p>
           <span>Back to the </span>
-          <Link className="text-custom-primary-color" to="/">homepage</Link>
+          <Link className="text-custom-primary-color" to="/">Home Page</Link>
         </p>
       </div>
     </div>

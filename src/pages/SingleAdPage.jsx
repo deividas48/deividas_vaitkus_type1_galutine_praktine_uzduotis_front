@@ -42,6 +42,7 @@ export default function SingleAdPage() {
       <main className="md:w-3/4">
         {/* Listed item to sell */}
         <section className="mb-4 bg-white p-4 md:mr-4 mt-4 rounded-lg">
+          <span className="text-xs uppercase text-custom-primary-color">{ad.type}</span>
           {/* Ad img */}
           <AdImgCarousel
             images={[
