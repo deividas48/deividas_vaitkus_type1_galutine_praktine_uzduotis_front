@@ -69,11 +69,11 @@ export default function SingleAdPage() {
           {/* Ad img */}
           <AdImgCarousel
             images={[
-              ad.main_image_url || '',
-              ad.main_image_url_1 || '',
-              ad.main_image_url_2 || '',
-              ad.main_image_url_3 || '',
-            ]}
+              ad.main_image_url,
+              ad.main_image_url_3,
+              ad.main_image_url_1,
+              ad.main_image_url_2,
+            ].filter(Boolean)} // This will remove all falsy values from the array
           />
         </section>
         <section className="mb-4 mt-4 bg-white p-4 md:mr-4 rounded-lg">
@@ -97,10 +97,7 @@ export default function SingleAdPage() {
         <section className=" bg-white p-4 rounded-lg">
           <h2 className="text-xl font-semibold pb-2">Settings</h2>
           <div className="flex justify-center">
-            <button
-              onClick={handleDeleteTrip}
-              type="button"
-            >
+            <button onClick={handleDeleteTrip} type="button">
               <DeleteBtn />
             </button>
           </div>
