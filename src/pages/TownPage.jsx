@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import DeleteBtn from '../components/buttons/DeleteBtn';
 // import AdImgSwiper from '../components/UI/AdImgSwiper';
 
 export default function TownPage() {

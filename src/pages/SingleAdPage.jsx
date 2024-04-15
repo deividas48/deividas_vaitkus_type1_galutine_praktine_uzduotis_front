@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AdImgCarousel from '../components/UI/AdImgCarousel';
 import DeleteBtn from '../components/buttons/DeleteBtn';
+// import { toast } from 'react-toastify';
 // import AdImgSwiper from '../components/UI/AdImgSwiper';
 
 export default function SingleAdPage() {
@@ -12,6 +13,8 @@ export default function SingleAdPage() {
   const [ad, setAd] = useState(null); // Where data is feched from API (server)
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  // Gauti po vieną skelbimą iš serverio
 
   async function getPosts(url) {
     try {
@@ -33,6 +36,23 @@ export default function SingleAdPage() {
     getPosts(cUrl);
   }, [id]);
 
+  // Dar ir trynimas pridedamas čia
+
+  const navigate = useNavigate();
+
+  async function handleDeleteTrip() {
+    try {
+      // const resp =
+      await axios.delete(cUrl);
+      // console.log('resp ===', resp);
+      // toast.success(`${ad.name} was deleted`);
+      navigate('/trips');
+    } catch (error) {
+      // console.warn('axiosErr.response.data ===', error.response?.data);
+      // console.warn('Delete error');
+    }
+  }
+
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Failed to fetch the ad</p>;
   if (!ad) return <p>No ad data!</p>; // Check if ad is null
@@ -42,7 +62,9 @@ export default function SingleAdPage() {
       <main className="md:w-3/4">
         {/* Listed item to sell */}
         <section className="mb-4 bg-white p-4 md:mr-4 mt-4 rounded-lg">
-          <span className="text-xs uppercase text-custom-primary-color">{ad.type}</span>
+          <span className="text-xs uppercase text-custom-primary-color">
+            {ad.type}
+          </span>
           {/* Ad img */}
           <AdImgCarousel
             images={[
@@ -75,6 +97,9 @@ export default function SingleAdPage() {
           <h2 className="text-xl font-semibold pb-2">Settings</h2>
           <div className="flex justify-center">
             <DeleteBtn />
+            <button onClick={handleDeleteTrip} type="button" className="btn btn-danger">
+              Delete
+            </button>
           </div>
         </section>
       </aside>
