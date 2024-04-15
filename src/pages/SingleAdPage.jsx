@@ -96,9 +96,11 @@ export default function SingleAdPage() {
         <section className=" bg-white p-4 rounded-lg">
           <h2 className="text-xl font-semibold pb-2">Settings</h2>
           <div className="flex justify-center">
-            <DeleteBtn />
-            <button onClick={handleDeleteTrip} type="button" className="btn btn-danger">
-              Delete
+            <button
+              onClick={handleDeleteTrip}
+              type="button"
+            >
+              <DeleteBtn />
             </button>
           </div>
         </section>
