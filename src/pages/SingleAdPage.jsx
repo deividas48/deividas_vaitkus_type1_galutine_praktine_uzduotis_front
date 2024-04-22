@@ -47,7 +47,7 @@ export default function SingleAdPage() {
       await axios.delete(cUrl);
       // console.log('resp ===', resp);
       // toast.success(`${ad.name} was deleted`);
-      navigate('/trips');
+      navigate('/');
     } catch (error) {
       // console.warn('axiosErr.response.data ===', error.response?.data);
       // console.warn('Delete error');
