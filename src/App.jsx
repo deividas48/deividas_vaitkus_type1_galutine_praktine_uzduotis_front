@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Header from './components/layout/Header';
 import HomePage from './pages/HomePage';
 import TownsPage from './pages/TownsPage';
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="container">
       <Header />
+      <Toaster />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/towns" element={<TownsPage />} />

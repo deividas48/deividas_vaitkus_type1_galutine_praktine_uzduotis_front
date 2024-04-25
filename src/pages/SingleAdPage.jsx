@@ -2,9 +2,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import AdImgCarousel from '../components/UI/AdImgCarousel';
 import DeleteBtn from '../components/buttons/DeleteBtn';
-// import { toast } from 'react-toastify';
 // import AdImgSwiper from '../components/UI/AdImgSwiper';
 
 export default function SingleAdPage() {
@@ -46,11 +46,12 @@ export default function SingleAdPage() {
       // const resp =
       await axios.delete(cUrl);
       // console.log('resp ===', resp);
-      // toast.success(`${ad.name} was deleted`);
       navigate('/');
+      toast.success(`${ad.name} was deleted`);
     } catch (error) {
       // console.warn('axiosErr.response.data ===', error.response?.data);
       // console.warn('Delete error');
+      toast.error('Failed to delete ad.'); // Display an error toast
     }
   }
 
