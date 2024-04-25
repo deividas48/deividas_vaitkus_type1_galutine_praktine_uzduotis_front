@@ -37,7 +37,7 @@ export default function Header() {
         <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
           <Link to="/">
             <img
-              src="../../../public/img/ShopLogo.png"
+              src="/img/ShopLogo.png"
               alt="EveryShop logo"
               className="logoo flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
             />
