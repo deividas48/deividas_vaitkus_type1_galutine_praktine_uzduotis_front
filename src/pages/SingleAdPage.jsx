@@ -48,7 +48,7 @@ export default function SingleAdPage() {
       // console.log('resp ===', resp);
       navigate('/');
       toast.success(`${ad.title[0].toUpperCase() + ad.title.slice(1)} was deleted`, {
-        duration: 15000,
+        duration: 8000,
       });
     } catch (error) {
       // console.warn('axiosErr.response.data ===', error.response?.data);
