@@ -1,7 +1,5 @@
 export default function AddAdPage() {
   return (
-    <div>
-      <h1>Add Ad Page</h1>
-    </div>
+    <div className="bg-white p-4 mt-4 mb-4 rounded-lg w-full">zzzz</div>
   );
 }

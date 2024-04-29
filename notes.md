@@ -11,3 +11,5 @@ yarn add swiper
 yarn add swiper/react
 
 Install Toast: yarn add react-hot-toast
+
+Install Formik: yarn add formik
