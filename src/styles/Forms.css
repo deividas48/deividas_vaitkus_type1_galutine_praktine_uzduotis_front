@@ -38,3 +38,9 @@
     width: 80%;
   }
 }
+
+input:focus {
+    background-color: lightblue;  /* Change the background color when the input is focused */
+    border-color: blue;          /* Change the border color */
+    outline: none;               /* Optional: Remove the default focus outline */
+}

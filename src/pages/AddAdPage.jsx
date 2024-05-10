@@ -51,13 +51,7 @@ export default function AddAdPage() {
             />
           </div>
         ))}
-        <div className="flex justify-center">
-          <div className="flex w-4/5 md:w-2/4 justify-end">
-            <button type="submit" aria-label="Submit form">
-              <Submit />
-            </button>
-          </div>
-        </div>
+        <Submit />
       </form>
     </div>
   );
