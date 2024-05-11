@@ -11,6 +11,7 @@
   padding-right: 0.75rem;
   /* min-width helps with alignment */
   min-width: 25%;
+  color: var(--color-body);
 }
 
 /* flex p-2 border border-gray-300 rounded w-1/2 */
