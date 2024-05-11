@@ -25,32 +25,104 @@ export default function AddAdPage() {
         onSubmit={formik.handleSubmit}
         className="flex flex-col py-4 w-full"
       >
-        {[
-          'title',
-          'description',
-          'price',
-          'phone',
-          'type',
-          'town',
-          'category',
-        ].map((field) => (
-          // key is required for React to keep track of the elements
-          <div key={field} className="custom_form_pairs">
-            <label htmlFor={field}>
-              {/* Make label name from already created variables. */}
-              {field.charAt(0).toUpperCase() + field.slice(1)}
-              :
-            </label>
-            <input
-              id={field}
-              name={field}
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values[field]}
-              // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-            />
-          </div>
-        ))}
+        <div className="custom_form_pairs">
+          <label htmlFor="title">
+            {/* Make label name from already created variables. */}
+            Title:
+          </label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.title}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
+        <div className="custom_form_pairs">
+          <label htmlFor="description">
+            {/* Make label name from already created variables. */}
+            Description:
+          </label>
+          <input
+            id="description"
+            name="description"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.description}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
+        <div className="custom_form_pairs">
+          <label htmlFor="price">
+            {/* Make label name from already created variables. */}
+            Price:
+          </label>
+          <input
+            id="price"
+            name="price"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.price}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
+        <div className="custom_form_pairs">
+          <label htmlFor="phone">
+            {/* Make label name from already created variables. */}
+            Phone:
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.phone}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
+        <div className="custom_form_pairs">
+          <label htmlFor="type">
+            {/* Make label name from already created variables. */}
+            Type:
+          </label>
+          <input
+            id="type"
+            name="type"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.type}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
+        <div className="custom_form_pairs">
+          <label htmlFor="town">
+            {/* Make label name from already created variables. */}
+            Town:
+          </label>
+          <input
+            id="town"
+            name="town"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.town}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
+        <div className="custom_form_pairs">
+          <label htmlFor="category">
+            {/* Make label name from already created variables. */}
+            Category:
+          </label>
+          <input
+            id="category"
+            name="category"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.category}
+            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+          />
+        </div>
         <Submit />
       </form>
     </div>
