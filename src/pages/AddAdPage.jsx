@@ -44,7 +44,7 @@ export default function AddAdPage() {
             {/* Make label name from already created variables. */}
             Description:
           </label>
-          <input
+          <textarea
             id="description"
             name="description"
             type="text"
