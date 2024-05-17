@@ -39,13 +39,13 @@ export default function AddAdPage() {
             required // Ensures the field must be filled out
             minLength={10} // Minimum length for adequate description
             maxLength={100} // Maximum length to prevent overly verbose titles
-            placeholder="Enter a concise title for your item, e.g., 'Vintage Leather Jacket'"
-            aria-describedby="titleHelp" // ID for an element containing additional description
+            placeholder="Enter a title for your item, e.g., 'Purple iPhone 13'"
+            // aria-describedby="titleHelp" // ID for an element containing additional description
             autoComplete="on" // Consider "on" if previous titles should be suggested
           />
-          <small id="titleHelp" className="form-text text-muted">
+          {/* <small id="titleHelp" className="form-text text-muted">
             Title should be between 10 to 100 characters.
-          </small>
+          </small> */}
         </div>
         <div className="custom_form_pairs">
           <label htmlFor="description">

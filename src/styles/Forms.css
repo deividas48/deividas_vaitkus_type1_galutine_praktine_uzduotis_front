@@ -14,10 +14,10 @@
   color: var(--color-body);
 }
 
-.custom_form_pairs input, textarea {
+.custom_form_pairs input, .custom_form_pairs textarea {
   display: flex;
   padding: 0.5rem;
-  border: 1px solid rgb(209 213 219);
+  border: 1px solid rgba(209, 213, 219, 1);
   border-radius: 0.375rem;
   width: 50%;
 }
@@ -25,6 +25,10 @@
 .custom_form_pairs textarea {
     height: 8rem;
 }
+
+/* input:valid {
+  border: 1px solid rgba(209, 213, 219, 1);
+} */
 
 @media screen and (max-width: 768px) {
   .custom_form_pairs {
@@ -43,8 +47,15 @@
   }
 }
 
-input:focus, textarea:focus {
+.custom_form_pairs input:focus, .custom_form_pairs textarea:focus {
     background-color: #f9f9f9;  /* Change the background color when the input is focused */
-    border-color: var(--custom-primary-color);          /* Change the border color */
+    border-color: var(--custom-gray-color);          /* Change the border color */
     outline: none;               /* Optional: Remove the default focus outline */
 }
+
+.custom_form_pairs input:focus:invalid {
+  border-color: var(--custom-gray-color-02);
+}
+
+
+/* --custom-primary-color-05 */
