@@ -36,8 +36,16 @@ export default function AddAdPage() {
             type="text"
             onChange={formik.handleChange}
             value={formik.values.title}
-            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            required // Ensures the field must be filled out
+            minLength={10} // Minimum length for adequate description
+            maxLength={100} // Maximum length to prevent overly verbose titles
+            placeholder="Enter a concise title for your item, e.g., 'Vintage Leather Jacket'"
+            aria-describedby="titleHelp" // ID for an element containing additional description
+            autoComplete="on" // Consider "on" if previous titles should be suggested
           />
+          <small id="titleHelp" className="form-text text-muted">
+            Title should be between 10 to 100 characters.
+          </small>
         </div>
         <div className="custom_form_pairs">
           <label htmlFor="description">
@@ -61,7 +69,7 @@ export default function AddAdPage() {
           <input
             id="price"
             name="price"
-            type="text"
+            type="number"
             onChange={formik.handleChange}
             value={formik.values.price}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
@@ -75,7 +83,7 @@ export default function AddAdPage() {
           <input
             id="phone"
             name="phone"
-            type="text"
+            type="tell"
             onChange={formik.handleChange}
             value={formik.values.phone}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
