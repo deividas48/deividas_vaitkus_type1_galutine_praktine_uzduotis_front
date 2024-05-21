@@ -58,6 +58,9 @@ export default function AddAdPage() {
             type="text"
             onChange={formik.handleChange}
             value={formik.values.description}
+            required // Ensures the field must be filled out
+            maxLength={800}
+            placeholder="Provide a detailed description of your item..."
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
           />
         </div>
