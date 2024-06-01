@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { isNaN, useFormik } from 'formik';
 import '../styles/Forms.css';
 import Submit from '../components/buttons/Submit';
 
@@ -18,6 +18,17 @@ export default function AddAdPage() {
       alert(JSON.stringify(values, null, 2)); // Just for demonstration
     },
   });
+
+  // Function to handle the price input onBlur event
+  const handlePriceBlur = (event) => {
+    // Parse the input value to a float. ParseFloat returns NaN if the input is not a number
+    const value = parseFloat(event.target.value);
+    // If the value is a number, set the field value to a fixed two decimal places
+    if (!isNaN(value)) {
+      // Set the field value to a fixed two decimal places
+      formik.setFieldValue('price', value.toFixed(2)); // setFieldValue is a Formik function to set the value of a field in the form. It takes two arguments: the field name (input name) and the value to set.
+    }
+  };
 
   return (
     <div className="items-center min-h-screen bg-white mt-4 mb-4 p-4 rounded-lg">
@@ -64,18 +75,24 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
           />
         </div>
-        <div className="custom_form_pairs">
+        <div className="custom_form_pairs half">
           <label htmlFor="price">
             {/* Make label name from already created variables. */}
-            Price:
+            Price (€):
           </label>
           <input
             id="price"
             name="price"
             type="number"
             onChange={formik.handleChange}
+            onBlur={handlePriceBlur}
             value={formik.values.price}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            min="0" // Ensures the price cannot be negative
+            step="1.00" // Allows for two decimal places, useful for prices
+            required // Ensures the field must be filled out
+            placeholder="Enter the price in Euro"
+            className="bg-custom-color-secondary"
           />
         </div>
         <div className="custom_form_pairs">
