@@ -9,8 +9,8 @@ export default {
       },
       screens: {
         sm: '350px', // mobilus iki
-        md: '768px', // plansetes iki
-        lg: '1024px', // desktopas iki
+        md: '768px', // plansetes iki (senas 768px)
+        lg: '1024px', // desktopas iki (senas 1024px)
         xl: '1500px', // super platus iki
       },
       colors: {

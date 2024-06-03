@@ -36,8 +36,8 @@ export default function AddAdPage() {
         onSubmit={formik.handleSubmit}
         className="flex flex-col py-4 w-full"
       >
-        <div className="custom_form_pairs">
-          <label htmlFor="title">
+        <div className="pairs">
+          <label htmlFor="title" className="pairs_label_full">
             {/* Make label name from already created variables. */}
             Title:
           </label>
@@ -53,13 +53,14 @@ export default function AddAdPage() {
             placeholder="Enter a title for your item, e.g., 'Purple iPhone 13'"
             // aria-describedby="titleHelp" // ID for an element containing additional description
             autoComplete="on" // Consider "on" if previous titles should be suggested
+            className="pairs_input_full"
           />
           {/* <small id="titleHelp" className="form-text text-muted">
             Title should be between 10 to 100 characters.
           </small> */}
         </div>
-        <div className="custom_form_pairs">
-          <label htmlFor="description">
+        <div className="pairs">
+          <label htmlFor="description" className="pairs_label_full">
             {/* Make label name from already created variables. */}
             Description:
           </label>
@@ -73,10 +74,11 @@ export default function AddAdPage() {
             maxLength={800}
             placeholder="Provide a detailed description of your item..."
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            className="pairs_textarea_full pairs_input_full"
           />
         </div>
-        <div className="custom_form_pairs half">
-          <label htmlFor="price">
+        <div className="pairs">
+          <label htmlFor="price" className="pairs_label_full">
             {/* Make label name from already created variables. */}
             Price (€):
           </label>
@@ -92,11 +94,10 @@ export default function AddAdPage() {
             step="1.00" // Allows for two decimal places, useful for prices
             required // Ensures the field must be filled out
             placeholder="Enter the price in Euro"
-            className="bg-custom-color-secondary"
+            // width 10 proc.
+            className="width_20proc pairs_input_notFull"
           />
-        </div>
-        <div className="custom_form_pairs">
-          <label htmlFor="phone">
+          <label htmlFor="phone" className="pairs_label_secoundHalf ml-3">
             {/* Make label name from already created variables. */}
             Phone:
           </label>
@@ -106,11 +107,12 @@ export default function AddAdPage() {
             type="tell"
             onChange={formik.handleChange}
             value={formik.values.phone}
-            // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            className="pairs_input_notFull pairs_input_secoundHalf"
           />
         </div>
-        <div className="custom_form_pairs">
-          <label htmlFor="type">
+        <div className="w-1/3" />
+        <div className="pairs">
+          <label htmlFor="type" className="pairs_label_full">
             {/* Make label name from already created variables. */}
             Type:
           </label>
@@ -121,10 +123,11 @@ export default function AddAdPage() {
             onChange={formik.handleChange}
             value={formik.values.type}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            className="pairs_input_full"
           />
         </div>
-        <div className="custom_form_pairs">
-          <label htmlFor="town">
+        <div className="pairs">
+          <label htmlFor="town" className="pairs_label_full">
             {/* Make label name from already created variables. */}
             Town:
           </label>
@@ -135,10 +138,11 @@ export default function AddAdPage() {
             onChange={formik.handleChange}
             value={formik.values.town}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            className="pairs_input_full"
           />
         </div>
-        <div className="custom_form_pairs">
-          <label htmlFor="category">
+        <div className="pairs">
+          <label htmlFor="category" className="pairs_label_full">
             {/* Make label name from already created variables. */}
             Category:
           </label>
@@ -149,6 +153,7 @@ export default function AddAdPage() {
             onChange={formik.handleChange}
             value={formik.values.category}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            className="pairs_input_full"
           />
         </div>
         <Submit />
