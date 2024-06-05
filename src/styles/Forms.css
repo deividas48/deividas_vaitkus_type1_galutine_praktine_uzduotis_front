@@ -24,6 +24,7 @@
   padding: 0.5rem;
   border: 1px solid rgba(209, 213, 219, 1);
   border-radius: 0.375rem;
+  background-color: #f9f9f9;
 }
 
 /* Only for one line "description" textarea height */
@@ -52,36 +53,30 @@
   width: 50%;
 }
 
-/* input:valid {
-  border: 1px solid rgba(209, 213, 219, 1);
-} */
-
-@media screen and (max-width: 768px) {
-  .pairs {
-    flex-direction: column;
-  }
-  .pairs_input_full, textarea {
-    width: 80%;
-  }
-
-  .pairs_label_full {
-    display: flex;
-    align-items: start;
-    justify-content: left;
-    /* padding-left: 0; */
-    width: 80%;
-  }
-}
-
-.pairs_input_full:focus {
-    background-color: #f9f9f9;  /* Change the background color when the input is focused */
-    border-color: var(--custom-gray-color);          /* Change the border color */
+.pairs_input_full:focus, .pairs_input_notFull:focus {
+    background-color: #ffffff;  /* Change the background color when the input is focused */
+    /* border-color: var(--custom-gray-color);          Change the border color */
     outline: none;               /* Optional: Remove the default focus outline */
-}
-
-.pairs_input_full:focus:invalid {
-  border-color: var(--custom-gray-color-02);
-}
-
-
-/* --custom-primary-color-05 */
+    border: 2px solid rgb(0, 0, 0);
+  }
+  
+  .pairs_input_full:focus:invalid, .pairs_input_notFull:focus:invalid {
+    border-color: rgba(0, 0, 0, 0.899);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .pairs {
+      flex-direction: column;
+    }
+    .pairs_input_full, textarea {
+      width: 80%;
+    }
+  
+    .pairs_label_full {
+      display: flex;
+      align-items: start;
+      justify-content: left;
+      /* padding-left: 0; */
+      width: 80%;
+    }
+  }
