@@ -11,7 +11,7 @@
   padding-right: 0.75rem;
   /* min-width helps with alignment */
   width: 25%;
-  overflow-wrap: break-word; /* Ensures proper wrapping in most browsers */
+  overflow-wrap: break-word; /* Wrap the text if it's too long */
 }
 
 /* Style for labels on the right side */
