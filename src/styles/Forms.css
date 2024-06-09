@@ -18,6 +18,7 @@
 .pairs_label_secoundHalf {
   text-align: right;
   padding-right: 0.75rem;
+  overflow-wrap: break-word; /* Wrap the text if it's too long */
 }
 
 .pairs_input_full, .pairs_input_notFull {
