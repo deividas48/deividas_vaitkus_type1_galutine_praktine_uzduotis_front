@@ -4,6 +4,7 @@
   margin-bottom: 1rem;
   align-items: center;
   /* justify-content: center; */
+  flex-wrap : wrap;
 }
 
 .pairs_label_full {
@@ -74,11 +75,13 @@ min-width: 12.5%;
   }
   
   @media screen and (max-width: 768px) {
-    /* .pairs {
+    .pairs {
       flex-direction: column;
     }
-    .pairs_input_full, textarea {
+    
+    .pairs_input_full, textarea, .pairs_input_notFull {
       width: 80%;
+      margin-right: 0;
     }
   
     .pairs_label_full {
@@ -86,5 +89,12 @@ min-width: 12.5%;
       align-items: start;
       justify-content: left;
       width: 80%;
-    } */
+    }
+
+    .pairs_label_full_md {
+      display: flex;
+      align-items: start;
+      justify-content: left;
+      width: 80%;
+    } 
   }
