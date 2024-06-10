@@ -78,7 +78,7 @@ export default function AddAdPage() {
           />
         </div>
         <div className="pairs">
-        <div className="margin"></div>
+          <div className="margin" />
           <label htmlFor="price" className="pairs_label_full label_price">
             {/* Make label name from already created variables. */}
             Price (€):
@@ -110,7 +110,7 @@ export default function AddAdPage() {
             value={formik.values.phone}
             className="pairs_input_notFull pairs_input_secoundHalf_size"
           />
-          <div className="margin2"></div>
+          <div className="margin2" />
         </div>
         <div className="w-1/3" />
         <div className="pairs">

@@ -40,28 +40,31 @@
   width: 50%;
 }
 
-/* Only for "Phone" label width */
-.pairs_label_secHalf_width_12_5proc {
-  flex: 0 1 12.5%; /* Allow it to shrink */
-  min-width: 12.5%;
-}
-
+/* Only for "Price" label width belongs to the common class above */
 /* Only for "Price" input width */
 .width_12_5proc {
-  flex: 0 1 12.5%; /* Allow it to shrink */
-  min-width: 12.5%;
+flex: 0 0 12.5%;
+min-width: 12.5%;
 }
+
+/* Only for "Phone" label width */
+.pairs_label_secHalf_width_12_5proc {
+  
+  flex: 0 1; /* Allow it to shrink */ /* Allow it to shrink */
+  width: 12.5%;
+  }
+  
+  /* Only for "Phone" input width */
+  .pairs_input_secoundHalf_size {
+    /* margin-right: 25%; */
+    flex: 1 1 auto; /* Allow it to grow */
+    width: 25%;
+  }
 
 .margin2 {
   flex: 0 0 25%; /* Allow it to shrink */
 }
 
-/* Only for "Phone" input width */
-.pairs_input_secoundHalf_size {
-  /* margin-right: 25%; */
-  flex: 1 1 auto; /* Allow it to grow */
-  width: 25%;
-}
 /* When the input is clicked */
 .pairs_input_full:focus, .pairs_input_notFull:focus {
     background-color: #ffffff;  /* Change the background color when the input is focused */
