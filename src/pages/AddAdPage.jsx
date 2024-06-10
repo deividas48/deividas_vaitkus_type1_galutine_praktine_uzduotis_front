@@ -78,7 +78,8 @@ export default function AddAdPage() {
           />
         </div>
         <div className="pairs">
-          <label htmlFor="price" className="pairs_label_full">
+        <div className="margin"></div>
+          <label htmlFor="price" className="pairs_label_full label_price">
             {/* Make label name from already created variables. */}
             Price (€):
           </label>
@@ -95,9 +96,9 @@ export default function AddAdPage() {
             required // Ensures the field must be filled out
             placeholder="Enter the price in Euro"
             // width 10 proc.
-            className="width_20proc pairs_input_notFull"
+            className="width_12_5proc pairs_input_notFull"
           />
-          <label htmlFor="phone" className="pairs_label_secoundHalf ml-3">
+          <label htmlFor="phone" className="pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3">
             {/* Make label name from already created variables. */}
             Phone:
           </label>
@@ -107,8 +108,9 @@ export default function AddAdPage() {
             type="tell"
             onChange={formik.handleChange}
             value={formik.values.phone}
-            className="pairs_input_notFull pairs_input_secoundHalf"
+            className="pairs_input_notFull pairs_input_secoundHalf_size"
           />
+          <div className="margin2"></div>
         </div>
         <div className="w-1/3" />
         <div className="pairs">

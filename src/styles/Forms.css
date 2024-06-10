@@ -10,7 +10,8 @@
   text-align: right;
   padding-right: 0.75rem;
   /* min-width helps with alignment */
-  width: 25%;
+  flex: 0 1 25%; /* Allow it to shrink. Grow is set to 0 so it doesn't grow, but it can shrink (1) */
+  min-width: 25%;
   overflow-wrap: break-word; /* Wrap the text if it's too long */
 }
 
@@ -39,20 +40,27 @@
   width: 50%;
 }
 
-/* Only for "Price" input width */
-.width_20proc {
-  width: 20%;
-}
-
 /* Only for "Phone" label width */
-.width_15proc {
-  width: 15%;
+.pairs_label_secHalf_width_12_5proc {
+  flex: 0 1 12.5%; /* Allow it to shrink */
+  min-width: 12.5%;
 }
 
-/* Only for secound half of input margin */
-.pairs_input_secoundHalf {
-  margin-right: 25%;
-  width: 50%;
+/* Only for "Price" input width */
+.width_12_5proc {
+  flex: 0 1 12.5%; /* Allow it to shrink */
+  min-width: 12.5%;
+}
+
+.margin2 {
+  flex: 0 0 25%; /* Allow it to shrink */
+}
+
+/* Only for "Phone" input width */
+.pairs_input_secoundHalf_size {
+  /* margin-right: 25%; */
+  flex: 1 1 auto; /* Allow it to grow */
+  width: 25%;
 }
 /* When the input is clicked */
 .pairs_input_full:focus, .pairs_input_notFull:focus {
