@@ -42,7 +42,7 @@
 
 /* Only for "Price" label width belongs to the common class above */
 /* Only for "Price" input width */
-.width_12_5proc {
+.pairs_input_firstHalf_width_12_5proc {
 flex: 0 0 12.5%;
 min-width: 12.5%;
 }
@@ -55,7 +55,7 @@ min-width: 12.5%;
   }
   
   /* Only for "Phone" input width */
-  .pairs_input_secoundHalf_size {
+  .pairs_input_secHalf_width_25proc {
     /* margin-right: 25%; */
     flex: 1 1 auto; /* Allow it to grow */
     width: 25%;
