@@ -59,12 +59,8 @@ min-width: 12.5%;
     /* margin-right: 25%; */
     flex: 1 1 auto; /* Allow it to grow */
     width: 25%;
+    margin-right: 25%;
   }
-
-/* Only for a margin for the second half. Fake margin */
-.pairs_margin_secHalf_width_25proc  {
-  flex: 0 0 25%; /* Allow it to shrink */
-}
 
 /* When the input is clicked */
 .pairs_input_full:focus, .pairs_input_notFull:focus {
