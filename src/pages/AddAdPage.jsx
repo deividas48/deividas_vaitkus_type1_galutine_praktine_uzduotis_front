@@ -93,7 +93,7 @@ export default function AddAdPage() {
             required // Ensures the field must be filled out
             placeholder="Enter the price in Euro"
             // width 10 proc.
-            className="pairs_input_firstHalf_width_12_5proc pairs_input_notFull"
+            className="pairs_input_firstHalf_width_12_5proc pairs_input_notFull "
           />
           <label htmlFor="phone" className="pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3 pairs_label_full_md">
             Phone:

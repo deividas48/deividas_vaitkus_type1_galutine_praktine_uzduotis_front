@@ -41,7 +41,6 @@
   width: 50%;
 }
 
-/* Only for "Price" label width belongs to the common class above */
 /* Only for "Price" input width */
 .pairs_input_firstHalf_width_12_5proc {
 flex: 0 0 12.5%;
@@ -97,4 +96,9 @@ min-width: 12.5%;
       justify-content: left;
       width: 80%;
     } 
+
+    /* Only for "Price" input*/
+.pairs_input_firstHalf_width_12_5proc {
+  margin-bottom: 1rem;
+  }
   }
