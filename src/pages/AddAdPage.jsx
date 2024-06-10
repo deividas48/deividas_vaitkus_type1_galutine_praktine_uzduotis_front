@@ -110,7 +110,9 @@ export default function AddAdPage() {
             value={formik.values.phone}
             className="pairs_input_notFull pairs_input_secHalf_width_25proc"
           />
-          <div className="margin2" />
+          <div className="pairs_margin_secHalf_width_25proc" />
+          {' '}
+          {/* Fake margin */}
         </div>
         <div className="w-1/3" />
         <div className="pairs">
