@@ -38,7 +38,6 @@ export default function AddAdPage() {
       >
         <div className="pairs">
           <label htmlFor="title" className="pairs_label_full">
-            {/* Make label name from already created variables. */}
             Title:
           </label>
           <input
@@ -61,7 +60,6 @@ export default function AddAdPage() {
         </div>
         <div className="pairs">
           <label htmlFor="description" className="pairs_label_full">
-            {/* Make label name from already created variables. */}
             Description:
           </label>
           <textarea
@@ -80,7 +78,6 @@ export default function AddAdPage() {
         <div className="pairs">
           <div className="margin" />
           <label htmlFor="price" className="pairs_label_full label_price">
-            {/* Make label name from already created variables. */}
             Price (€):
           </label>
           <input
@@ -99,7 +96,6 @@ export default function AddAdPage() {
             className="pairs_input_firstHalf_width_12_5proc pairs_input_notFull"
           />
           <label htmlFor="phone" className="pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3">
-            {/* Make label name from already created variables. */}
             Phone:
           </label>
           <input
@@ -114,7 +110,6 @@ export default function AddAdPage() {
         <div className="w-1/3" />
         <div className="pairs">
           <label htmlFor="type" className="pairs_label_full">
-            {/* Make label name from already created variables. */}
             Type:
           </label>
           <input
@@ -129,7 +124,6 @@ export default function AddAdPage() {
         </div>
         <div className="pairs">
           <label htmlFor="town" className="pairs_label_full">
-            {/* Make label name from already created variables. */}
             Town:
           </label>
           <input
@@ -144,7 +138,6 @@ export default function AddAdPage() {
         </div>
         <div className="pairs">
           <label htmlFor="category" className="pairs_label_full">
-            {/* Make label name from already created variables. */}
             Category:
           </label>
           <input
