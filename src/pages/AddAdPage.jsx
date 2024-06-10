@@ -47,7 +47,7 @@ export default function AddAdPage() {
             onChange={formik.handleChange}
             value={formik.values.title}
             required // Ensures the field must be filled out
-            minLength={10} // Minimum length for adequate description
+            minLength={3} // Minimum length for adequate description
             maxLength={100} // Maximum length to prevent overly verbose titles
             placeholder="Enter a title for your item, e.g., 'Purple iPhone 13'"
             // aria-describedby="titleHelp" // ID for an element containing additional description
