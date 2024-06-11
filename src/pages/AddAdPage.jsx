@@ -79,6 +79,7 @@ export default function AddAdPage() {
           />
           {/* Display an error message if the field has been touched and has an error */}
         </div>
+        {/* If the title field has been touched and has an error, display the error message */}
         {formik.touched.title && formik.errors.title ? (
           <div className="YupValidation">{formik.errors.title}</div>
         ) : null}
@@ -145,10 +146,18 @@ export default function AddAdPage() {
           />
         </div>
         {formik.touched.price && formik.errors.price ? (
-          <div className="YupValidation">{formik.errors.price}</div>
+        // Complicated conditional class workaround to prevent
+        // the phone error message from overlapping the price error message
+          <div className={`YupValidation ${formik.touched.phone && formik.errors.phone ? 'mb-0' : ''}`}>
+            {formik.errors.price}
+          </div>
         ) : null}
         {formik.touched.phone && formik.errors.phone ? (
-          <div className="YupValidation mt-0">{formik.errors.phone}</div>
+        // Complicated conditional class workaround to prevent
+        // the phone error message from overlapping the price error message
+          <div className={`YupValidation mt-0 ${!formik.touched.price && formik.errors.price ? '-mt-4' : ''}`}>
+            {formik.errors.phone}
+          </div>
         ) : null}
         <div className="w-1/3" />
         <div className="pairs">
