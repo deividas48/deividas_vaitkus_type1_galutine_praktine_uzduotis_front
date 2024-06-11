@@ -72,6 +72,15 @@ min-width: 12.5%;
     border-color: rgba(0, 0, 0, 0.899);
     
   }
+
+  .YupValidation {
+    color: red;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    width: 100%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
   
   @media screen and (max-width: 768px) {
     .pairs {

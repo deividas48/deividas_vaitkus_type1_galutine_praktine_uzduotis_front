@@ -1,4 +1,5 @@
-import { isNaN, useFormik } from 'formik';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import '../styles/Forms.css';
 import Submit from '../components/buttons/Submit';
 
@@ -14,6 +15,26 @@ export default function AddAdPage() {
       town: '',
       category: '',
     },
+    validationSchema: Yup.object({
+      title: Yup.string()
+        .min(3, '• Title must be at least 3 characters')
+        .max(100, '• Title must be less than 100 characters')
+        .required('• Title is required'),
+      description: Yup.string()
+        .max(800, '• Description must be less than 800 characters')
+        .required('• Description is required'),
+      price: Yup.number()
+        .min(0, '• Price cannot be negative')
+        .required('• Price is required'),
+      phone: Yup.string()
+        .matches(/^[0-9]+$/, '• Phone number must contain only digits')
+        .min(10, '• Phone number must be at least 10 digits')
+        .max(15, '• Phone number must be less than 15 digits')
+        .required('• Phone number is required'),
+      type: Yup.string().required('• Type is required'),
+      town: Yup.string().required('• Town is required'),
+      category: Yup.string().required('• Category is required'),
+    }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2)); // Just for demonstration
     },
@@ -35,6 +56,7 @@ export default function AddAdPage() {
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col py-4 w-full"
+        noValidate // Disable the browser's HTML5 native validation
       >
         <div className="pairs">
           <label htmlFor="title" className="pairs_label_full">
@@ -45,6 +67,7 @@ export default function AddAdPage() {
             name="title"
             type="text"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // Ensure Formik's onBlur is used for validation
             value={formik.values.title}
             required // Ensures the field must be filled out
             minLength={3} // Minimum length for adequate description
@@ -54,9 +77,10 @@ export default function AddAdPage() {
             autoComplete="on" // Consider "on" if previous titles should be suggested
             className="pairs_input_full"
           />
-          {/* <small id="titleHelp" className="form-text text-muted">
-            Title should be between 10 to 100 characters.
-          </small> */}
+          {/* Display an error message if the field has been touched and has an error */}
+          {formik.touched.title && formik.errors.title ? (
+            <div className="YupValidation">{formik.errors.title}</div>
+          ) : null}
         </div>
         <div className="pairs">
           <label htmlFor="description" className="pairs_label_full">
@@ -67,6 +91,7 @@ export default function AddAdPage() {
             name="description"
             type="text"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.description}
             required // Ensures the field must be filled out
             maxLength={800}
@@ -74,6 +99,9 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_textarea_full pairs_input_full"
           />
+          {formik.touched.description && formik.errors.description ? (
+            <div className="YupValidation">{formik.errors.description}</div>
+          ) : null}
         </div>
         <div className="pairs">
           <div className="margin" />
@@ -85,7 +113,10 @@ export default function AddAdPage() {
             name="price"
             type="number"
             onChange={formik.handleChange}
-            onBlur={handlePriceBlur}
+            onBlur={(e) => {
+              handlePriceBlur(e);
+              formik.handleBlur(e);
+            }} // handlePriceBlur is for formatting the price. // For triggering validation
             value={formik.values.price}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             min="0" // Ensures the price cannot be negative
@@ -95,17 +126,27 @@ export default function AddAdPage() {
             // width 10 proc.
             className="pairs_input_firstHalf_width_12_5proc pairs_input_notFull "
           />
-          <label htmlFor="phone" className="pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3 pairs_label_full_md">
+          <label
+            htmlFor="phone"
+            className="pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3 pairs_label_full_md"
+          >
             Phone:
           </label>
           <input
             id="phone"
             name="phone"
-            type="tell"
+            type="tel"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.phone}
             className="pairs_input_notFull pairs_input_secHalf_width_25proc"
           />
+          {formik.touched.price && formik.errors.price ? (
+            <div className="YupValidation">{formik.errors.price}</div>
+          ) : null}
+          {formik.touched.phone && formik.errors.phone ? (
+            <div className="YupValidation">{formik.errors.phone}</div>
+          ) : null}
         </div>
         <div className="w-1/3" />
         <div className="pairs">
@@ -115,12 +156,16 @@ export default function AddAdPage() {
           <input
             id="type"
             name="type"
-            type="text"
+            type="tel"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.type}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
           />
+          {formik.touched.type && formik.errors.type ? (
+            <div className="YupValidation">{formik.errors.type}</div>
+          ) : null}
         </div>
         <div className="pairs">
           <label htmlFor="town" className="pairs_label_full">
@@ -131,10 +176,14 @@ export default function AddAdPage() {
             name="town"
             type="text"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.town}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
           />
+          {formik.touched.town && formik.errors.town ? (
+            <div className="YupValidation">{formik.errors.town}</div>
+          ) : null}
         </div>
         <div className="pairs">
           <label htmlFor="category" className="pairs_label_full">
@@ -145,10 +194,14 @@ export default function AddAdPage() {
             name="category"
             type="text"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.category}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
           />
+          {formik.touched.category && formik.errors.category ? (
+            <div className="YupValidation">{formik.errors.category}</div>
+          ) : null}
         </div>
         <Submit />
       </form>
