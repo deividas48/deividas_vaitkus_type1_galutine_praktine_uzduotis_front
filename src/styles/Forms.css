@@ -80,6 +80,8 @@ min-width: 12.5%;
     width: 100%;
     margin-left: 25%;
     margin-right: 25%;
+    margin-top: -1rem;
+    margin-bottom: 0.5rem;
   }
   
   @media screen and (max-width: 768px) {
@@ -109,5 +111,10 @@ min-width: 12.5%;
     /* Only for "Price" input*/
 .pairs_input_firstHalf_width_12_5proc {
   margin-bottom: 1rem;
+  }
+
+  .YupValidation {
+    margin-left: 10%;
+    margin-right: 10%;
   }
   }

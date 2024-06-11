@@ -78,10 +78,10 @@ export default function AddAdPage() {
             className="pairs_input_full"
           />
           {/* Display an error message if the field has been touched and has an error */}
-          {formik.touched.title && formik.errors.title ? (
-            <div className="YupValidation">{formik.errors.title}</div>
-          ) : null}
         </div>
+        {formik.touched.title && formik.errors.title ? (
+          <div className="YupValidation">{formik.errors.title}</div>
+        ) : null}
         <div className="pairs">
           <label htmlFor="description" className="pairs_label_full">
             Description:
@@ -99,10 +99,10 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_textarea_full pairs_input_full"
           />
-          {formik.touched.description && formik.errors.description ? (
-            <div className="YupValidation">{formik.errors.description}</div>
-          ) : null}
         </div>
+        {formik.touched.description && formik.errors.description ? (
+          <div className="YupValidation">{formik.errors.description}</div>
+        ) : null}
         <div className="pairs">
           <div className="margin" />
           <label htmlFor="price" className="pairs_label_full label_price">
@@ -121,8 +121,8 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             min="0" // Ensures the price cannot be negative
             step="1.00" // Allows for two decimal places, useful for prices
-            required // Ensures the field must be filled out
-            placeholder="Enter the price in Euro"
+            required
+            placeholder="Enter the price"
             // width 10 proc.
             className="pairs_input_firstHalf_width_12_5proc pairs_input_notFull "
           />
@@ -139,15 +139,17 @@ export default function AddAdPage() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.phone}
+            required
+            placeholder="E.g., +370 6XX XXXXX"
             className="pairs_input_notFull pairs_input_secHalf_width_25proc"
           />
-          {formik.touched.price && formik.errors.price ? (
-            <div className="YupValidation">{formik.errors.price}</div>
-          ) : null}
-          {formik.touched.phone && formik.errors.phone ? (
-            <div className="YupValidation">{formik.errors.phone}</div>
-          ) : null}
         </div>
+        {formik.touched.price && formik.errors.price ? (
+          <div className="YupValidation">{formik.errors.price}</div>
+        ) : null}
+        {formik.touched.phone && formik.errors.phone ? (
+          <div className="YupValidation mt-0">{formik.errors.phone}</div>
+        ) : null}
         <div className="w-1/3" />
         <div className="pairs">
           <label htmlFor="type" className="pairs_label_full">
@@ -163,10 +165,10 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
           />
-          {formik.touched.type && formik.errors.type ? (
-            <div className="YupValidation">{formik.errors.type}</div>
-          ) : null}
         </div>
+        {formik.touched.type && formik.errors.type ? (
+          <div className="YupValidation">{formik.errors.type}</div>
+        ) : null}
         <div className="pairs">
           <label htmlFor="town" className="pairs_label_full">
             Town:
@@ -181,10 +183,10 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
           />
-          {formik.touched.town && formik.errors.town ? (
-            <div className="YupValidation">{formik.errors.town}</div>
-          ) : null}
         </div>
+        {formik.touched.town && formik.errors.town ? (
+          <div className="YupValidation">{formik.errors.town}</div>
+        ) : null}
         <div className="pairs">
           <label htmlFor="category" className="pairs_label_full">
             Category:
@@ -199,10 +201,10 @@ export default function AddAdPage() {
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
           />
-          {formik.touched.category && formik.errors.category ? (
-            <div className="YupValidation">{formik.errors.category}</div>
-          ) : null}
         </div>
+        {formik.touched.category && formik.errors.category ? (
+          <div className="YupValidation">{formik.errors.category}</div>
+        ) : null}
         <Submit />
       </form>
     </div>
