@@ -4,7 +4,7 @@
   margin-bottom: 1rem;
   align-items: center;
   /* justify-content: center; */
-  flex-wrap : wrap;
+  flex-wrap: wrap;
 }
 
 .pairs_label_full {
@@ -23,7 +23,8 @@
   overflow-wrap: break-word; /* Wrap the text if it's too long */
 }
 
-.pairs_input_full, .pairs_input_notFull {
+.pairs_input_full,
+.pairs_input_notFull {
   display: flex;
   padding: 0.5rem; /* For a better look. Padding for all inputs */
   outline: 1px solid rgba(209, 213, 219, 1); /* Outline is used instead of border to prevent divs to jumping when input is clicked */
@@ -33,7 +34,7 @@
 
 /* Only for one line "description" textarea height */
 .pairs_textarea_full {
-    height: 8rem;
+  height: 8rem;
 }
 
 /* Only for one line inputs width */
@@ -43,78 +44,99 @@
 
 /* Only for "Price" input width */
 .pairs_input_firstHalf_width_12_5proc {
-flex: 0 0 12.5%;
-min-width: 12.5%;
+  flex: 0 0 12.5%;
+  min-width: 12.5%;
 }
 
 /* Only for "Phone" label width */
 .pairs_label_secHalf_width_12_5proc {
-  
   flex: 0 1; /* Allow it to shrink */ /* Allow it to shrink */
   width: 12.5%;
-  }
-  
-  /* Only for "Phone" input width */
-  .pairs_input_secHalf_width_25proc {
-    /* margin-right: 25%; */
-    flex: 1 1 auto; /* Allow it to grow */
-    width: 25%;
-    margin-right: 25%;
-  }
+}
+
+/* Only for "Phone" input width */
+.pairs_input_secHalf_width_25proc {
+  /* margin-right: 25%; */
+  flex: 1 1 auto; /* Allow it to grow */
+  width: 25%;
+  margin-right: 25%;
+}
+
 
 /* When the input is clicked */
-.pairs_input_full:focus, .pairs_input_notFull:focus {
-    background-color: #ffffff;  /* Change the background color when the input is focused */
-    outline: 2px solid rgb(0, 0, 0); /* Make border thicker */
+.pairs_input_full:focus,
+.pairs_input_notFull:focus {
+  background-color: #ffffff; /* Change the background color when the input is focused */
+  outline: 2px solid rgb(0, 0, 0); /* Make border thicker */
   }
   
-  .pairs_input_full:focus:invalid, .pairs_input_notFull:focus:invalid {
+  .pairs_input_full:focus:invalid,
+  .pairs_input_notFull:focus:invalid {
     border-color: rgba(0, 0, 0, 0.899);
-    
-  }
+}
 
-  .YupValidation {
-    color: red;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    width: 100%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: -1rem;
-    margin-bottom: 0.5rem;
+.YupValidation {
+  color: red;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
   }
   
-  @media screen and (max-width: 768px) {
-    .pairs {
-      flex-direction: column;
+  .addTop {
+    margin-top: 0.1rem;
+   }
+
+   .removeTop {
+    margin-top: -1rem;
+   }
+
+@media screen and (max-width: 768px) {
+  .pairs {
+    flex-direction: column;
     }
     
-    .pairs_input_full, textarea, .pairs_input_notFull {
+    .pairs_input_full,
+    textarea,
+    .pairs_input_notFull {
       width: 80%;
       margin-right: 0;
-    }
-  
-    .pairs_label_full {
-      display: flex;
-      align-items: start;
-      justify-content: left;
-      width: 80%;
-    }
-
-    .pairs_label_full_md {
-      display: flex;
-      align-items: start;
-      justify-content: left;
-      width: 80%;
-    } 
-
-    /* Only for "Price" input*/
-.pairs_input_firstHalf_width_12_5proc {
-  margin-bottom: 1rem;
-  }
-
-  .YupValidation {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  }
+      }
+      
+      .pairs_label_full {
+        display: flex;
+        align-items: start;
+        justify-content: left;
+        width: 80%;
+        }
+        
+        .pairs_label_full_md {
+          display: flex;
+          align-items: start;
+          justify-content: left;
+          width: 80%;
+          }
+          
+          /* Only for "Price" input*/
+          .pairs_input_firstHalf_width_12_5proc {
+            margin-bottom: 1rem;
+            }
+            
+            .YupValidation {
+              margin-left: 10%;
+              margin-right: 10%;
+              }
+              
+              /* Eliminate strange property inheritance */
+              .elimInher {
+                margin-right: 20%;
+                }
+/* Disable */
+                .addTop {
+                  margin-top: -1rem;
+                  }
+                }
+                

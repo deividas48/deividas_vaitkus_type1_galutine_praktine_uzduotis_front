@@ -106,7 +106,7 @@ export default function AddAdPage() {
         ) : null}
         <div className="pairs">
           <div className="margin" />
-          <label htmlFor="price" className="pairs_label_full label_price">
+          <label htmlFor="price" className={`pairs_label_full label_price ${formik.touched.price ? 'elimInher' : ''}`}>
             Price (€):
           </label>
           <input
@@ -125,11 +125,18 @@ export default function AddAdPage() {
             required
             placeholder="Enter the price"
             // width 10 proc.
-            className="pairs_input_firstHalf_width_12_5proc pairs_input_notFull "
+            className={`pairs_input_firstHalf_width_12_5proc pairs_input_notFull ${formik.touched.price ? 'elimInher' : ''}`}
           />
+            {formik.touched.price && formik.errors.price ? (
+        // Complicated conditional class workaround to prevent
+        // the phone error message from overlapping the price error message
+          <div className="YupValidation -mt-4 md:hidden">
+            {formik.errors.price}
+          </div>
+        ) : null}
           <label
             htmlFor="phone"
-            className="pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3 pairs_label_full_md"
+            className={`pairs_label_secoundHalf pairs_label_secHalf_width_12_5proc ml-3 pairs_label_full_md ${formik.touched.price ? 'elimInher' : ''}`}
           >
             Phone:
           </label>
@@ -141,21 +148,21 @@ export default function AddAdPage() {
             onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.phone}
             required
-            placeholder="E.g., +370 6XX XXXXX"
-            className="pairs_input_notFull pairs_input_secHalf_width_25proc"
+            placeholder="E.g., 370 6XX XXXXX"
+            className={`pairs_input_notFull pairs_input_secHalf_width_25proc ${formik.touched.price ? 'elimInher' : ''}`}
           />
         </div>
         {formik.touched.price && formik.errors.price ? (
         // Complicated conditional class workaround to prevent
         // the phone error message from overlapping the price error message
-          <div className={`YupValidation ${formik.touched.phone && formik.errors.phone ? 'mb-0' : ''}`}>
+          <div className={`YupValidation hidden md:block ${formik.touched.price && formik.errors.price ? 'mb-0' : ''}`}>
             {formik.errors.price}
           </div>
         ) : null}
         {formik.touched.phone && formik.errors.phone ? (
         // Complicated conditional class workaround to prevent
         // the phone error message from overlapping the price error message
-          <div className={`YupValidation mt-0 ${!formik.touched.price && formik.errors.price ? '-mt-4' : ''}`}>
+          <div className={`YupValidation addTop ${!formik.touched.price ? 'removeTop' : ''}`}>
             {formik.errors.phone}
           </div>
         ) : null}
