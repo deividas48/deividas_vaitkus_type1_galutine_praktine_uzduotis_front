@@ -85,7 +85,7 @@ export default function Header() {
               aria-label="Toggle menu"
             >
               <i
-                className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3`}
+                className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3 text-custom-primary-color text-5xl`}
               />
             </button>
           </div>
