@@ -27,11 +27,25 @@ export default function AddAdPage() {
         .min(0, '• Price cannot be negative')
         .required('• Price is required'),
       phone: Yup.string()
-      .required('• Phone number is required')
-      .test('startsWithPlus', '• Phone number must start with a plus', value => value && value.startsWith('+'))
-      .test('onlyNumbersAfterPlus', '• Phone number can only contain digits after the plus', value => value && /^[+][0-9]+$/.test(value))
-      .min(11, '• Phone number must be at least 11 digits, including the plus')
-      .max(16, '• Phone number must be less than 16 digits, including the plus'),
+        .required('• Phone number is required')
+        .test(
+          'startsWithPlus',
+          '• Phone number must start with a plus',
+          (value) => value && value.startsWith('+'),
+        )
+        .test(
+          'onlyNumbersAfterPlus',
+          '• Phone number can only contain digits after the plus',
+          (value) => value && /^[+][0-9]+$/.test(value),
+        )
+        .min(
+          11,
+          '• Phone number must be at least 11 digits, including the plus',
+        )
+        .max(
+          16,
+          '• Phone number must be less than 16 digits, including the plus',
+        ),
       type: Yup.string().required('• Type is required'),
       town: Yup.string().required('• Town is required'),
       category: Yup.string().required('• Category is required'),
@@ -191,16 +205,18 @@ export default function AddAdPage() {
           <label htmlFor="type" className="pairs_label_full">
             Type:
           </label>
-          <input
+          <select
             id="type"
             name="type"
-            type="tel"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.type}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
-          />
+          >
+            <option value="">Select a type</option>
+            <option value="type1">Type 1</option>
+          </select>
         </div>
         {formik.touched.type && formik.errors.type ? (
           <div className="YupValidation">{formik.errors.type}</div>
