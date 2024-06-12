@@ -36,12 +36,12 @@ export default function Header() {
       >
         {/* Įmonės logo */}
         <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
-          <Link to="/">
+          <Link to="/" className='logo-container'>
             {/* Logo of company */}
             <img
               src="/img/ShopLogo.png"
               alt="EveryShop logo"
-              className="logoo flex rounded-lg duration-500 ease-in-out hover:shadow-2xl ml-4"
+              className="logoo ml-4"
             />
           </Link>
           {/* Navigacija */}
@@ -84,8 +84,9 @@ export default function Header() {
               className="btn"
               aria-label="Toggle menu"
             >
+              {/* Icon to toggle the menu */}
               <i
-                className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3 text-custom-primary-color text-5xl`}
+                className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3 text-5xl duration-300 ease-in-out hover:text-custom-color-secondary`}
               />
             </button>
           </div>
