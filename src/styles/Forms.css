@@ -1,4 +1,15 @@
-.pairs {
+/* Style for title of form */
+.titleOfForm {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--color-body);
+}
+
+/* Style for inputs that belong on lines that have only one or two inputs */
+.pairs,
+.pairsOfTwo {
   display: flex;
   /* flex-direction: column; */
   margin-bottom: 1rem;
@@ -7,6 +18,7 @@
   flex-wrap: wrap;
 }
 
+/* Style for labels that belong on lines that have only one input */
 .pairs_label_full {
   text-align: right;
   padding-right: 0.75rem;
@@ -23,6 +35,7 @@
   overflow-wrap: break-word; /* Wrap the text if it's too long */
 }
 
+/* Style for labels belongs on lines that have one or two inputs */
 .pairs_input_full,
 .pairs_input_notFull {
   display: flex;
@@ -62,19 +75,20 @@
   margin-right: 25%;
 }
 
-
 /* When the input is clicked */
 .pairs_input_full:focus,
 .pairs_input_notFull:focus {
   background-color: #ffffff; /* Change the background color when the input is focused */
   outline: 2px solid rgb(0, 0, 0); /* Make border thicker */
-  }
-  
-  .pairs_input_full:focus:invalid,
-  .pairs_input_notFull:focus:invalid {
-    border-color: rgba(0, 0, 0, 0.899);
 }
 
+/* When the input is invalid */
+.pairs_input_full:focus:invalid,
+.pairs_input_notFull:focus:invalid {
+  border-color: rgba(0, 0, 0, 0.899);
+}
+
+/* Formik. Yup validation message. When validation isn't passed */
 .YupValidation {
   color: red;
   font-size: 0.75rem;
@@ -84,59 +98,67 @@
   margin-right: 25%;
   margin-top: -1rem;
   margin-bottom: 0.5rem;
-  }
-  
-  .addTop {
-    margin-top: 0.1rem;
-   }
+}
 
-   .removeTop {
-    margin-top: -1rem;
-   }
+/* Eliminate strange property inheritance */
+.addTop {
+  margin-top: 0.1rem;
+}
+
+/* Eliminate strange property inheritance */
+.removeTop {
+  margin-top: -1rem;
+}
 
 @media screen and (max-width: 768px) {
-  .pairs {
+  /* Style for inputs that belong on lines that have only one or two inputs */
+  .pairs,
+  .pairsOfTwo {
     flex-direction: column;
-    }
-    
-    .pairs_input_full,
-    textarea,
-    .pairs_input_notFull {
-      width: 80%;
-      margin-right: 0;
-      }
-      
-      .pairs_label_full {
-        display: flex;
-        align-items: start;
-        justify-content: left;
-        width: 80%;
-        }
-        
-        .pairs_label_full_md {
-          display: flex;
-          align-items: start;
-          justify-content: left;
-          width: 80%;
-          }
-          
-          /* Only for "Price" input*/
-          .pairs_input_firstHalf_width_12_5proc {
-            margin-bottom: 1rem;
-            }
-            
-            .YupValidation {
-              margin-left: 10%;
-              margin-right: 10%;
-              }
-              
-              /* Eliminate strange property inheritance */
-              .elimInher {
-                margin-right: 20%;
-                }
-/* Disable */
-                .addTop {
-                  margin-top: -1rem;
-                  }
-                }
-                
+  }
+
+  /* Style for labels that belong on lines that have only one or two inputs */
+  .pairs_input_full,
+  textarea,
+  .pairs_input_notFull {
+    width: 80%;
+    margin-right: 0;
+  }
+
+  /* Style for labels that belong on lines that have only one input */
+  .pairs_label_full {
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    width: 80%;
+  }
+
+  /* Style for labels that belong on lines that have only one input */
+  .pairs_label_full_md {
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    width: 80%;
+  }
+
+  /* Only for "Price" input*/
+  .pairs_input_firstHalf_width_12_5proc {
+    margin-bottom: 1rem;
+  }
+
+  /* Formik. Yup validation message. Msg when validation isn't passed */
+  .YupValidation {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  /* Eliminate strange property inheritance. Set for inputs and labels that belong on lines with two inputs */
+  .elimInher {
+    margin-right: 20%;
+  }
+
+  /* Eliminate strange property inheritance. Set for only one validation message */
+  .addTop {
+    margin-top: -1rem;
+  }
+}

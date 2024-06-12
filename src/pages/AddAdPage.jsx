@@ -15,6 +15,7 @@ export default function AddAdPage() {
       town: '',
       category: '',
     },
+    // Create a validation schema using Yup
     validationSchema: Yup.object({
       title: Yup.string()
         .min(3, '• Title must be at least 3 characters')
@@ -31,25 +32,27 @@ export default function AddAdPage() {
         .test(
           'startsWithPlus',
           '• Phone number must start with a plus',
-          (value) => value && value.startsWith('+')
+          (value) => value && value.startsWith('+'),
         )
         .test(
           'onlyNumbersAfterPlus',
           '• Phone number can only contain digits after the plus',
-          (value) => value && /^[+][0-9]+$/.test(value)
+          (value) => value && /^[+][0-9]+$/.test(value),
         )
         .min(
           11,
-          '• Phone number must be at least 11 digits, including the plus'
+          '• Phone number must be at least 11 digits, including the plus',
         )
         .max(
           16,
-          '• Phone number must be less than 16 digits, including the plus'
+          '• Phone number must be less than 16 digits, including the plus',
         ),
       type: Yup.string().required('• Type is required'),
       town: Yup.string().required('• Town is required'),
       category: Yup.string().required('• Category is required'),
     }),
+    // Create a function to handle form submission.
+    // Currently, it just displays the form values in an alert
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2)); // Just for demonstration
     },
@@ -67,12 +70,16 @@ export default function AddAdPage() {
   };
 
   return (
+    // Add a container to center the form and provide padding
     <div className="items-center min-h-screen bg-white mt-4 mb-4 p-4 rounded-lg">
+      <h1 className="titleOfForm ">Complete your listing</h1>
+      {/* Create a form using Formik */}
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col py-4 w-full"
         noValidate // Disable the browser's HTML5 native validation
       >
+        {/* Create a form field for the title */}
         <div className="pairs">
           <label htmlFor="title" className="pairs_label_full">
             Title:
@@ -98,6 +105,7 @@ export default function AddAdPage() {
         {formik.touched.title && formik.errors.title ? (
           <div className="YupValidation">{formik.errors.title}</div>
         ) : null}
+        {/* Create a form field for the description */}
         <div className="pairs">
           <label htmlFor="description" className="pairs_label_full">
             Description:
@@ -119,10 +127,13 @@ export default function AddAdPage() {
         {formik.touched.description && formik.errors.description ? (
           <div className="YupValidation">{formik.errors.description}</div>
         ) : null}
-        <div className="pairs">
+        {/* Create a form field for the price */}
+        <div className="pairsOfTwo">
           <div className="margin" />
           <label
             htmlFor="price"
+            // Conditional class to prevent the phone error
+            // message from overlapping the price error message
             className={`pairs_label_full label_price ${
               formik.touched.price ? 'elimInher' : ''
             }`}
@@ -149,6 +160,7 @@ export default function AddAdPage() {
               formik.touched.price ? 'elimInher' : ''
             }`}
           />
+          {/* Display an error message if the field has been touched and has an error */}
           {formik.touched.price && formik.errors.price ? (
             // Complicated conditional class workaround to prevent
             // the phone error message from overlapping the price error message
@@ -178,6 +190,7 @@ export default function AddAdPage() {
             }`}
           />
         </div>
+        {/* If the price field has been touched and has an error, display the error message */}
         {formik.touched.price && formik.errors.price ? (
           // Complicated conditional class workaround to prevent
           // the phone error message from overlapping the price error message
@@ -189,6 +202,7 @@ export default function AddAdPage() {
             {formik.errors.price}
           </div>
         ) : null}
+        {/* If the phone field has been touched and has an error, display the error message */}
         {formik.touched.phone && formik.errors.phone ? (
           // Complicated conditional class workaround to prevent
           // the phone error message from overlapping the price error message
@@ -201,6 +215,7 @@ export default function AddAdPage() {
           </div>
         ) : null}
         <div className="w-1/3" />
+        {/* Create a form field for the type */}
         <div className="pairs">
           <label htmlFor="type" className="pairs_label_full">
             Listing type:
@@ -218,9 +233,11 @@ export default function AddAdPage() {
             <option value="type1">Type 1</option>
           </select>
         </div>
+        {/* If the type field has been touched and has an error, display the error message */}
         {formik.touched.type && formik.errors.type ? (
           <div className="YupValidation">{formik.errors.type}</div>
         ) : null}
+        {/* Create a form field for the town */}
         <div className="pairs">
           <label htmlFor="town" className="pairs_label_full">
             Town:
@@ -238,9 +255,11 @@ export default function AddAdPage() {
             <option value="town1">Town 1</option>
           </select>
         </div>
+        {/* If the town field has been touched and has an error, display the error message */}
         {formik.touched.town && formik.errors.town ? (
           <div className="YupValidation">{formik.errors.town}</div>
         ) : null}
+        {/* Create a form field for the category */}
         <div className="pairs">
           <label htmlFor="category" className="pairs_label_full">
             Category:
@@ -258,9 +277,11 @@ export default function AddAdPage() {
             <option value="category1">Category 1</option>
           </select>
         </div>
+        {/* If the category field has been touched and has an error, display the error message */}
         {formik.touched.category && formik.errors.category ? (
           <div className="YupValidation">{formik.errors.category}</div>
         ) : null}
+        {/* Submit form button */}
         <Submit />
       </form>
     </div>

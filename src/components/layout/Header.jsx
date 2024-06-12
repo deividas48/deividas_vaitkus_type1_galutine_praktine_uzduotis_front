@@ -30,16 +30,18 @@ export default function Header() {
     <>
       {/* Kontaktai */}
       <TopBar />
-      <header className="bg-white container-workaround
+      <header
+        className="bg-white container-workaround
     header-apatinė-linija"
       >
         {/* Įmonės logo */}
         <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
           <Link to="/">
+            {/* Logo of company */}
             <img
               src="/img/ShopLogo.png"
               alt="EveryShop logo"
-              className="logoo flex rounded-lg duration-500 ease-in-out hover:shadow-2xl"
+              className="logoo flex rounded-lg duration-500 ease-in-out hover:shadow-2xl ml-4"
             />
           </Link>
           {/* Navigacija */}
@@ -55,13 +57,10 @@ export default function Header() {
               <div className="atidarytas-meniu absolute top-full left-0 md:hidden w-full z-10">
                 <div className="items-center justify-between w-full md:w-auto relative">
                   <ul
-                    className={cl(
-                      'flex nav-meniu-mažas nav-meniu-mažas-ul',
-                      {
-                        'flex-col': isMenuOpen, // This will be `flex-col` when the menu is not open
-                        'flex-row': !isMenuOpen, // This will be `flex-row` when the menu is open
-                      },
-                    )}
+                    className={cl('flex nav-meniu-mažas nav-meniu-mažas-ul', {
+                      'flex-col': isMenuOpen, // This will be `flex-col` when the menu is not open
+                      'flex-row': !isMenuOpen, // This will be `flex-row` when the menu is open
+                    })}
                   >
                     {mySnippet}
                   </ul>
@@ -72,11 +71,13 @@ export default function Header() {
             )}
           </nav>
 
-          {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
-          <AddBtn />
+          <div className="mr-4">
+            {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
+            <AddBtn />
+          </div>
 
           {/* Navigacijos (meniu) paleidimo mygtukas */}
-          <div className="md:hidden">
+          <div className="md:hidden mr-4">
             <button // Button to toggle the menu
               type="button" // Specify the button type just for good practice
               onClick={() => setIsMenuOpen(!isMenuOpen)}
