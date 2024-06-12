@@ -27,10 +27,11 @@ export default function AddAdPage() {
         .min(0, '• Price cannot be negative')
         .required('• Price is required'),
       phone: Yup.string()
-        .matches(/^[0-9]+$/, '• Phone number must contain only digits')
-        .min(10, '• Phone number must be at least 10 digits')
-        .max(15, '• Phone number must be less than 15 digits')
-        .required('• Phone number is required'),
+      .required('• Phone number is required')
+      .test('startsWithPlus', '• Phone number must start with a plus', value => value && value.startsWith('+'))
+      .test('onlyNumbersAfterPlus', '• Phone number can only contain digits after the plus', value => value && /^[+][0-9]+$/.test(value))
+      .min(11, '• Phone number must be at least 11 digits, including the plus')
+      .max(16, '• Phone number must be less than 16 digits, including the plus'),
       type: Yup.string().required('• Type is required'),
       town: Yup.string().required('• Town is required'),
       category: Yup.string().required('• Category is required'),
@@ -157,7 +158,7 @@ export default function AddAdPage() {
             onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.phone}
             required
-            placeholder="E.g., 370 6XX XXXXX"
+            placeholder="E.g., +3706XXXXXXX"
             className={`pairs_input_notFull pairs_input_secHalf_width_25proc ${
               formik.touched.price ? 'elimInher' : ''
             }`}
