@@ -31,20 +31,20 @@ export default function AddAdPage() {
         .test(
           'startsWithPlus',
           '• Phone number must start with a plus',
-          (value) => value && value.startsWith('+'),
+          (value) => value && value.startsWith('+')
         )
         .test(
           'onlyNumbersAfterPlus',
           '• Phone number can only contain digits after the plus',
-          (value) => value && /^[+][0-9]+$/.test(value),
+          (value) => value && /^[+][0-9]+$/.test(value)
         )
         .min(
           11,
-          '• Phone number must be at least 11 digits, including the plus',
+          '• Phone number must be at least 11 digits, including the plus'
         )
         .max(
           16,
-          '• Phone number must be less than 16 digits, including the plus',
+          '• Phone number must be less than 16 digits, including the plus'
         ),
       type: Yup.string().required('• Type is required'),
       town: Yup.string().required('• Town is required'),
@@ -203,7 +203,7 @@ export default function AddAdPage() {
         <div className="w-1/3" />
         <div className="pairs">
           <label htmlFor="type" className="pairs_label_full">
-            Type:
+            Listing type:
           </label>
           <select
             id="type"
@@ -225,16 +225,18 @@ export default function AddAdPage() {
           <label htmlFor="town" className="pairs_label_full">
             Town:
           </label>
-          <input
+          <select
             id="town"
             name="town"
-            type="text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.town}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
-          />
+          >
+            <option value="">Select a Town</option>
+            <option value="town1">Town 1</option>
+          </select>
         </div>
         {formik.touched.town && formik.errors.town ? (
           <div className="YupValidation">{formik.errors.town}</div>
@@ -243,16 +245,18 @@ export default function AddAdPage() {
           <label htmlFor="category" className="pairs_label_full">
             Category:
           </label>
-          <input
+          <select
             id="category"
             name="category"
-            type="text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur} // For triggering validation
             value={formik.values.category}
             // placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="pairs_input_full"
-          />
+          >
+            <option value="">Select a category</option>
+            <option value="category1">Category 1</option>
+          </select>
         </div>
         {formik.touched.category && formik.errors.category ? (
           <div className="YupValidation">{formik.errors.category}</div>
