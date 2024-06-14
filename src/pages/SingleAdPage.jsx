@@ -17,6 +17,7 @@ export default function SingleAdPage() {
 
   // Gauti po vieną skelbimą iš serverio
 
+  // This function will fetch the ad from the server
   async function getPosts(url) {
     try {
       setIsLoading(true);
@@ -47,6 +48,7 @@ export default function SingleAdPage() {
       await axios.delete(cUrl);
       // console.log('resp ===', resp);
       navigate('/');
+      // Display a success message
       toast.success(`${ad.title[0].toUpperCase() + ad.title.slice(1)} was deleted`, {
         duration: 8000,
       });
