@@ -36,7 +36,7 @@ export default function Header() {
       >
         {/* Įmonės logo */}
         <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
-          <Link to="/" className='logo-container'>
+          <Link to="/" className="logo-container">
             {/* Logo of company */}
             <img
               src="/img/ShopLogo.png"

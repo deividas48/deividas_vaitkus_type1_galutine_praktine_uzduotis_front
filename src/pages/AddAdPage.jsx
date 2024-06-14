@@ -62,8 +62,9 @@ export default function AddAdPage() {
   const handlePriceBlur = (event) => {
     // Parse the input value to a float. ParseFloat returns NaN if the input is not a number
     const value = parseFloat(event.target.value);
-    // If the value is a number, set the field value to a fixed two decimal places
-    if (!isNaN(value)) {
+    // Check if the value is not NaN. If it is a number,
+    // set the field value to a fixed two decimal places
+    if (!Number.isNaN(value)) {
       // Set the field value to a fixed two decimal places
       formik.setFieldValue('price', value.toFixed(2)); // setFieldValue is a Formik function to set the value of a field in the form. It takes two arguments: the field name (input name) and the value to set.
     }
