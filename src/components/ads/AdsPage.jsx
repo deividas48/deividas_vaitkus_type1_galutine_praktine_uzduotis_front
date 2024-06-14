@@ -9,12 +9,14 @@ function AdsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  // Fetch function for ads from the server
   function getPosts(url) {
     setIsLoading(true);
     axios
       .get(url)
       .then((resp) => {
-        const sortedAds = resp.data.sort((a, b) => a.title.localeCompare(b.title));
+        // eslint-disable-next-line max-len
+        const sortedAds = resp.data.sort((a, b) => a.skelbimai_title.localeCompare(b.skelbimai_title));
         setadsArr(sortedAds);
       })
       .catch((error) => {
@@ -26,12 +28,13 @@ function AdsPage() {
       });
   }
 
+  // Fetch the ads from the server
   useEffect(() => {
     getPosts('http://localhost:3000/api/ads');
   }, []);
 
   // Filter the ads array by the is_published property. Its for avoiding to show unpublished ads
-  const unpublishedAds = adsArr.filter(ad => ad.is_published === 1);
+  const unpublishedAds = adsArr.filter((ad) => ad.skelbimai_is_published === 1);
 
   return (
     <div>

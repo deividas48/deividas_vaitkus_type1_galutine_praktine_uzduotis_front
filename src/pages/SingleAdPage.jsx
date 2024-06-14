@@ -47,7 +47,7 @@ export default function SingleAdPage() {
       // const resp =
       await axios.delete(cUrl);
       // console.log('resp ===', resp);
-      navigate('/');
+      navigate('/'); // Redirect to the home page
       // Display a success message
       toast.success(`${ad.title[0].toUpperCase() + ad.title.slice(1)} was deleted`, {
         duration: 8000,

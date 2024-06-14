@@ -51,6 +51,7 @@ export default function AddAdPage() {
       town: Yup.string().required('• Town is required'),
       category: Yup.string().required('• Category is required'),
     }),
+
     // Create a function to handle form submission.
     // Currently, it just displays the form values in an alert
     onSubmit: (values) => {
