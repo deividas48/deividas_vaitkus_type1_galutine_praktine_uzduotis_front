@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import AdsList from './AdsList';
 
 function AdsPage() {
-  const [adsArr, setadsArr] = useState([]);
+  const [adsArr, setAdsArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -14,10 +14,10 @@ function AdsPage() {
     setIsLoading(true);
     axios
       .get(url)
-      .then((resp) => {
+      .then((response) => {
         // eslint-disable-next-line max-len
-        const sortedAds = resp.data.sort((a, b) => a.skelbimai_title.localeCompare(b.skelbimai_title));
-        setadsArr(sortedAds);
+        const sortedAds = response.data.sort((a, b) => a.skelbimai_title.localeCompare(b.skelbimai_title));
+        setAdsArr(sortedAds);
       })
       .catch((error) => {
         console.warn('Error fetching ads:', error);
