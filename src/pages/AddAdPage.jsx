@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import '../styles/Forms.css';
@@ -85,7 +86,7 @@ export default function AddAdPage() {
           mappedValues,
         );
         console.log('Data submitted successfully:', response.data);
-        alert(JSON.stringify(mappedValues, null, 2)); // Just for demonstration
+        // alert(JSON.stringify(mappedValues, null, 2)); // Just for demonstration
       } catch (error) {
         console.error('Error submitting data:', error.message);
       }
