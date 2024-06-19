@@ -23,7 +23,7 @@ export default function AddAdPage() {
       price: '33',
       phone: '+37063592485',
       type: 'sell',
-      user_id: '1', // user_id I'll not be used in the form. Default value is set because the value can't be null.
+      user_id: '5', // user_id I'll not be used in the form. Default value is set because the value can't be null.
       town: 'Vilnius', // Default value for testing
       category: 'Kompiuteriai', // Default value for testing
     },
