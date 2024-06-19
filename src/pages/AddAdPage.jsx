@@ -18,14 +18,14 @@ export default function AddAdPage() {
   const formik = useFormik({
     initialValues: {
       // Create initial values for the form
-      title: 'Va toks va pavadinimas',
-      description: 'toks anoks aprasymas',
-      price: '33',
-      phone: '+37063592485',
-      type: 'sell',
+      title: '',
+      description: '',
+      price: '',
+      phone: '+3706',
+      type: '',
       user_id: '5', // user_id I'll not be used in the form. Default value is set because the value can't be null.
-      town: 'Vilnius', // Default value for testing
-      category: 'Kompiuteriai', // Default value for testing
+      town: '', // Default value for testing
+      category: '', // Default value for testing
     },
     // Create a validation schema using Yup
     validationSchema: Yup.object({
@@ -265,7 +265,9 @@ export default function AddAdPage() {
             className="pairs_input_full"
           >
             <option value="">Select a type</option>
-            <option value="sell">sell</option>
+            <option value="sell">Sell</option>
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
           </select>
         </div>
         {/* If the type field has been touched and has an error, display the error message */}
@@ -321,7 +323,6 @@ export default function AddAdPage() {
         ) : null}
         {/* Submit form button */}
         <Submit />
-        <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
   );
