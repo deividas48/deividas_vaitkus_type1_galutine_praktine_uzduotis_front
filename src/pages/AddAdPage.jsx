@@ -1,19 +1,31 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import '../styles/Forms.css';
+import axios from 'axios';
 import Submit from '../components/buttons/Submit';
 
 export default function AddAdPage() {
+  // Dummy data for town and category mappings
+  const townMappings = {
+    Vilnius: 3,
+    // Add more town mappings here
+  };
+
+  const categoryMappings = {
+    Kompiuteriai: 1,
+    // Add more category mappings here
+  };
   const formik = useFormik({
     initialValues: {
       // Create initial values for the form
-      title: '',
-      description: '',
-      price: '',
-      phone: '',
-      type: '',
-      town: '',
-      category: '',
+      title: 'Va toks va pavadinimas',
+      description: 'toks anoks aprasymas',
+      price: '33',
+      phone: '+37063592485',
+      type: 'sell',
+      user_id: '1', // user_id I'll not be used in the form. Default value is set because the value can't be null.
+      town: 'Vilnius', // Default value for testing
+      category: 'Kompiuteriai', // Default value for testing
     },
     // Create a validation schema using Yup
     validationSchema: Yup.object({
@@ -54,8 +66,29 @@ export default function AddAdPage() {
 
     // Create a function to handle form submission.
     // Currently, it just displays the form values in an alert
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2)); // Just for demonstration
+    onSubmit: async (values) => {
+      try {
+        // Map town and category to their respective IDs
+        const mappedValues = {
+          ...values,
+          town_id: townMappings[values.town],
+          category_id: categoryMappings[values.category],
+        };
+
+        // Remove original town and category fields from the payload
+        delete mappedValues.town;
+        delete mappedValues.category;
+
+        console.log('Submitting data:', mappedValues);
+        const response = await axios.post(
+          'http://localhost:3000/api/ads',
+          mappedValues,
+        );
+        console.log('Data submitted successfully:', response.data);
+        alert(JSON.stringify(mappedValues, null, 2)); // Just for demonstration
+      } catch (error) {
+        console.error('Error submitting data:', error.message);
+      }
     },
   });
 
@@ -232,7 +265,7 @@ export default function AddAdPage() {
             className="pairs_input_full"
           >
             <option value="">Select a type</option>
-            <option value="type1">Type 1</option>
+            <option value="sell">sell</option>
           </select>
         </div>
         {/* If the type field has been touched and has an error, display the error message */}
@@ -254,7 +287,8 @@ export default function AddAdPage() {
             className="pairs_input_full"
           >
             <option value="">Select a Town</option>
-            <option value="town1">Town 1</option>
+            <option value="Vilnius">Vilnius</option>
+            <option value="1">1</option>
           </select>
         </div>
         {/* If the town field has been touched and has an error, display the error message */}
@@ -276,15 +310,18 @@ export default function AddAdPage() {
             className="pairs_input_full"
           >
             <option value="">Select a category</option>
-            <option value="category1">Category 1</option>
+            <option value="Kompiuteriai">Kompiuteriai</option>
+            <option value="1">1</option>
           </select>
         </div>
-        {/* If the category field has been touched and has an error, display the error message */}
+        {/* If the category field has been touched and has an error,
+         display the error message */}
         {formik.touched.category && formik.errors.category ? (
           <div className="YupValidation">{formik.errors.category}</div>
         ) : null}
         {/* Submit form button */}
         <Submit />
+        <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
   );
