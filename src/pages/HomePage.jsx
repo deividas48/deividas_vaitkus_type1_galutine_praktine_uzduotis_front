@@ -19,13 +19,13 @@ function HomePage() {
     <div>
       <Hero2 />
       {/* #2_create_sort. Create the div for the sort dropdown. */}
-      <div className="mb-4 flex">
+      <div className="mb-4 flex mr-4">
         {/* Just to make blank space */}
         <span className="md:w-3/4"> </span>
-        <div className="md:w-1/4">
+        <div className="md:w-1/4 flex">
           <label
             htmlFor="sort"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 w-2/4 text-right content-center pr-4"
           >
             Sort by:
           </label>
