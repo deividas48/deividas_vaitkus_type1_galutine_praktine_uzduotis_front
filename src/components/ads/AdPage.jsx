@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function AdPage({ item }) {
   return (
     <div>
-      <div className="flex max-w-4xl bg-white border-gray-200 rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
+      <div className="flex bg-white border-gray-200 rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl">
         {/* Image container */}
         <div className="w-1/3 relative hidden sm:block">
           <img className="sm:none absolute inset-0 w-full h-full object-cover rounded-l-lg" src={`/img/sell/${item.skelbimai_main_image_url}`} alt={item.skelbimai_title} />
