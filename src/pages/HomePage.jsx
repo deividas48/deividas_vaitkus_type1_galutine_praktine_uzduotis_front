@@ -19,7 +19,7 @@ function HomePage() {
     <div>
       <Hero2 />
       {/* All the ads and categories are displayed here */}
-      <div className="md:flex min-h-screen">
+      <div className="md:flex">
         <aside className="md:w-1/4">
           <div>
             {/* All the towns are displayed here */}
