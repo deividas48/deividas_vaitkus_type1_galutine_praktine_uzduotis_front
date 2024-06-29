@@ -17,6 +17,7 @@ function App() {
       <Header />
       <Toaster />
       <Routes>
+        {/* Create the routes - the links to the pages */}
         <Route path="/" element={<HomePage />} />
         <Route path="/towns" element={<TownsPage />} />
         <Route path="/town/:id" element={<TownPage />} />
