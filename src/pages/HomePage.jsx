@@ -48,12 +48,6 @@ function HomePage() {
       {/* All the ads and categories are displayed here */}
       <div className="md:flex">
         <aside className="md:w-1/4">
-          <div>
-            {/* All the towns are displayed here */}
-            <div className=" bg-white p-4 pt-1 mb-4 rounded-lg">
-              <TownsPage />
-            </div>
-          </div>
           {/* All the categories are displayed here */}
           <div className=" bg-white p-4 pb-1 rounded-lg">
             <CategoryPage />
