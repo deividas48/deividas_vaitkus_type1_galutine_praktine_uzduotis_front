@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function CategoryListLi({ item }) {
+export default function CategoryPageLi({ item }) {
   return (
     <div>
       <Link to={`/categories/${item.id}`}>

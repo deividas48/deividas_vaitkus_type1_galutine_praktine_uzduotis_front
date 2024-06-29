@@ -1,4 +1,4 @@
-import CategoryListLi from './CategoryPageLi';
+import CategoryPageLi from './CategoryPageLi';
 
 export default function CategoryList({ list }) {
   return (
@@ -6,7 +6,7 @@ export default function CategoryList({ list }) {
       <ul className="unstyled">
         {list.map((category) => (
           <li className="mb-4" key={category.id}>
-            <CategoryListLi item={category} />
+            <CategoryPageLi item={category} />
           </li>
         ))}
       </ul>
