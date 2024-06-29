@@ -32,11 +32,11 @@ function HomePage() {
           <select
             id="sort"
             className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-            // The value of the dropdown is the sortOption state.
+              // The value of the dropdown is the sortOption state.
             value={sortOption}
-            // #2.1_create_sort. Update the SortOption state. OnChange event - when the value
-            // of the dropdown changes, the setSortOption function is called with the new
-            // value.
+              // #2.1_create_sort. Update the SortOption state. OnChange event - when the value
+              // of the dropdown changes, the setSortOption function is called with the new
+              // value.
             onChange={(e) => setSortOption(e.target.value)}
           >
             {/* #2.2_create_sort. Add the options for sorting. */}

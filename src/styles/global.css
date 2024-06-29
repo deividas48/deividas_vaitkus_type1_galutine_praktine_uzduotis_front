@@ -7,6 +7,15 @@
   --custom-color-grey2: #cccccc;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* Make sure the body takes up the full width and doesn't overflow */
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background-color: #f2f2f2;
