@@ -7,7 +7,6 @@ import Hero2 from '../components/Hero2';
 // import AdsList from '../components/ads/AdsList';
 import CategoryPage from '../components/categories/CategoryPage';
 import AdsPage from '../components/ads/AdsPage';
-import TownsPage from './TownsPage';
 
 function HomePage() {
   // #Create_sort - create short function for sorting ads.
