@@ -8,7 +8,7 @@ function CategoryPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  function getPosts(url) {
+  function getCategories(url) {
     setIsLoading(true);
     axios
       .get(url)
@@ -25,7 +25,7 @@ function CategoryPage() {
   }
 
   useEffect(() => {
-    getPosts('http://localhost:3000/api/categories');
+    getCategories('http://localhost:3000/api/categories');
   }, []);
 
   return (
