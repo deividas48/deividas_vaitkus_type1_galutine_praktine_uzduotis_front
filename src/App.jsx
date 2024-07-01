@@ -10,14 +10,15 @@ import AddAdPage from './pages/AddAdPage';
 import UserPage from './pages/UserPage';
 import SingleAdPage from './pages/SingleAdPage';
 import ErrorPage from './pages/ErrorPage';
+import PageAdsCategory from './pages/PageAdsCategory';
 
 function App() {
   return (
     <div className="container">
       <Header />
       <Toaster />
+      {/* Create the routes - the links to the pages */}
       <Routes>
-        {/* Create the routes - the links to the pages */}
         <Route path="/" element={<HomePage />} />
         <Route path="/towns" element={<TownsPage />} />
         <Route path="/town/:id" element={<TownPage />} />
@@ -26,6 +27,7 @@ function App() {
         <Route path="/skelbimas/:id" element={<SingleAdPage />} />
         <Route path="/skelbimas/sukurti" element={<AddAdPage />} />
         <Route path="/user/:id" element={<UserPage />} />
+        <Route path="/categories/:id" element={<PageAdsCategory />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
