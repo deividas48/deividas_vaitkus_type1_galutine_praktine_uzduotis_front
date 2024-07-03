@@ -32,7 +32,7 @@ function PageAdsCategory() {
   // 2. #create_ads_list. Fetch ads when component mounts or category id changes
   // 2. #category_filter. Fetch ads by category
   useEffect(() => {
-    getAdsByCategory(`http://localhost:3000/api/ads?category=${id}`);
+    getAdsByCategory(`http://localhost:3000/api/listings?category=${id}`);
   }, [id]);
 
   return (

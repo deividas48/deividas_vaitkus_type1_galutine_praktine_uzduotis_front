@@ -33,7 +33,7 @@ export default function SingleAdPage() {
   // console.log('Fetched ad title:', resp.data.title);
   // console.log('Fetched ad title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/ads/${id}`;
+  const cUrl = `http://localhost:3000/api/listings/${id}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [id]);

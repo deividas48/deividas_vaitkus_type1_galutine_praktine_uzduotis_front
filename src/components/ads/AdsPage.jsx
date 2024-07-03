@@ -44,7 +44,7 @@ function AdsPage({ sortOption }) {
 
   // Fetch the ads from the server
   useEffect(() => {
-    getPosts('http://localhost:3000/api/ads');
+    getPosts('http://localhost:3000/api/listings');
     // #3.2_create_sort. SortOption helps to update the ads when the sortOption
     // state changes.
   }, [sortOption]);
