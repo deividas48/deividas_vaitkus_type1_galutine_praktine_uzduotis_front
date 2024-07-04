@@ -6,11 +6,11 @@ import TownsPage from './pages/TownsPage';
 import TownPage from './pages/TownPage';
 import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
-import AddAdPage from './pages/AddAdPage';
+import AddListingPage from './pages/AddListingPage';
 import UserPage from './pages/UserPage';
-import SingleAdPage from './pages/SingleAdPage';
+import SingleListingPage from './pages/SingleListingPage';
 import ErrorPage from './pages/ErrorPage';
-import PageAdsCategory from './pages/PageAdsCategory';
+import PageListingsCategory from './pages/PageListingsCategory';
 
 function App() {
   return (
@@ -24,10 +24,10 @@ function App() {
         <Route path="/town/:id" element={<TownPage />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/skelbimas/:id" element={<SingleAdPage />} />
-        <Route path="/skelbimas/sukurti" element={<AddAdPage />} />
+        <Route path="/skelbimas/:id" element={<SingleListingPage />} />
+        <Route path="/skelbimas/sukurti" element={<AddListingPage />} />
         <Route path="/user/:id" element={<UserPage />} />
-        <Route path="/categories/:id" element={<PageAdsCategory />} />
+        <Route path="/categories/:id" element={<PageListingsCategory />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>

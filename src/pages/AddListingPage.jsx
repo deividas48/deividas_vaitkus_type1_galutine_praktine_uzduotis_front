@@ -5,7 +5,7 @@ import '../styles/Forms.css';
 import axios from 'axios';
 import Submit from '../components/buttons/Submit';
 
-export default function AddAdPage() {
+export default function AddListingPage() {
   // Dummy data for town and category mappings
   const townMappings = {
     Vilnius: 3,
@@ -82,7 +82,7 @@ export default function AddAdPage() {
 
         console.log('Submitting data:', mappedValues);
         const response = await axios.post(
-          'http://localhost:3000/api/ads',
+          'http://localhost:3000/api/listings',
           mappedValues,
         );
         console.log('Data submitted successfully:', response.data);

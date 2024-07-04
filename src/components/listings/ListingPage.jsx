@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-// #create_ads_list. Component to render a single ad item
-export default function AdPage({ item }) {
+// #create_listings_list. Component to render a single listing item
+export default function ListingPage({ item }) {
   return (
     <div>
       <div className="flex bg-white border-gray-200 rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl">
-        {/* 1. #create_ads_list. Render ad image */}
+        {/* 1. #create_listings_list. Render listing image */}
         <div className="w-1/3 relative hidden sm:block">
           <img
             className="sm:none absolute inset-0 w-full h-full object-cover rounded-l-lg"
@@ -13,7 +13,7 @@ export default function AdPage({ item }) {
             alt={item.skelbimai_title}
           />
         </div>
-        {/* 2. #create_ads_list. Render ad text content */}
+        {/* 2. #create_listings_list. Render listing text content */}
         <div className="w-2/3 p-4 flex flex-col items-start">
           <div>
             <span className="text-xs uppercase text-custom-primary-color">
@@ -35,7 +35,7 @@ export default function AdPage({ item }) {
               {item.skelbimai_price}
             </p>
           </div>
-          {/* 3. #create_ads_list. Link to ad detail page */}
+          {/* 3. #create_listings_list. Link to listing detail page */}
           <Link to={`/skelbimas/${item.skelbimai_id}`}>
             <span className="text-custom-gray-color hover:text-custom-primary-color font-semibold text-lg md:mt-4">
               Read More

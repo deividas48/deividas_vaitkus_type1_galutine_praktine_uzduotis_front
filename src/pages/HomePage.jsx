@@ -4,12 +4,12 @@
 // #1_create_sort - import useState from react.
 import { useState } from 'react';
 import Hero2 from '../components/Hero2';
-// import AdsList from '../components/ads/AdsList';
+// import ListingsList from '../components/listings/ListingsList';
 import CategoryPage from '../components/categories/CategoryPage';
-import AdsPage from '../components/ads/AdsPage';
+import ListingsPage from '../components/listings/ListingsPage';
 
 function HomePage() {
-  // #Create_sort - create short function for sorting ads.
+  // #Create_sort - create short function for sorting listings.
   // #1_create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
   const [sortOption, setSortOption] = useState('price-asc');
@@ -44,7 +44,7 @@ function HomePage() {
           </select>
         </div>
       </div>
-      {/* All the ads and categories are displayed here */}
+      {/* All the listings and categories are displayed here */}
       <div className="md:flex">
         <aside className="md:w-1/4">
           {/* All the categories are displayed here */}
@@ -54,9 +54,9 @@ function HomePage() {
         </aside>
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
           {/* <h1>Our listings</h1> */}
-          {/* All the ads are displayed here */}
-          {/* #3_create_sort. Pass the sortOption state to the AdsPage file. */}
-          <AdsPage sortOption={sortOption} />
+          {/* All the listings are displayed here */}
+          {/* #3_create_sort. Pass the sortOption state to the ListingsPage file. */}
+          <ListingsPage sortOption={sortOption} />
         </main>
       </div>
     </div>
