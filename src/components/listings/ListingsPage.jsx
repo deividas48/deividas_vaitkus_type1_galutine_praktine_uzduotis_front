@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import ListingsList from './ListingsList';
 
 // #3_create_sort. Add the sortOption prop to the ListingsPage function. The
-// prop is passed from the HomePage component.
+// prop is passed from the PageHome component.
 function ListingsPage({ sortOption }) {
   const [listingsArr, setListingArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

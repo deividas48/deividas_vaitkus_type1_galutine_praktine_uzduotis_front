@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function ErrorPage() {
+export default function PageError() {
   return (
     <div className="">
       <div className="flex flex-col justify-center bg-white m-4 p-4 rounded-lg">

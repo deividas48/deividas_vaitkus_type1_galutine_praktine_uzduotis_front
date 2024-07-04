@@ -5,7 +5,7 @@ import '../styles/Forms.css';
 import axios from 'axios';
 import Submit from '../components/buttons/Submit';
 
-export default function AddListingPage() {
+export default function PageAddListing() {
   // Dummy data for town and category mappings
   const townMappings = {
     Vilnius: 3,

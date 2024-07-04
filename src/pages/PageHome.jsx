@@ -8,7 +8,7 @@ import Hero2 from '../components/Hero2';
 import CategoryPage from '../components/categories/CategoryPage';
 import ListingsPage from '../components/listings/ListingsPage';
 
-function HomePage() {
+function PageHome() {
   // #Create_sort - create short function for sorting listings.
   // #1_create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
@@ -63,4 +63,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default PageHome;

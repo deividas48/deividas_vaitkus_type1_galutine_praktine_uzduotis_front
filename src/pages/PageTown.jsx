@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 // import AdImgSwiper from '../components/UI/AdImgSwiper';
 
-export default function TownPage() {
+export default function PageTown() {
   // From App.jsx parameter <Route path="/skelbimas/:id"...
   const { id } = useParams();
 

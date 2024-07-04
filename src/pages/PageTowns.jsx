@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import TownsList from '../components/towns/TownsList';
 
-function TownsPage() {
+function PageTowns() {
   const [townsArr, settownsArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -37,4 +37,4 @@ function TownsPage() {
   );
 }
 
-export default TownsPage;
+export default PageTowns;
