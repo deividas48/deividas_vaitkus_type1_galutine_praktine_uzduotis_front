@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Hero2 from '../components/Hero2';
 // import ListingsList from '../components/listings/ListingsList';
 import CategoryPage from '../components/categories/CategoryPage';
-import ListingsPage from '../components/listings/ListingsPage';
+import ListingsListFetch from '../components/listings/ListingsListFetch';
 
 function PageHome() {
   // #Create_sort - create short function for sorting listings.
@@ -60,8 +60,8 @@ function PageHome() {
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
           {/* <h1>Our listings</h1> */}
           {/* All the listings are displayed here */}
-          {/* 3_#create_sort. Pass the sortOption state to the ListingsPage file. */}
-          <ListingsPage sortOption={sortOption} />
+          {/* 3_#create_sort. Pass the sortOption state to the ListingsListFetch file. */}
+          <ListingsListFetch sortOption={sortOption} />
         </main>
 
       </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 // #create_listings_list. Component to render a single listing item
-export default function ListingPage({ item }) {
+export default function ListingForLi({ item }) {
   return (
     <div>
       <div className="flex bg-white border-gray-200 rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl">

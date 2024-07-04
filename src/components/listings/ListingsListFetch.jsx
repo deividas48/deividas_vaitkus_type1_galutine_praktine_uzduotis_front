@@ -4,9 +4,9 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ListingsList from './ListingsList';
 
-// #3_create_sort. Add the sortOption prop to the ListingsPage function. The
+// #3_create_sort. Add the sortOption prop to the ListingsListFetch function. The
 // prop is passed from the PageHome component.
-function ListingsPage({ sortOption }) {
+function ListingsListFetch({ sortOption }) {
   const [listingsArr, setListingArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -60,4 +60,4 @@ function ListingsPage({ sortOption }) {
   );
 }
 
-export default ListingsPage;
+export default ListingsListFetch;

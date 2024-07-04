@@ -1,4 +1,4 @@
-import ListingPage from './ListingPage';
+import ListingForLi from './ListingForLi';
 
 // #create_listings_list. Component to render a list of listings
 export default function ListingsList({ list }) {
@@ -6,9 +6,9 @@ export default function ListingsList({ list }) {
     <div>
       <ul className="unstyled">
         {list.map((listing) => (
-          // 1. #create_listings_list. Render each listing using ListingPage component
+          // 1. #create_listings_list. Render each listing using ListingForLi component
           <li className="mb-4" key={listing.skelbimai_id}>
-            <ListingPage item={listing} />
+            <ListingForLi item={listing} />
           </li>
         ))}
       </ul>
