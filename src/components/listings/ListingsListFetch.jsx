@@ -6,7 +6,7 @@ import ListingsList from './ListingsList';
 
 // #3_create_sort. Add the sortOption prop to the ListingsListFetch function. The
 // prop is passed from the PageHome component.
-function ListingsListFetch({ sortOption }) {
+function ListingsListFetch({ sortOption, categoryId }) {
   const [listingsArr, setListingArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -44,10 +44,13 @@ function ListingsListFetch({ sortOption }) {
 
   // Fetch the listings from the server
   useEffect(() => {
-    getPosts('http://localhost:3000/api/listings');
+    const url = categoryId
+      ? `http://localhost:3000/api/listings?category=${categoryId}`
+      : 'http://localhost:3000/api/listings';
+    getPosts(url);
     // #3.2_create_sort. SortOption helps to update the listings when the sortOption
     // state changes.
-  }, [sortOption]);
+  }, [sortOption, categoryId]);
 
   return (
     <div>

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Header from './components/layout/Header';
+// import PageMain from './pages/PageMain';
 import PageHome from './pages/PageHome';
 import PageTowns from './pages/PageTowns';
 import PageTown from './pages/PageTown';
@@ -19,6 +20,7 @@ function App() {
       <Toaster />
       {/* Create the routes - the links to the pages */}
       <Routes>
+        {/* <Route path="/" element={<PageMain />} /> */}
         <Route path="/" element={<PageHome />} />
         <Route path="/towns" element={<PageTowns />} />
         <Route path="/town/:id" element={<PageTown />} />
