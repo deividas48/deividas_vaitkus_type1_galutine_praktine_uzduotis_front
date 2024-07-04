@@ -18,6 +18,7 @@ function PageHome() {
     <div>
       <Hero2 />
       {/*  */}
+
       <div className="mb-4 flex mr-4">
         {/* Just to make blank space */}
         <span className="md:w-3/5"> </span>
@@ -45,20 +46,24 @@ function PageHome() {
           </select>
         </div>
       </div>
+
       {/* All the listings and categories are displayed here */}
       <div className="md:flex">
+
         <aside className="md:w-1/4">
           {/* All the categories are displayed here */}
           <div className=" bg-white p-4 pb-1 rounded-lg">
             <CategoryPage />
           </div>
         </aside>
+
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
           {/* <h1>Our listings</h1> */}
           {/* All the listings are displayed here */}
           {/* 3_#create_sort. Pass the sortOption state to the ListingsPage file. */}
           <ListingsPage sortOption={sortOption} />
         </main>
+
       </div>
     </div>
   );
