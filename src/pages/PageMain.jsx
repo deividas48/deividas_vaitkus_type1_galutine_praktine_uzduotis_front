@@ -1,12 +1,10 @@
 import { useState } from 'react';
-// import Hero2 from '../components/Hero2';
 import CategoryPage from '../components/categories/CategoryPage';
-// import ListingsListFetch from '../components/listings/ListingsListFetch';
 
 // #create_sort - create reusable layout component
 function PageMain({
   HeroComponent,
-  listingsFetchComponent: ListingsFetchComponent,
+  listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
   pageTitle,
 }) {
   // 1_#create_sort. Create the state to store the sort option.
@@ -48,16 +46,19 @@ function PageMain({
 
       {/* All the listings and categories are displayed here */}
       <div className="md:flex">
+
         <aside className="md:w-1/4">
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
             <CategoryPage />
           </div>
         </aside>
+
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
           {/* All the listings are displayed here */}
           <ListingsFetchComponent sortOption={sortOption} />
         </main>
+
       </div>
     </div>
   );
