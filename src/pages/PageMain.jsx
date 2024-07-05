@@ -16,8 +16,9 @@ function PageMain({
       {/* Display the page title */}
       <h1>{pageTitle}</h1>
       <HeroComponent />
+
       {/* Create the div for the sort dropdown */}
-      <div className="mb-4 flex mr-4">
+      <section className="mb-4 flex mr-4">
         {/* Just to make blank space */}
         <span className="md:w-3/5"> </span>
         <div className="md:w-2/5 flex">
@@ -42,7 +43,7 @@ function PageMain({
             <option value="price-desc">Price: High to Low</option>
           </select>
         </div>
-      </div>
+      </section>
 
       {/* All the listings and categories are displayed here */}
       <div className="md:flex">
