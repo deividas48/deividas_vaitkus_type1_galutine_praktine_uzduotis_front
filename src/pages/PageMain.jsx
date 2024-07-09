@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useState } from 'react';
 import CategoryPage from '../components/categories/CategoryPage';
 
@@ -10,6 +11,8 @@ function PageMain({
   // 1_#create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
   const [sortOption, setSortOption] = useState('price-asc');
+  // 1_#category_TitleToIdentifyCategory.
+  const [categoryName, setCategoryName] = useState('');
 
   return (
     <div>
@@ -47,19 +50,23 @@ function PageMain({
 
       {/* All the listings and categories are displayed here */}
       <div className="md:flex">
-
         <aside className="md:w-1/4">
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
+            {/* 5_#category_TitleToIdentifyCategory. */}
+            <h2>{categoryName ? `Category: ${categoryName}` : ''}</h2>
             <CategoryPage />
           </div>
         </aside>
 
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
           {/* All the listings are displayed here */}
-          <ListingsFetchComponent sortOption={sortOption} />
+          {/* Send 'sortOption' */}
+          <ListingsFetchComponent
+            sortOption={sortOption} // Send the set state to PageListingsCategory.jsx
+            setCategoryName={setCategoryName} // 2_#category_TitleToIdentifyCategory. Send the set state to PageListingsCategory.jsx
+          />
         </main>
-
       </div>
     </div>
   );

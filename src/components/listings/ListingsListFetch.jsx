@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-console */
 import axios from 'axios';
@@ -6,7 +7,10 @@ import ListingsList from './ListingsList';
 
 // #3_create_sort. Add the sortOption prop to the ListingsListFetch function. The
 // prop is passed from the PageHome component.
-function ListingsListFetch({ sortOption, categoryId }) {
+// - 'sortOption' is taken from PageListingsCategory.jsx
+// - 'categoryId' is taken from PageListingsCategory.jsx
+// - 'setCategoryName' is taken from PageListingsCategory.jsx
+function ListingsListFetch({ sortOption, categoryId, setCategoryName }) {
   const [listingsArr, setListingArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -41,6 +45,20 @@ function ListingsListFetch({ sortOption, categoryId }) {
         setIsLoading(false);
       });
   }
+
+  // Fetch the category name
+  useEffect(() => {
+    if (categoryId) {
+      axios
+        .get(`http://localhost:3000/api/categories/${categoryId}`)
+        .then((response) => {
+          setCategoryName(response.data.name); // 4_#category_TitleToIdentifyCategory. 'response.data.name' - sql table category variable name.
+        })
+        .catch((error) => {
+          console.warn('Error fetching category name:', error);
+        });
+    }
+  }, [categoryId, setCategoryName]);
 
   // Fetch the listings from the server
   useEffect(() => {
