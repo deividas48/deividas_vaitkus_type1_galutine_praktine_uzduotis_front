@@ -32,7 +32,7 @@ export default function Header() {
       <TopBar />
       <header
         className="bg-white container-workaround
-    header-apatinė-linija"
+    header-apatinė-linija height-forSmoothness"
       >
         {/* Įmonės logo */}
         <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
