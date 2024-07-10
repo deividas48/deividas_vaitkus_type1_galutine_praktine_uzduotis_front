@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import CategoryList from './CategoryList';
+import CategoryListLiMap from './CategoryListLiMap';
 
-function CategoryPage() {
+function CategoryListFetch() {
   const [categoriesArr, setcategoriesArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -32,9 +32,9 @@ function CategoryPage() {
     <div>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Failed to fetch categories</p>}
-      {!isLoading && !isError && <CategoryList list={categoriesArr} />}
+      {!isLoading && !isError && <CategoryListLiMap list={categoriesArr} />}
     </div>
   );
 }
 
-export default CategoryPage;
+export default CategoryListFetch;

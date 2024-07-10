@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
-import CategoryPage from '../components/categories/CategoryPage';
+import CategoryListFetch from '../components/categories/CategoryListFetch';
 
 // #create_sort - create reusable layout component
 function PageMain({
@@ -55,7 +55,7 @@ function PageMain({
           <div className="bg-white p-4 pb-1 rounded-lg">
             {/* 5_#category_TitleToIdentifyCategory. */}
             <h2>{categoryName ? `Category: ${categoryName}` : ''}</h2>
-            <CategoryPage />
+            <CategoryListFetch />
           </div>
         </aside>
 

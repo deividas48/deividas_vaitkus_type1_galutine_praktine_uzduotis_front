@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function CategoryPageLi({ item }) {
+export default function CategoryListForLiMap({ item }) {
   return (
     <div>
       <Link to={`/categories/${item.id}`}>
