@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import '../styles/Hero.css';
 
 // - 'currentCategory' is taken from LayoutBasePages.jsx
 export default function Hero2({ welcome, ifcategory, currentCategory }) {
@@ -8,7 +9,7 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
       style={{ backgroundImage: "url('/img/turgus.jpeg')" }}
     >
       {/* Make the wallpaper darker */}
-      <div className={`absolute inset-0 bg-black ${!currentCategory ? 'opacity-20' : 'opacity-80'}`} />
+      <div className={`absolute inset-0 bg-black transition-opacity duration-300${!currentCategory ? 'opacity-20' : 'opacity-90'}`} />
       <div className="relative z-1 h-20">
         <h2 className="leading-6 text-gray-100 uppercase font-medium">
           {/* Here you can freely buy, rent and sell your goods */}
@@ -26,7 +27,7 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
           {currentCategory && (
           <>
             <span> &gt; </span>
-            <span className="text-custom-primary-color">{currentCategory}</span>
+            <span className="currentCategory-color">{currentCategory}</span>
           </>
           )}
         </p>

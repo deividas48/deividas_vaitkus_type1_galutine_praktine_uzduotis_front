@@ -5,6 +5,10 @@
     --color-primary: #ff3c48;
   }
 
+.height-forSmoothness {
+  height: 79px;
+}
+
 .nav-meniu-didelis > li {
     padding: 20px 10px;
     color: rgb(100, 100, 100);
