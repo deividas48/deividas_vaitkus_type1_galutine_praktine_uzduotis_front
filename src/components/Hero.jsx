@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
+
 // - 'currentCategory' is taken from LayoutBasePages.jsx
-export default function Hero2({ currentCategory, welcome, ifcategory }) {
+export default function Hero2({ welcome, ifcategory, currentCategory }) {
   return (
     <section
       className="py-12 px-3 text-center bg-cover bg-center relative container-workaround mb-4"
       style={{ backgroundImage: "url('/img/turgus.jpeg')" }}
     >
+      {/* Make the wallpaper darker */}
       <div className="absolute inset-0 bg-black opacity-20" />
       <div className="relative z-1 h-20">
         <h2 className="leading-6 text-gray-100 uppercase font-medium">
@@ -18,9 +21,14 @@ export default function Hero2({ currentCategory, welcome, ifcategory }) {
           {ifcategory}
         </p>
         <p className="mt-3 text-center text-gray-100">
-          All Categories
+          <Link to="/">All Categories</Link>
           {' '}
-          <span className="text-custom-primary-color">{currentCategory}</span>
+          {currentCategory && (
+          <>
+            <span> &gt; </span>
+            <span className="text-custom-primary-color">{currentCategory}</span>
+          </>
+          )}
         </p>
       </div>
     </section>
