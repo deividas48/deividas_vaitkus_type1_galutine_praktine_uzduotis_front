@@ -1,14 +1,15 @@
 // PageHome.jsx
 import LayoutBasePages from '../components/layout/LayoutBasePages';
-import Hero2 from '../components/Hero2';
+import Hero from '../components/Hero';
 import ListingsListFetch from '../components/listings/ListingsListFetch';
 
 function PageHome() {
   return (
     <LayoutBasePages
-      HeroComponent={Hero2}
+      HeroComponent={Hero}
       listingsFetchComponent={ListingsListFetch}
-      pageTitle="Home Page"
+      welcome="Welcome to EveryShop Home Page"
+      // pageTitle="Home Page > "
     />
   );
 }

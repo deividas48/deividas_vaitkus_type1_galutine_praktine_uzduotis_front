@@ -5,24 +5,25 @@ import Hero from '../components/Hero';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
 
 // Define the nested component outside the render method
-// - 'sortOption' is taken from LayoutBasePages.jsx
-// - 'setCategoryName' is taken from LayoutBasePages.jsx
+// - 'sortOption', 'setCategoryName' are taken from LayoutBasePages.jsx
 function ListingsFetchWrapper({ sortOption, setCategoryName }) {
   // Get category ID from URL params. Gets the URL parameters directly from the
   // URL defined in your route configuration (App.jsx).
   const { id } = useParams();
 
   return (
+    // ListingsListFetch.jsx
     <ListingsListFetch
       categoryId={id} // Send to ListingsListFetch.jsx
       sortOption={sortOption} // Take and send to ListingsListFetch.jsx
-      setCategoryName={setCategoryName} // 3_#category_TitleToIdentifyCategory. Take and send to ListingsListFetch.jsx
+      setCategoryName={setCategoryName} // 3_#category_TitleToIdentifyCategory. Take and send.
     />
   );
 }
 
 function PageListingsCategory() {
   return (
+    // LayoutBasePages.jsx
     <LayoutBasePages
       HeroComponent={Hero} // Pass the 'Hero' component as the HeroComponent prop.
       // *
@@ -30,6 +31,8 @@ function PageListingsCategory() {
       // prop named 'listingsFetchComponent'
       // #category_TitleToIdentifyCategory
       listingsFetchComponent={ListingsFetchWrapper}
+      pageTitle=" > Listings Category"
+      ifcategory="Category: "
     />
   );
 }

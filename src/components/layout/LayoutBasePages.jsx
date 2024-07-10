@@ -4,10 +4,13 @@ import CategoryListFetch from '../categories/CategoryListFetch';
 import '../../styles/LayoutBasePages.css';
 
 // #create_sort - create reusable layout component
+// - Props are taken from PageHome.jsx and PageListingsCategory.jsx
 function LayoutBasePages({
   HeroComponent,
   listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
   pageTitle,
+  welcome,
+  ifcategory,
 }) {
   // 1_#create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
@@ -19,7 +22,7 @@ function LayoutBasePages({
     <div>
       {/* Display the page title */}
       <h1>{pageTitle}</h1>
-      <HeroComponent />
+      <HeroComponent pageTitle={pageTitle} welcome={welcome} ifcategory={ifcategory} />
 
       {/* Create the div for the sort dropdown */}
       <section className="mb-4 flex mr-4">
