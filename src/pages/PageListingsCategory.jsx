@@ -2,11 +2,11 @@
 import { useParams } from 'react-router-dom';
 import ListingsListFetch from '../components/listings/ListingsListFetch';
 import Hero2 from '../components/Hero2';
-import PageMain from './PageMain';
+import LayoutBasePages from '../components/layout/LayoutBasePages';
 
 // Define the nested component outside the render method
-// - 'sortOption' is taken from PageMain.jsx
-// - 'setCategoryName' is taken from PageMain.jsx
+// - 'sortOption' is taken from LayoutBasePages.jsx
+// - 'setCategoryName' is taken from LayoutBasePages.jsx
 function ListingsFetchWrapper({ sortOption, setCategoryName }) {
   // Get category ID from URL params. Gets the URL parameters directly from the
   // URL defined in your route configuration (App.jsx).
@@ -23,7 +23,7 @@ function ListingsFetchWrapper({ sortOption, setCategoryName }) {
 
 function PageListingsCategory() {
   return (
-    <PageMain
+    <LayoutBasePages
       HeroComponent={Hero2} // Pass the Hero2 component as the HeroComponent prop.
       // *
       // Pass ListingsFetchWrapper function (category id and sort naming) as the

@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
-import CategoryListFetch from '../components/categories/CategoryListFetch';
+import CategoryListFetch from '../categories/CategoryListFetch';
 
 // #create_sort - create reusable layout component
-function PageMain({
+function LayoutBasePages({
   HeroComponent,
   listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
   pageTitle,
@@ -72,4 +72,4 @@ function PageMain({
   );
 }
 
-export default PageMain;
+export default LayoutBasePages;

@@ -1,11 +1,11 @@
 // PageHome.jsx
-import PageMain from './PageMain';
+import LayoutBasePages from '../components/layout/LayoutBasePages';
 import Hero2 from '../components/Hero2';
 import ListingsListFetch from '../components/listings/ListingsListFetch';
 
 function PageHome() {
   return (
-    <PageMain
+    <LayoutBasePages
       HeroComponent={Hero2}
       listingsFetchComponent={ListingsListFetch}
       pageTitle="Home Page"
