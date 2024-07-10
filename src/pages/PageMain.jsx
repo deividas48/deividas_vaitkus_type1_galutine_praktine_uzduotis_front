@@ -49,7 +49,7 @@ function PageMain({
       </section>
 
       {/* All the listings and categories are displayed here */}
-      <div className="md:flex">
+      <section className="md:flex">
         <aside className="md:w-1/4">
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
@@ -67,7 +67,7 @@ function PageMain({
             setCategoryName={setCategoryName} // 2_#category_TitleToIdentifyCategory. Send the set state to PageListingsCategory.jsx
           />
         </main>
-      </div>
+      </section>
     </div>
   );
 }
