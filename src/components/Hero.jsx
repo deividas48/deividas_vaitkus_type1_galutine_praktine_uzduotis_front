@@ -1,5 +1,5 @@
-// - 'pageTitle' is taken from LayoutBasePages.jsx
-export default function Hero2({ pageTitle, welcome, ifcategory }) {
+// - 'currentCategory' is taken from LayoutBasePages.jsx
+export default function Hero2({ currentCategory, welcome, ifcategory }) {
   return (
     <section
       className="py-12 px-3 text-center bg-cover bg-center relative container-workaround mb-4"
@@ -20,7 +20,7 @@ export default function Hero2({ pageTitle, welcome, ifcategory }) {
         <p className="mt-3 text-center text-gray-100">
           All Categories
           {' '}
-          <span className="text-custom-primary-color">{pageTitle}</span>
+          <span className="text-custom-primary-color">{currentCategory}</span>
         </p>
       </div>
     </section>

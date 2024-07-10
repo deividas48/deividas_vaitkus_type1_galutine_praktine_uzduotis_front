@@ -8,7 +8,6 @@ import '../../styles/LayoutBasePages.css';
 function LayoutBasePages({
   HeroComponent,
   listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
-  pageTitle,
   welcome,
   ifcategory,
 }) {
@@ -20,9 +19,8 @@ function LayoutBasePages({
 
   return (
     <div>
-      {/* Display the page title */}
-      <h1>{pageTitle}</h1>
-      <HeroComponent pageTitle={pageTitle} welcome={welcome} ifcategory={ifcategory} />
+      {/* Hero */}
+      <HeroComponent currentCategory={categoryName} welcome={welcome} ifcategory={ifcategory} />
 
       {/* Create the div for the sort dropdown */}
       <section className="mb-4 flex mr-4">

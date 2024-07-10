@@ -31,7 +31,6 @@ function PageListingsCategory() {
       // prop named 'listingsFetchComponent'
       // #category_TitleToIdentifyCategory
       listingsFetchComponent={ListingsFetchWrapper}
-      pageTitle=" > Listings Category"
       ifcategory="Category: "
     />
   );
