@@ -20,7 +20,7 @@ function LayoutBasePages({
   return (
     <div>
       {/* Hero */}
-      <HeroComponent currentCategory={categoryName} welcome={welcome} ifcategory={ifcategory} />
+      <HeroComponent welcome={welcome} ifcategory={ifcategory} currentCategory={categoryName} />
 
       {/* Create the div for the sort dropdown */}
       <section className="mb-4 flex mr-4">
