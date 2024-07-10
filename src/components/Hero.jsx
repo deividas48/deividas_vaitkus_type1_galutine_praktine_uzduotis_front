@@ -1,15 +1,26 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Hero.css';
 
 // - 'currentCategory' is taken from LayoutBasePages.jsx
 export default function Hero2({ welcome, ifcategory, currentCategory }) {
+  const [opacity, setOpacity] = useState('bg-black opacity-20');
+
+  useEffect(() => {
+    if (currentCategory) {
+      setOpacity('bg-black transition-opacity duration-300 ease-in-out opacity-90');
+    } else {
+      // setOpacity('transition-opacity duration-1000 ease-in-out bg-black opacity-20');
+    }
+  }, [currentCategory]);
+
   return (
     <section
       className="py-12 px-3 text-center bg-cover bg-center relative container-workaround mb-4"
       style={{ backgroundImage: "url('/img/turgus.jpeg')" }}
     >
       {/* Make the wallpaper darker */}
-      <div className={`absolute inset-0 bg-black transition-opacity duration-300${!currentCategory ? 'opacity-20' : 'opacity-90'}`} />
+      <div className={`absolute inset-0 ${opacity}`} />
       <div className="relative z-1 h-20">
         <h2 className="leading-6 text-gray-100 uppercase font-medium">
           {/* Here you can freely buy, rent and sell your goods */}
