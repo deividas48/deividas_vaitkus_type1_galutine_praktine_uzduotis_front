@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
 import CategoryListFetch from '../categories/CategoryListFetch';
+import '../../styles/LayoutBasePages.css';
 
 // #create_sort - create reusable layout component
 function LayoutBasePages({
