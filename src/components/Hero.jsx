@@ -8,7 +8,7 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
       style={{ backgroundImage: "url('/img/turgus.jpeg')" }}
     >
       {/* Make the wallpaper darker */}
-      <div className="absolute inset-0 bg-black opacity-20" />
+      <div className={`absolute inset-0 bg-black ${!currentCategory ? 'opacity-20' : 'opacity-80'}`} />
       <div className="relative z-1 h-20">
         <h2 className="leading-6 text-gray-100 uppercase font-medium">
           {/* Here you can freely buy, rent and sell your goods */}
