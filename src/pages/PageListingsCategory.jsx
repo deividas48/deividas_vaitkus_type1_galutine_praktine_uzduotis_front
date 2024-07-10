@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { useParams } from 'react-router-dom';
 import ListingsListFetch from '../components/listings/ListingsListFetch';
-import Hero2 from '../components/Hero2';
+import Hero from '../components/Hero';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
 
 // Define the nested component outside the render method
@@ -24,13 +24,12 @@ function ListingsFetchWrapper({ sortOption, setCategoryName }) {
 function PageListingsCategory() {
   return (
     <LayoutBasePages
-      HeroComponent={Hero2} // Pass the Hero2 component as the HeroComponent prop.
+      HeroComponent={Hero} // Pass the 'Hero' component as the HeroComponent prop.
       // *
       // Pass ListingsFetchWrapper function (category id and sort naming) as the
       // prop named 'listingsFetchComponent'
       // #category_TitleToIdentifyCategory
       listingsFetchComponent={ListingsFetchWrapper}
-      pageTitle="Listings Category" // Set the page title to "Listings Category"
     />
   );
 }

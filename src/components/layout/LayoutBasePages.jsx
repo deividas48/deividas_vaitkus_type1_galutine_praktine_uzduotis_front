@@ -55,7 +55,7 @@ function LayoutBasePages({
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
             {/* 5_#category_TitleToIdentifyCategory. */}
-            <h2>{categoryName ? `Category: ${categoryName}` : ''}</h2>
+            <h2 className="font-semibold">{categoryName ? `Category: ${categoryName}` : ''}</h2>
             <CategoryListFetch />
           </div>
         </aside>
