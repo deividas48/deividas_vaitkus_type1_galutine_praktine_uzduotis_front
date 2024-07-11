@@ -32,7 +32,8 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
           {/* If it's a category page  */}
           {ifcategory}
         </h2>
-        <p className="mt-3 text-center text-gray-100">
+        {/* Path to navigate */}
+        <p className="mt-3 text-center text-gray-100 hidden">
           <Link to="/">All Categories</Link>
           {' '}
           {currentCategory && (
