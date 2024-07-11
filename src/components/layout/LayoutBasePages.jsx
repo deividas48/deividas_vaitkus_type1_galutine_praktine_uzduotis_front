@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CategoryListFetch from '../categories/CategoryListFetch';
 import '../../styles/LayoutBasePages.css';
 
@@ -28,8 +29,25 @@ function LayoutBasePages({
 
       {/* Create the div for the sort dropdown */}
       <section className="mb-4 flex mr-4">
-        {/* Just to make blank space */}
-        <span className="md:w-3/5"> </span>
+        {/* Just to make proportion */}
+        <span className="md:w-3/5">
+          {/* {' '}
+          {categoryName ? `Category: ${categoryName}` : ''}
+          {' '} */}
+
+          {/* Path to navigate */}
+          <p className="AllCategoriesName-color">
+            <Link className="mr-1" to="/">
+              All Categories
+            </Link>
+            {categoryName && (
+              <>
+                <span className="mx-1"> &gt; </span>
+                <span className="categoryName-color">{categoryName}</span>
+              </>
+            )}
+          </p>
+        </span>
         <div className="md:w-2/5 flex">
           <label
             htmlFor="sort"
@@ -60,9 +78,6 @@ function LayoutBasePages({
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
             {/* 5_#category_TitleToIdentifyCategory. */}
-            <h2 className="font-semibold">
-              {categoryName ? `Category: ${categoryName}` : ''}
-            </h2>
             <CategoryListFetch />
           </div>
         </aside>

@@ -1,0 +1,15 @@
+.AllCategoriesName-color {
+  color: var(--custom-gray-colo);
+  display: flex; /* #forVerticalAlign */
+  align-items: center; /* #forVerticalAlign */
+  height: 100%; /* #forVerticalAlign. Ensure the element has a height */
+}
+
+.categoryName-color {
+  color: var(--custom-primary-color);
+  opacity: 50%;
+}
+
+.AllCategoriesName-color, .categoryName-color {
+    opacity: 85%;
+  }
