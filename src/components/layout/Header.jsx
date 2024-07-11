@@ -34,16 +34,18 @@ export default function Header() {
         className="bg-white container-workaround
     header-apatinė-linija height-forSmoothness"
       >
-        {/* Įmonės logo */}
         <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
-          <Link to="/" className="logo-container">
-            {/* Logo of company */}
-            <img
-              src="/img/ShopLogo.png"
-              alt="EveryShop logo"
-              className="logoo ml-4"
-            />
-          </Link>
+          {/* Įmonės logo */}
+          <h1>
+            <Link to="/" className="logo-container">
+              {/* Logo of company */}
+              <img
+                src="/img/ShopLogo.png"
+                alt="EveryShop logo"
+                className="logoo ml-4"
+              />
+            </Link>
+          </h1>
           {/* Navigacija */}
           {/* Navigacija. Kai ekranas didelis */}
           <nav>
@@ -86,7 +88,9 @@ export default function Header() {
             >
               {/* Icon to toggle the menu */}
               <i
-                className={`bi bi-${isMenuOpen ? 'list-nested' : 'list'} fs-3 text-5xl duration-300 ease-in-out hover:text-custom-color-secondary`}
+                className={`bi bi-${
+                  isMenuOpen ? 'list-nested' : 'list'
+                } fs-3 text-5xl duration-300 ease-in-out hover:text-custom-color-secondary`}
               />
             </button>
           </div>
