@@ -8,7 +8,9 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
 
   useEffect(() => {
     if (currentCategory) {
-      setOpacity('bg-black transition-opacity duration-300 ease-in-out opacity-90');
+      setOpacity(
+        'bg-black transition-opacity duration-300 ease-in-out opacity-90',
+      );
     } else {
       // setOpacity('transition-opacity duration-1000 ease-in-out bg-black opacity-20');
     }
@@ -31,16 +33,17 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
           {' '}
           {/* If it's a category page  */}
           {ifcategory}
+          <span>{currentCategory}</span>
         </h2>
         {/* Path to navigate */}
         <p className="mt-3 text-center text-gray-100 hidden">
           <Link to="/">All Categories</Link>
           {' '}
           {currentCategory && (
-          <>
-            <span> &gt; </span>
-            <span className="currentCategory-color">{currentCategory}</span>
-          </>
+            <>
+              <span> &gt; </span>
+              <span className="currentCategory-color">{currentCategory}</span>
+            </>
           )}
         </p>
       </div>
