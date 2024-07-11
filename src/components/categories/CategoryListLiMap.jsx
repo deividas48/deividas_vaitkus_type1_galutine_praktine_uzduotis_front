@@ -7,7 +7,7 @@ export default function CategoryListLiMap({ list }) {
       <h3 className="cssTitle">Categories</h3>
       <ul className="unstyled">
         {list.map((category) => (
-          <li className="mb-4" key={category.id}>
+          <li className="h-11" key={category.id}>
             <CategoryListForLiMap item={category} />
           </li>
         ))}
