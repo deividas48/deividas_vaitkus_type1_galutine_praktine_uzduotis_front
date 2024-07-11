@@ -9,7 +9,7 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
   useEffect(() => {
     if (currentCategory) {
       setOpacity(
-        'bg-black transition-opacity duration-300 ease-in-out opacity-90',
+        'bg-black transition-opacity duration-300 ease-in-out opacity-70',
       );
     } else {
       // setOpacity('transition-opacity duration-1000 ease-in-out bg-black opacity-20');
