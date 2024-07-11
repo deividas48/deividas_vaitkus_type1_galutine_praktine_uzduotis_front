@@ -22,16 +22,16 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
       {/* Make the wallpaper darker */}
       <div className={`absolute inset-0 ${opacity}`} />
       <div className="relative z-1 h-20">
-        <h2 className="leading-6 text-gray-100 uppercase font-medium">
-          {/* Here you can freely buy, rent and sell your goods */}
-        </h2>
-        <p className="mt-2 text-3xl leading-8 font-semibold tracking-tight md:text-4xl text-white">
+        {/* <h2 className="leading-6 text-gray-100 uppercase font-medium">
+          Here you can freely buy, rent and sell your goods
+        </h2> */}
+        <h2 className="mt-2 text-3xl leading-8 font-semibold tracking-tight md:text-4xl text-white">
           {/* If it's home page  */}
           {welcome}
           {' '}
           {/* If it's a category page  */}
           {ifcategory}
-        </p>
+        </h2>
         <p className="mt-3 text-center text-gray-100">
           <Link to="/">All Categories</Link>
           {' '}
