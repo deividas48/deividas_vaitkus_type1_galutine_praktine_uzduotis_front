@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import CategoryListFetch from '../categories/CategoryListFetch';
 import '../../styles/LayoutBasePages.css';
 
 // #create_sort - create reusable layout component
@@ -79,6 +78,7 @@ function LayoutBasePages({
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
             {/* 5_#category_TitleToIdentifyCategory. */}
+            <h3 className="cssTitle">Categories</h3>
             {/* #PassToAside */}
             {aside1}
           </div>

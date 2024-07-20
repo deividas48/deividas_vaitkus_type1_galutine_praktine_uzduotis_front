@@ -4,7 +4,6 @@ import Hero from '../components/Hero';
 import ListingsListFetch from '../components/listings/ListingsListFetch';
 import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside
 
-
 function PageHome() {
   return (
     <LayoutBasePages

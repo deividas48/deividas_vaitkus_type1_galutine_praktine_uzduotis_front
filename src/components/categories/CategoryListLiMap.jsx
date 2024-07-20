@@ -1,17 +1,13 @@
 import CategoryListForLiMap from './CategoryListForLiMap';
-import '../../styles/CategoryListLiMap.css';
 
 export default function CategoryListLiMap({ list }) {
   return (
-    <>
-      <h3 className="cssTitle">Categories</h3>
-      <ul className="unstyled">
-        {list.map((category) => (
-          <li className="h-11" key={category.id}>
-            <CategoryListForLiMap item={category} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul className="unstyled">
+      {list.map((category) => (
+        <li className="h-11" key={category.id}>
+          <CategoryListForLiMap item={category} />
+        </li>
+      ))}
+    </ul>
   );
 }
