@@ -11,6 +11,7 @@ function LayoutBasePages({
   welcome,
   ifcategory,
   aside1,
+  ifCategoryPageDisplayed,
 }) {
   // 1_#create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
@@ -75,13 +76,17 @@ function LayoutBasePages({
       {/* All the listings and categories are displayed here */}
       <section className="md:flex">
         <aside className="md:w-1/4">
-          {/* All the categories are displayed here */}
-          <div className="bg-white p-4 pb-1 rounded-lg">
-            {/* 5_#category_TitleToIdentifyCategory. */}
-            <h3 className="cssTitle">Categories</h3>
-            {/* #PassToAside */}
-            {aside1}
-          </div>
+          {ifCategoryPageDisplayed && (
+            <>
+              {/* All the categories are displayed here */}
+              <div className="bg-white p-4 pb-1 rounded-lg">
+                {/* 5_#category_TitleToIdentifyCategory. */}
+                <h3 className="cssTitle">Categories</h3>
+                {/* #PassToAside */}
+                {aside1}
+              </div>
+            </>
+          )}
         </aside>
 
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
