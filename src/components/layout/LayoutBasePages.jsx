@@ -11,6 +11,7 @@ function LayoutBasePages({
   listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
   welcome,
   ifcategory,
+  aside1,
 }) {
   // 1_#create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
@@ -78,7 +79,8 @@ function LayoutBasePages({
           {/* All the categories are displayed here */}
           <div className="bg-white p-4 pb-1 rounded-lg">
             {/* 5_#category_TitleToIdentifyCategory. */}
-            <CategoryListFetch />
+            {/* #PassToAside */}
+            {aside1}
           </div>
         </aside>
 

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ListingsListFetch from '../components/listings/ListingsListFetch';
 import Hero from '../components/Hero';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
+import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside
 
 // Define the nested component outside the render method
 // - 'sortOption', 'setCategoryName' are taken from LayoutBasePages.jsx
@@ -32,6 +33,7 @@ function PageListingsCategory() {
       // #category_TitleToIdentifyCategory
       listingsFetchComponent={ListingsFetchWrapper}
       ifcategory="Category: "
+      aside1={<CategoryListFetch />} // #PassToAside
     />
   );
 }
