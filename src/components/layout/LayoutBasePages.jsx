@@ -76,7 +76,7 @@ function LayoutBasePages({
       {/* All the listings and categories are displayed here */}
       <section className="md:flex">
         <aside className="md:w-1/4">
-          {ifCategoryPageDisplayed && (
+          {!ifCategoryPageDisplayed && (
             <>
               {/* All the categories are displayed here */}
               <div className="bg-white p-4 pb-1 rounded-lg">
