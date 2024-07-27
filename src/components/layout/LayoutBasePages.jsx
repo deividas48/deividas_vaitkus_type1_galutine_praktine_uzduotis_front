@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+// LayoutBasePages.jsx
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/LayoutBasePages.css';
@@ -8,9 +10,11 @@ import '../../styles/LayoutBasePages.css';
 function LayoutBasePages({
   HeroComponent,
   listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
+  listingsFetchComponentProps, // #CreateFiltersLayoutBasePages
   welcome,
   ifcategory,
   aside1,
+  aside2,
   ifCategoryPageDisplayed,
 }) {
   // 1_#create_sort. Create the state to store the sort option.
@@ -87,14 +91,19 @@ function LayoutBasePages({
               </div>
             </>
           )}
+          {/* #CreateFiltersLayoutBasePages */}
+          {aside2}
         </aside>
 
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
           {/* All the listings are displayed here */}
           {/* Send 'sortOption' */}
+          {/* ListingsFetchComponent = ListingsFetchWrapper.jsx */}
           <ListingsFetchComponent
             sortOption={sortOption} // Send the set state to PageListingsCategory.jsx
             setCategoryName={setCategoryName} // 2_#category_TitleToIdentifyCategory. Send the set state to PageListingsCategory.jsx
+            baseFilters={listingsFetchComponentProps.baseFilters} // #CreateFiltersLayoutBasePages
+            categoryId={listingsFetchComponentProps.categoryId} // Pass categoryId explicitly
           />
         </main>
       </section>

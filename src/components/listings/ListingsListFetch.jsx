@@ -1,6 +1,8 @@
+// ListingsListFetch.jsx
 /* eslint-disable max-len */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-console */
+
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ListingsList from './ListingsList';
@@ -10,7 +12,13 @@ import ListingsList from './ListingsList';
 // - 'sortOption' is taken from PageListingsCategory.jsx
 // - 'categoryId' is taken from PageListingsCategory.jsx
 // - 'setCategoryName' is taken from PageListingsCategory.jsx
-function ListingsListFetch({ sortOption, categoryId, setCategoryName }) {
+// - 'baseFilters' is taken from PageHome.jsx and LayoutBasePages.jsx
+function ListingsListFetch({
+  sortOption,
+  categoryId,
+  setCategoryName,
+  baseFilters, // #CreateFiltersLayoutBasePages
+}) {
   const [listingsArr, setListingArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -21,6 +29,7 @@ function ListingsListFetch({ sortOption, categoryId, setCategoryName }) {
     axios
       .get(url)
       .then((response) => {
+        console.log('Listings response:', response.data); // Log listings response
         // Filter out the listings that are not published
         let sortedListing = response.data.filter(
           (listing) => listing.skelbimai_is_published === 1,
@@ -62,13 +71,35 @@ function ListingsListFetch({ sortOption, categoryId, setCategoryName }) {
 
   // Fetch the listings from the server
   useEffect(() => {
-    const url = categoryId
-      ? `http://localhost:3000/api/listings?category=${categoryId}`
-      : 'http://localhost:3000/api/listings';
+    let url = 'http://localhost:3000/api/listings';
+    const params = [];
+
+    if (categoryId) {
+      params.push(`category=${categoryId}`);
+    }
+
+    if (baseFilters) {
+      const {
+        minPrice, maxPrice, town, type, seller,
+      } = baseFilters;
+      if (minPrice) params.push(`minPrice=${minPrice}`);
+      if (maxPrice) params.push(`maxPrice=${maxPrice}`);
+      if (town) params.push(`town=${town}`);
+      if (type) params.push(`type=${type}`);
+      if (seller) params.push(`seller=${seller}`);
+    } // #CreateFiltersLayoutBasePages
+
+    if (params.length > 0) {
+      const paramString = params.join('&');
+      url += url.includes('?') ? `&${paramString}` : `?${paramString}`;
+    }
+
+    console.log('Fetching with URL:', url); // Debug log to check fetch URL
+
     getPosts(url);
     // #3.2_create_sort. SortOption helps to update the listings when the sortOption
     // state changes.
-  }, [sortOption, categoryId]);
+  }, [sortOption, categoryId, baseFilters]);
 
   return (
     <div>

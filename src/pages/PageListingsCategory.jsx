@@ -1,28 +1,25 @@
+/* eslint-disable no-console */
+// PageListingsCategory.jsx
 /* eslint-disable max-len */
+
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ListingsListFetch from '../components/listings/ListingsListFetch';
+import ListingsFetchWrapper from '../components/listings/ListingsFetchWrapper';
+// import ListingsListFetch from '../components/listings/ListingsListFetch';
 import Hero from '../components/Hero';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
-// import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside
-
-// Define the nested component outside the render method
-// - 'sortOption', 'setCategoryName' are taken from LayoutBasePages.jsx
-function ListingsFetchWrapper({ sortOption, setCategoryName }) {
-  // Get category ID from URL params. Gets the URL parameters directly from the
-  // URL defined in your route configuration (App.jsx).
-  const { id } = useParams();
-
-  return (
-    // ListingsListFetch.jsx
-    <ListingsListFetch
-      categoryId={id} // Send to ListingsListFetch.jsx
-      sortOption={sortOption} // Take and send to ListingsListFetch.jsx
-      setCategoryName={setCategoryName} // 3_#category_TitleToIdentifyCategory. Take and send.
-    />
-  );
-}
+// import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside_category
+import FiltersLayoutBasePages from '../components/filters/FiltersLayoutBasePages'; // #CreateFiltersLayoutBasePages
 
 function PageListingsCategory() {
+  const [baseFilters, setBaseFilters] = useState({}); // #CreateFiltersLayoutBasePages
+  const { id } = useParams(); // Get category ID from URL params
+
+  const handleFilterChange = (newFilters) => {
+    console.log('New Filters:', newFilters); // Debug log to check filter values
+    setBaseFilters(newFilters);
+  }; // #CreateFiltersLayoutBasePages
+
   return (
     // LayoutBasePages.jsx
     <LayoutBasePages
@@ -32,9 +29,13 @@ function PageListingsCategory() {
       // prop named 'listingsFetchComponent'
       // #category_TitleToIdentifyCategory
       listingsFetchComponent={ListingsFetchWrapper}
+      listingsFetchComponentProps={{ baseFilters, categoryId: id }} // Pass baseFilters and categoryId directly as props
+      welcome="Category Listings Page"
       ifcategory="Category: "
       ifCategoryPageDisplayed // means the same as 'ifCategoryExist={true}'
       // aside1={<CategoryListFetch />} // #PassToAside
+      // #CreateFiltersLayoutBasePages
+      aside2={<FiltersLayoutBasePages onFilterChange={handleFilterChange} />}
     />
   );
 }
