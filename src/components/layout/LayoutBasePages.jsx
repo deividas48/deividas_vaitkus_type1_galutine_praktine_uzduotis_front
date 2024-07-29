@@ -91,8 +91,11 @@ function LayoutBasePages({
               </div>
             </>
           )}
-          {/* #CreateFiltersLayoutBasePages */}
-          {aside2}
+          <div className="bg-white p-4 pb-1 rounded-lg mt-4">
+            <h3 className="cssTitle">Filter Listing</h3>
+            {/* #CreateFiltersLayoutBasePages */}
+            {aside2}
+          </div>
         </aside>
 
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
