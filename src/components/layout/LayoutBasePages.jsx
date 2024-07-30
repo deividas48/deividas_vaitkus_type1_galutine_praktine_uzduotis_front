@@ -83,7 +83,7 @@ function LayoutBasePages({
           {!ifCategoryPageDisplayed && (
             <>
               {/* All the categories are displayed here */}
-              <div className="bg-white p-4 pb-1 rounded-lg">
+              <div className="bg-white p-4 pb-1 rounded-lg mb-4">
                 {/* 5_#category_TitleToIdentifyCategory. */}
                 <h3 className="cssTitle">Categories</h3>
                 {/* #PassToAside */}
@@ -91,7 +91,7 @@ function LayoutBasePages({
               </div>
             </>
           )}
-          <div className="bg-white p-4 pb-1 rounded-lg mt-4">
+          <div className="bg-white p-4 pb-1 rounded-lg">
             <h3 className="cssTitle">Filter Listing</h3>
             {/* #CreateFiltersLayoutBasePages */}
             {aside2}

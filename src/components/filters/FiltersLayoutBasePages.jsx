@@ -60,7 +60,7 @@ function FiltersLayoutBasePages({ onFilterChange }) {
             <Field
               type="number"
               name="minPrice"
-              className="pairs_input_full w-16"
+              className="pairs_input_full w-24"
               onChange={handleChange}
               onBlur={(e) => {
                 handlePriceBlur(e, setFieldValue);
@@ -74,7 +74,7 @@ function FiltersLayoutBasePages({ onFilterChange }) {
             <Field
               type="number"
               name="maxPrice"
-              className="pairs_input_full w-16"
+              className="pairs_input_full w-24"
               onChange={handleChange}
               onBlur={(e) => {
                 handlePriceBlur(e, setFieldValue);
