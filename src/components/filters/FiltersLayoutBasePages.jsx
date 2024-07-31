@@ -6,6 +6,8 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import '../../styles/Forms.css';
+import BtnBasic from '../buttons/BtnBasic';
+import IconSearch from '../icons/IconSearch';
 
 const FilterSchema = Yup.object().shape({
   minPrice: Yup.number().min(
@@ -50,7 +52,10 @@ function FiltersLayoutBasePages({ onFilterChange }) {
       }}
     >
       {({
-        isSubmitting, setFieldValue, handleChange, handleBlur,
+        // isSubmitting,
+        setFieldValue,
+        handleChange,
+        handleBlur,
       }) => (
         <Form className="">
           <div className="filter-field">
@@ -106,13 +111,17 @@ function FiltersLayoutBasePages({ onFilterChange }) {
             <Field
               type="text"
               name="seller"
-              className="pairs_input_full w-full"
+              className="pairs_input_full w-full mb-4"
             />
             <ErrorMessage name="seller" component="div" />
           </div>
-          <button type="submit" disabled={isSubmitting}>
-            Apply Filters
-          </button>
+          <div className="flex justify-center">
+            <BtnBasic
+              BtnBasicText="Apply Filters"
+              additionalClasses="w-full py-4"
+              BtnBasicIcon={<IconSearch />}
+            />
+          </div>
         </Form>
       )}
     </Formik>

@@ -1,0 +1,10 @@
+.BtnBasic_hoverBg {
+  background-color: var(--color-primary);
+  transition: background-color 0.3s ease-out;
+  border: 1px solid black;
+}
+
+.BtnBasic_hoverBg:hover {
+  background-color: var(--color-secondary);
+  border: 1px solid black;
+}
