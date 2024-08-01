@@ -23,7 +23,12 @@ const FilterSchema = Yup.object().shape({
   seller: Yup.string(),
 });
 
-function FiltersLayoutBasePages({ onFilterChange }) {
+// - 'onFilterChange' is from PageHome.jsx
+// - 'townsOptionsListFetch' is from PageHome.jsx
+function FiltersLayoutBasePages({
+  onFilterChange,
+  townsOptionsListFetch, // #townsOptionsInput
+}) {
   // Function to handle the price input onBlur event
   const handlePriceBlur = (event, setFieldValue) => {
     const { name, value } = event.target;
@@ -90,11 +95,14 @@ function FiltersLayoutBasePages({ onFilterChange }) {
           </div>
           <div className="filter-field">
             <label htmlFor="town">Town</label>
-            <Field
-              type="text"
-              name="town"
-              className="pairs_input_full w-full"
-            />
+            <Field as="select" name="town" className="pairs_input_full w-full">
+              {/* <option value="" label="Select town" /> */}
+              {/* Įvesti town sumapintą gabalą - galima atgabenti visą TownsOptionsListFetch.jsx */}
+              <option value="" label="Select town" />
+              {townsOptionsListFetch}
+              {' '}
+              {/* #townsOptionsInput */}
+            </Field>
             <ErrorMessage name="town" component="div" />
           </div>
           <div className="filter-field">

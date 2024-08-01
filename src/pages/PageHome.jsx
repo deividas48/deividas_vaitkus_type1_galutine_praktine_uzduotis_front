@@ -8,6 +8,7 @@ import ListingsFetchWrapper from '../components/listings/ListingsFetchWrapper';
 // import ListingsListFetch from '../components/listings/ListingsListFetch';
 import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside_category
 import FiltersLayoutBasePages from '../components/filters/FiltersLayoutBasePages'; // #CreateFiltersLayoutBasePages
+import TownsOptionsListFetch from '../components/towns/TownsOptionsListFetch'; // #townsOptionsInput
 
 function PageHome() {
   const [baseFilters, setBaseFilters] = useState({}); // #CreateFiltersLayoutBasePages
@@ -28,7 +29,12 @@ function PageHome() {
       /* #PassToAside_category */
       aside1={<CategoryListFetch />} // #PassToAside
       // #CreateFiltersLayoutBasePages
-      aside2={<FiltersLayoutBasePages onFilterChange={handleFilterChange} />}
+      aside2={(
+        <FiltersLayoutBasePages
+          onFilterChange={handleFilterChange}
+          townsOptionsListFetch={<TownsOptionsListFetch />} // #townsOptionsInput
+        />
+      )}
     />
   );
 }
