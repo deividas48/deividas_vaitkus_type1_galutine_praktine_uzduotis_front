@@ -28,6 +28,7 @@ const FilterSchema = Yup.object().shape({
 function FiltersLayoutBasePages({
   onFilterChange,
   townsOptionsListFetch, // #townsOptionsInput
+  usersOptionsListFetch, // #usersOptionsInput
 }) {
   // Function to handle the price input onBlur event
   const handlePriceBlur = (event, setFieldValue) => {
@@ -96,12 +97,10 @@ function FiltersLayoutBasePages({
           <div className="filter-field">
             <label htmlFor="town">Town</label>
             <Field as="select" name="town" className="pairs_input_full w-full">
-              {/* <option value="" label="Select town" /> */}
-              {/* Įvesti town sumapintą gabalą - galima atgabenti visą TownsOptionsListFetch.jsx */}
+              {/* Bring all TownsOptionsListFetch.jsx file */}
               <option value="" label="Select town" />
-              {townsOptionsListFetch}
-              {' '}
               {/* #townsOptionsInput */}
+              {townsOptionsListFetch}
             </Field>
             <ErrorMessage name="town" component="div" />
           </div>
@@ -117,10 +116,15 @@ function FiltersLayoutBasePages({
           <div className="filter-field">
             <label htmlFor="seller">Seller</label>
             <Field
-              type="text"
+              as="select"
               name="seller"
               className="pairs_input_full w-full mb-4"
-            />
+            >
+              {/* Bring all UsersOptionsListFetch.jsx file */}
+              <option value="" label="Select user" />
+              {/* #usersOptionsInput */}
+              {usersOptionsListFetch}
+            </Field>
             <ErrorMessage name="seller" component="div" />
           </div>
           <div className="flex justify-center">

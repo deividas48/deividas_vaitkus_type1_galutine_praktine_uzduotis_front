@@ -9,6 +9,7 @@ import ListingsFetchWrapper from '../components/listings/ListingsFetchWrapper';
 import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside_category
 import FiltersLayoutBasePages from '../components/filters/FiltersLayoutBasePages'; // #CreateFiltersLayoutBasePages
 import TownsOptionsListFetch from '../components/towns/TownsOptionsListFetch'; // #townsOptionsInput
+import UsersOptionsListFetch from '../components/users/UsersOptionsListFetch'; // #usersOptionsInput
 
 function PageHome() {
   const [baseFilters, setBaseFilters] = useState({}); // #CreateFiltersLayoutBasePages
@@ -33,6 +34,7 @@ function PageHome() {
         <FiltersLayoutBasePages
           onFilterChange={handleFilterChange}
           townsOptionsListFetch={<TownsOptionsListFetch />} // #townsOptionsInput
+          usersOptionsListFetch={<UsersOptionsListFetch />} // #usersOptionsInput
         />
       )}
     />
