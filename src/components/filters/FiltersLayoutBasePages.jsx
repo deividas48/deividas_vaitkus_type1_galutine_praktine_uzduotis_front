@@ -80,6 +80,7 @@ function FiltersLayoutBasePages({
             />
             <ErrorMessage name="minPrice" component="div" />
           </div>
+
           <div className="filter-field">
             <label htmlFor="maxPrice">Max Price</label>
             <Field
@@ -94,6 +95,7 @@ function FiltersLayoutBasePages({
             />
             <ErrorMessage name="maxPrice" component="div" />
           </div>
+
           <div className="filter-field">
             <label htmlFor="town">Town</label>
             <Field as="select" name="town" className="pairs_input_full w-full">
@@ -104,6 +106,7 @@ function FiltersLayoutBasePages({
             </Field>
             <ErrorMessage name="town" component="div" />
           </div>
+
           <div className="filter-field">
             <label htmlFor="type">Type</label>
             <Field
@@ -113,6 +116,7 @@ function FiltersLayoutBasePages({
             />
             <ErrorMessage name="type" component="div" />
           </div>
+
           <div className="filter-field">
             <label htmlFor="seller">Seller</label>
             <Field
@@ -127,6 +131,7 @@ function FiltersLayoutBasePages({
             </Field>
             <ErrorMessage name="seller" component="div" />
           </div>
+
           <div className="flex justify-center">
             <BtnBasic
               BtnBasicText="Apply Filters"
