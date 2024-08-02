@@ -1,9 +1,7 @@
 // FiltersLayoutBasePages.jsx
 // #CreateFiltersLayoutBasePages
 
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../styles/Forms.css';
 import BtnBasic from '../buttons/BtnBasic';
@@ -12,11 +10,11 @@ import IconSearch from '../icons/IconSearch';
 const FilterSchema = Yup.object().shape({
   minPrice: Yup.number().min(
     0,
-    'Minimum price must be greater than or equal to 0',
+    'Minimum price must be greater than or equal to 0'
   ),
   maxPrice: Yup.number().min(
     0,
-    'Maximum price must be greater than or equal to 0',
+    'Maximum price must be greater than or equal to 0'
   ),
   town: Yup.string(),
   type: Yup.string(),
@@ -109,11 +107,12 @@ function FiltersLayoutBasePages({
 
           <div className="filter-field">
             <label htmlFor="type">Type</label>
-            <Field
-              type="text"
-              name="type"
-              className="pairs_input_full w-full"
-            />
+            <Field as="select" name="type" className="pairs_input_full w-full">
+              <option value="" label="Select type" />
+              <option value="sell" label="Sell" />
+              <option value="buy" label="Buy" />
+              <option value="rent" label="Rent" />
+            </Field>
             <ErrorMessage name="type" component="div" />
           </div>
 
