@@ -1,22 +1,21 @@
 // FiltersLayoutBasePages.jsx
 // #CreateFiltersLayoutBasePages
 
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../styles/Forms.css';
+import '../../styles/FiltersLayoutBasePages.css';
 import BtnBasic from '../buttons/BtnBasic';
 import IconSearch from '../icons/IconSearch';
 
 const FilterSchema = Yup.object().shape({
   minPrice: Yup.number().min(
     0,
-    'Minimum price must be greater than or equal to 0',
+    'Minimum price must be greater than or equal to 0'
   ),
   maxPrice: Yup.number().min(
     0,
-    'Maximum price must be greater than or equal to 0',
+    'Maximum price must be greater than or equal to 0'
   ),
   town: Yup.string(),
   type: Yup.string(),
@@ -74,14 +73,14 @@ function FiltersLayoutBasePages({
         handleBlur,
       }) => (
         <Form className="">
-          <div className="filter-field">
+          <div className="filter-field BSLabelSize">
             <label htmlFor="minPrice" className="pairs_label_full">
               Min Price
             </label>
             <Field
               type="number"
               name="minPrice"
-              className="pairs_input_full w-24"
+              className="pairs_input_full w-24 inputSize1"
               onChange={(e) => handlePriceChange(e, setFieldValue)} // #ProhibitZeroValues
               onBlur={(e) => {
                 handlePriceBlur(e, setFieldValue);
@@ -91,12 +90,12 @@ function FiltersLayoutBasePages({
             <ErrorMessage name="minPrice" component="div" />
           </div>
 
-          <div className="filter-field">
+          <div className="filter-field BSLabelSize">
             <label htmlFor="maxPrice">Max Price</label>
             <Field
               type="number"
               name="maxPrice"
-              className="pairs_input_full w-24"
+              className="pairs_input_full w-24 inputSize1"
               onChange={(e) => handlePriceChange(e, setFieldValue)} // #ProhibitZeroValues
               onBlur={(e) => {
                 handlePriceBlur(e, setFieldValue);
@@ -106,9 +105,13 @@ function FiltersLayoutBasePages({
             <ErrorMessage name="maxPrice" component="div" />
           </div>
 
-          <div className="filter-field">
+          <div className="filter-field BSLabelSize">
             <label htmlFor="town">Town</label>
-            <Field as="select" name="town" className="pairs_input_full w-full">
+            <Field
+              as="select"
+              name="town"
+              className="pairs_input_full w-full inputSize1"
+            >
               {/* Bring all TownsOptionsListFetch.jsx file */}
               <option value="" label="Select town" />
               {/* #townsOptionsInput */}
@@ -117,9 +120,13 @@ function FiltersLayoutBasePages({
             <ErrorMessage name="town" component="div" />
           </div>
 
-          <div className="filter-field">
+          <div className="filter-field BSLabelSize">
             <label htmlFor="type">Type</label>
-            <Field as="select" name="type" className="pairs_input_full w-full">
+            <Field
+              as="select"
+              name="type"
+              className="pairs_input_full w-full inputSize1"
+            >
               <option value="" label="Select type" />
               <option value="sell" label="Sell" />
               <option value="buy" label="Buy" />
@@ -128,12 +135,12 @@ function FiltersLayoutBasePages({
             <ErrorMessage name="type" component="div" />
           </div>
 
-          <div className="filter-field">
+          <div className="filter-field BSLabelSize">
             <label htmlFor="seller">Seller</label>
             <Field
               as="select"
               name="seller"
-              className="pairs_input_full w-full mb-4"
+              className="pairs_input_full w-full mb-4 inputSize1"
             >
               {/* Bring all UsersOptionsListFetch.jsx file */}
               <option value="" label="Select user" />

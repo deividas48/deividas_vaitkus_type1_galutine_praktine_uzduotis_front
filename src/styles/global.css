@@ -39,3 +39,8 @@ body {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+.inputSize1 {
+  height: 2.7rem;
+  padding: 0.5rem;
+}
