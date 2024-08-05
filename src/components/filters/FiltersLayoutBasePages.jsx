@@ -1,7 +1,9 @@
 // FiltersLayoutBasePages.jsx
 // #CreateFiltersLayoutBasePages
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import '../../styles/Forms.css';
 import BtnBasic from '../buttons/BtnBasic';
@@ -10,11 +12,11 @@ import IconSearch from '../icons/IconSearch';
 const FilterSchema = Yup.object().shape({
   minPrice: Yup.number().min(
     0,
-    'Minimum price must be greater than or equal to 0'
+    'Minimum price must be greater than or equal to 0',
   ),
   maxPrice: Yup.number().min(
     0,
-    'Maximum price must be greater than or equal to 0'
+    'Maximum price must be greater than or equal to 0',
   ),
   town: Yup.string(),
   type: Yup.string(),
@@ -39,6 +41,17 @@ function FiltersLayoutBasePages({
     }
   };
 
+  // <#ProhibitZeroValues>
+  const handlePriceChange = (e, setFieldValue) => {
+    const { name, value } = e.target;
+    if (parseFloat(value) < 0) {
+      setFieldValue(name, '');
+    } else {
+      setFieldValue(name, value);
+    }
+  };
+  // </#ProhibitZeroValues>
+
   return (
     <Formik
       initialValues={{
@@ -58,7 +71,6 @@ function FiltersLayoutBasePages({
       {({
         // isSubmitting,
         setFieldValue,
-        handleChange,
         handleBlur,
       }) => (
         <Form className="">
@@ -70,7 +82,7 @@ function FiltersLayoutBasePages({
               type="number"
               name="minPrice"
               className="pairs_input_full w-24"
-              onChange={handleChange}
+              onChange={(e) => handlePriceChange(e, setFieldValue)} // #ProhibitZeroValues
               onBlur={(e) => {
                 handlePriceBlur(e, setFieldValue);
                 handleBlur(e);
@@ -85,7 +97,7 @@ function FiltersLayoutBasePages({
               type="number"
               name="maxPrice"
               className="pairs_input_full w-24"
-              onChange={handleChange}
+              onChange={(e) => handlePriceChange(e, setFieldValue)} // #ProhibitZeroValues
               onBlur={(e) => {
                 handlePriceBlur(e, setFieldValue);
                 handleBlur(e);
