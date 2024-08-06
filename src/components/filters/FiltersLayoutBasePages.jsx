@@ -1,7 +1,9 @@
 // FiltersLayoutBasePages.jsx
 // #CreateFiltersLayoutBasePages
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import '../../styles/Forms.css';
 import '../../styles/FiltersLayoutBasePages.css';
@@ -11,11 +13,11 @@ import IconSearch from '../icons/IconSearch';
 const FilterSchema = Yup.object().shape({
   minPrice: Yup.number().min(
     0,
-    'Minimum price must be greater than or equal to 0'
+    'Minimum price must be greater than or equal to 0',
   ),
   maxPrice: Yup.number().min(
     0,
-    'Maximum price must be greater than or equal to 0'
+    'Maximum price must be greater than or equal to 0',
   ),
   town: Yup.string(),
   type: Yup.string(),
