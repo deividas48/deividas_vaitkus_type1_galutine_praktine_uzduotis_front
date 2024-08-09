@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import '../styles/Forms.css';
 import '../styles/PageRegister.css';
+import { useNavigate } from 'react-router-dom'; // +#afterRegSubmitToPreviosPage
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('• Name is required'),
@@ -15,6 +16,9 @@ const RegisterSchema = Yup.object().shape({
 });
 
 function PageRegister() {
+  // Initialize the navigate function
+  const navigate = useNavigate(); // +#afterRegSubmitToPreviosPage
+
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
@@ -22,6 +26,8 @@ function PageRegister() {
         values
       );
       console.log('User registered:', response.data);
+      // Redirect to the previous page
+      navigate(-1); // #afterRegSubmitToPreviosPage
     } catch (error) {
       console.error('Error registering user:', error);
     } finally {
