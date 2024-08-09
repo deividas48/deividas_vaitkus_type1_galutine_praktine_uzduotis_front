@@ -107,7 +107,7 @@ export default function PageAddListing() {
 
   return (
     // Add a container to center the form and provide padding
-    <div className="items-center min-h-screen bg-white mt-4 mb-4 p-4 rounded-lg">
+    <main className="items-center min-h-screen bg-white mt-4 mb-4 p-4 rounded-lg">
       <h1 className="titleOfForm ">Complete your listing</h1>
       {/* Create a form using Formik */}
       <form
@@ -325,6 +325,6 @@ export default function PageAddListing() {
         {/* Submit form button */}
         <Submit />
       </form>
-    </div>
+    </main>
   );
 }

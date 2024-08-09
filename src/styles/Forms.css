@@ -28,6 +28,19 @@
   overflow-wrap: break-word; /* Wrap the text if it's too long */
 }
 
+.pairs_label_full_register {
+  min-width: 37.5%;
+}
+
+.error_register {
+  margin-left: 37.5%;
+  margin-right: 37.5%;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  color: red;
+  font-size: 0.75rem;
+}
+
 /* Style for labels on the right side */
 .pairs_label_secoundHalf {
   text-align: right;
@@ -110,6 +123,10 @@
   margin-top: -1rem;
 }
 
+.input_register {
+  width: 20rem;
+}
+
 @media screen and (max-width: 768px) {
   /* Style for inputs that belong on lines that have only one or two inputs */
   .pairs,
@@ -160,5 +177,49 @@
   /* Eliminate strange property inheritance. Set for only one validation message */
   .addTop {
     margin-top: -1rem;
+  }
+
+  .pairs_label_full_register {
+    min-width: 60%;
+    margin-left: -10%;
+  }
+
+  .pairs {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pairs_label_full_register {
+    margin-left: 37.5%;
+    width: 25%;
+  }
+
+  .input_register {
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .pairs_label_full_register {
+    width: 100%;
+    min-width: 0rem;
+    max-width: 20rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .error_register {
+    margin-top: 0rem;
+    width: 100%;
+    max-width: 20rem;
+    margin-left: 0;
+    margin-right: 0;
+    /* display: block; */
+  }
+
+  .form_register {
+    align-items: center;
+
   }
 }
