@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../styles/Forms.css';
@@ -9,8 +11,18 @@ import { useNavigate } from 'react-router-dom'; // +#afterRegSubmitToPreviosPage
 import toast from 'react-hot-toast';
 
 const RegisterSchema = Yup.object().shape({
-  name: Yup.string().required('• Name is required'),
-  email: Yup.string().email('• Invalid email').required('• Email is required'),
+  name: Yup.string()
+    .min(3, '• Name must be at least 3 characters long')
+    .max(25, '• Name cannot exceed 25 characters')
+    .matches(/^[a-zA-Z\s]+$/, '• Name can only contain letters and spaces')
+    .required('• Name is required'),
+  email: Yup.string()
+    .email('• Invalid email')
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      '• Email must be a valid format',
+    )
+    .required('• Email is required'),
   password: Yup.string()
     .required('• Password is required')
     .min(8, '• Password must be at least 8 characters long')
@@ -19,7 +31,7 @@ const RegisterSchema = Yup.object().shape({
     .matches(/\d/, '• Password must contain at least one number')
     .matches(
       /[@$!%*?&#]/,
-      '• Password must contain at least one special character'
+      '• Password must contain at least one special character',
     ),
   password_confirmation: Yup.string()
     .oneOf([Yup.ref('password'), null], '• Passwords must match')
@@ -34,7 +46,7 @@ function PageRegister() {
     try {
       const response = await axios.post(
         'http://localhost:3000/api/auth/register',
-        values
+        values,
       );
       console.log('User registered:', response.data);
       // Redirect to the previous page
