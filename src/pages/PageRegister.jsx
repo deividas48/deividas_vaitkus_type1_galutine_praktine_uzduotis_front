@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -5,11 +6,21 @@ import axios from 'axios';
 import '../styles/Forms.css';
 import '../styles/PageRegister.css';
 import { useNavigate } from 'react-router-dom'; // +#afterRegSubmitToPreviosPage
+import toast from 'react-hot-toast';
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('• Name is required'),
   email: Yup.string().email('• Invalid email').required('• Email is required'),
-  password: Yup.string().required('• Password is required'),
+  password: Yup.string()
+    .required('• Password is required')
+    .min(8, '• Password must be at least 8 characters long')
+    .matches(/[A-Z]/, '• Password must contain at least one uppercase letter')
+    .matches(/[a-z]/, '• Password must contain at least one lowercase letter')
+    .matches(/\d/, '• Password must contain at least one number')
+    .matches(
+      /[@$!%*?&#]/,
+      '• Password must contain at least one special character'
+    ),
   password_confirmation: Yup.string()
     .oneOf([Yup.ref('password'), null], '• Passwords must match')
     .required('• Password confirmation is required'),
@@ -28,6 +39,9 @@ function PageRegister() {
       console.log('User registered:', response.data);
       // Redirect to the previous page
       navigate(-1); // #afterRegSubmitToPreviosPage
+      toast.success('Your account has been successfully created', {
+        duration: 8000,
+      });
     } catch (error) {
       console.error('Error registering user:', error);
     } finally {
