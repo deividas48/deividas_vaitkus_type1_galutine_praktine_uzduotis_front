@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../../styles/Header.css';
 import cl from 'classnames';
 import AddBtn from '../buttons/AddBtn';
 import TopBar from './TopBar';
+import { AuthContext } from '../context/authContext';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
-  // Navigacijos(meniu) elementai
-  const mySnippet = (
+  // Navigation items
+  const authLinks = (
+    <>
+      <li className="nav-list">
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li className="nav-list">
+        <NavLink to="/towns">Towns</NavLink>
+      </li>
+      <li className="nav-list">
+        <NavLink to="/skelbimas/sukurti">Add Listing</NavLink>
+      </li>
+      <li className="nav-list">
+        <button type="button" onClick={logout}>
+          Logout
+        </button>
+      </li>
+    </>
+  );
+
+  const guestLinks = (
     <>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
@@ -51,7 +72,7 @@ export default function Header() {
           <nav>
             <div className="uždarytas-meniu items-center justify-between w-full hidden md:flex md:w-auto relative">
               <ul className="flex pl-2 flex-row nav-meniu-didelis">
-                {mySnippet}
+                {isAuthenticated ? authLinks : guestLinks}
               </ul>
             </div>
             {/* Navigacija. Kai ekranas yra mažas ir yra paspaustas mygtukas */}
@@ -64,7 +85,7 @@ export default function Header() {
                       'flex-row': !isMenuOpen, // This will be `flex-row` when the menu is open
                     })}
                   >
-                    {mySnippet}
+                    {isAuthenticated ? authLinks : guestLinks}
                   </ul>
                 </div>
               </div>
