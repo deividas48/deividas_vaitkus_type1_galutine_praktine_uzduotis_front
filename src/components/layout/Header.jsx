@@ -6,6 +6,7 @@ import AddBtn from '../buttons/AddBtn';
 import TopBar from './TopBar';
 import { AuthContext } from '../context/authContext';
 import BtnLogIn from '../buttons/BtnLogIn';
+import BtnPersonalList from '../buttons/BtnPersonalList';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,6 +59,7 @@ export default function Header() {
   const authBtnLogIn = (
     <li className="mr-4 h-full flex">
       {/* Mygtukas vedantis į asmeninių skelbimų puslapį */}
+      <BtnPersonalList className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
   );
 
