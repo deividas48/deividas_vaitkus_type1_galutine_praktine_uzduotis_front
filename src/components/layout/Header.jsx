@@ -5,6 +5,7 @@ import cl from 'classnames';
 import AddBtn from '../buttons/AddBtn';
 import TopBar from './TopBar';
 import { AuthContext } from '../context/authContext';
+import BtnLogIn from '../buttons/BtnLogIn';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +46,19 @@ export default function Header() {
         <NavLink to="/register">Register</NavLink>
       </li>
     </>
+  );
+
+  const guestBtnLogIn = (
+    <li className="mr-4 h-full flex">
+      {/* Mygtukas vedantis į prisijungimo puslapį */}
+      <BtnLogIn className="items-center justify-center self-center place-items-center ml-auto text-center" />
+    </li>
+  );
+
+  const authBtnLogIn = (
+    <li className="mr-4 h-full flex">
+      {/* Mygtukas vedantis į asmeninių skelbimų puslapį */}
+    </li>
   );
 
   return (
@@ -94,10 +108,13 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="mr-4">
-            {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
-            <AddBtn />
-          </div>
+          <ul className="flex">
+            {isAuthenticated ? authBtnLogIn : guestBtnLogIn}
+            <li className="mr-4">
+              {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
+              <AddBtn className="mr-4" />
+            </li>
+          </ul>
 
           {/* Navigacijos (meniu) paleidimo mygtukas */}
           <div className="md:hidden mr-4">

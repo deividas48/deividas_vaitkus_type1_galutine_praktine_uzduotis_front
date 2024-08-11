@@ -36,7 +36,7 @@ export default function AddBtn() {
           <div className="header-įdėti-button2">{btnSvg}</div>
         </span>
       ) : (
-        <span className="inline-grid rounded-full bg-custom-color-secondary text-xl font-black">
+        <span className="inline-grid rounded-full duration-500 ease-out bg-custom-color-secondary text-xl font-black">
           <div className="header-įdėti-button2">{btnSvg}</div>
         </span>
       )}
