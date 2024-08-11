@@ -63,7 +63,7 @@ function PageRegister() {
 
   return (
     <main className="items-center min-h-screen bg-white mt-4 mb-4 p-4 rounded-lg">
-      <h1 className="titleOfForm">Register</h1>
+      <h2 className="titleOfForm">Register</h2>
       <Formik
         initialValues={{
           name: '',
