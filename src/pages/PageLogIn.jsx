@@ -60,9 +60,17 @@ export default function PageLogIn() {
             className="pairs_input_full input_register"
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && (
+          <p style={{ color: 'red' }}>
+            <div className="pairs mb-4">
+              <div className="pairs_label_full pairs_label_full_register" />
+              <div className="pairs_input_full input_register fakeInputRemoveStyle justify-start">
+                {error}
+              </div>
+            </div>
+          </p>
+        )}
         <div className="pairs mb-4">
-          {/* <div className=" registerButtonDivSize"> */}
           <div className="pairs_label_full pairs_label_full_register" />
           <div className="pairs_input_full input_register fakeInputRemoveStyle justify-end">
             <button type="submit">
@@ -71,7 +79,6 @@ export default function PageLogIn() {
               </div>
             </button>
           </div>
-          {/* </div> */}
         </div>
       </form>
     </main>
