@@ -18,7 +18,7 @@ export default function PageLogIn() {
     try {
       const response = await axios.post(
         'http://localhost:3000/api/auth/login',
-        { email, password } // { email, password } is used to send (to back-end) these variables
+        { email, password }, // { email, password } is used to send (to back-end) these variables
         // as part of the HTTP POST request's body when trying to log
         // in = { email: email, password: password }
       );
