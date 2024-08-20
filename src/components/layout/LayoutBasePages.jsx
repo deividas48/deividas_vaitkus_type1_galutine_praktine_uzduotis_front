@@ -1,27 +1,49 @@
 /* eslint-disable max-len */
-// LayoutBasePages.jsx
+// src/components/layout/LayoutBasePages.jsx
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/LayoutBasePages.css';
+import PaginatedListingsFetch from '../listings/PaginatedListingsFetch';
 
 // #create_sort - create reusable layout component
 // - Props are taken from PageHome.jsx and PageListingsCategory.jsx
 function LayoutBasePages({
   HeroComponent,
-  listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
-  listingsFetchComponentProps, // #CreateFiltersLayoutBasePages
+  // listingsFetchComponent: ListingsFetchComponent, // Component for fetching and displaying listings
+  // listingsFetchComponentProps, // #CreateFiltersLayoutBasePages
   welcome,
   ifcategory,
   aside1,
   aside2,
   ifCategoryPageDisplayed,
+  // #basePagination
+  listingsFetchComponentProps, // Props needed for fetching data
 }) {
+  // Log props received by LayoutBasePages
+  // console.log('Props received by LayoutBasePages:', {
+  //   HeroComponent,
+  //   welcome,
+  //   ifcategory,
+  //   aside1,
+  //   aside2,
+  //   ifCategoryPageDisplayed,
+  //   listingsFetchComponentProps,
+  // });
+
   // 1_#create_sort. Create the state to store the sort option.
   // 'price-asc' - sort by price ascending.
-  const [sortOption, setSortOption] = useState('price-asc');
+  const [sortOption, setSortOption] = useState('date-desc');
   // 1_#category_TitleToIdentifyCategory.
   const [categoryName, setCategoryName] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  // #basePagination
+  const handlePageChange = (page) => {
+    setCurrentPage(page); // Update the current page
+    // Automatically trigger the listing fetch with the new page
+  };
 
   return (
     <div>
@@ -73,6 +95,8 @@ function LayoutBasePages({
             {/* 2.2_#create_sort. Add the options for sorting. */}
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
+            <option value="date-asc">Date: Oldest First</option>
+            <option value="date-desc">Date: Newest First</option>
           </select>
         </div>
       </section>
@@ -98,16 +122,36 @@ function LayoutBasePages({
           </div>
         </aside>
 
+        {/* Main Listings Section */}
         <main className="md:w-3/4 my-4 md:my-0 md:p-4 md:pt-0">
-          {/* All the listings are displayed here */}
-          {/* Send 'sortOption' */}
-          {/* ListingsFetchComponent = ListingsFetchWrapper.jsx */}
-          <ListingsFetchComponent
-            sortOption={sortOption} // Send the set state to PageListingsCategory.jsx
-            setCategoryName={setCategoryName} // 2_#category_TitleToIdentifyCategory. Send the set state to PageListingsCategory.jsx
+          {/* // +#basePagination */}
+          <PaginatedListingsFetch
+            currentPage={currentPage}
             baseFilters={listingsFetchComponentProps.baseFilters} // #CreateFiltersLayoutBasePages
-            categoryId={listingsFetchComponentProps.categoryId} // Pass categoryId explicitly
+            sortOption={sortOption}
+            categoryId={listingsFetchComponentProps.categoryId}
+            setTotalPages={setTotalPages}
+            setCategoryName={setCategoryName} // Function to set the category name
           />
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center mt-4">
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                type="button"
+                onClick={() => handlePageChange(index + 1)}
+                className={`px-3 py-1 mx-1 border ${
+                  index + 1 === currentPage
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-100 text-gray-800'
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </main>
       </section>
     </div>

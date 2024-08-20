@@ -1,3 +1,5 @@
+// src/components/listings/ListingsList.jsx
+
 import ListingForLi from './ListingForLi';
 
 // #create_listings_list. Component to render a list of listings

@@ -1,11 +1,9 @@
 /* eslint-disable no-console */
-// PageHome.jsx
+// src/pages/PageHome.jsx
 
 import React, { useState } from 'react';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
 import Hero from '../components/Hero';
-import ListingsFetchWrapper from '../components/listings/ListingsFetchWrapper';
-// import ListingsListFetch from '../components/listings/ListingsListFetch';
 import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside_category
 import FiltersLayoutBasePages from '../components/filters/FiltersLayoutBasePages'; // #CreateFiltersLayoutBasePages
 import TownsOptionsListFetch from '../components/towns/TownsOptionsListFetch'; // #townsOptionsInput
@@ -24,7 +22,7 @@ function PageHome() {
   return (
     <LayoutBasePages
       HeroComponent={Hero}
-      listingsFetchComponent={ListingsFetchWrapper}
+      // listingsFetchComponent={ListingsFetchWrapper}
       listingsFetchComponentProps={{ baseFilters }} // #CreateFiltersLayoutBasePages
       welcome="Welcome to EveryShop Home Page"
       /* #PassToAside_category */
