@@ -1,7 +1,7 @@
 // src/components/listings/ListingsFetchWrapper.jsx
 
 import React from 'react';
-import ListingsListFetch from './ListingsListFetch';
+import ListingsListFetch from './delete2ListingsListFetch';
 
 // Define the nested component outside the render method
 // function helps to connect LayoutBasePages.jsx with ListingsListFetch through PageHome.jsx
