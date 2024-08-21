@@ -90,6 +90,7 @@ function PaginatedListingsFetch({
 
   // console.log('Final listings2:', listing);
 
+  // Add useEffect to fetch and set category name based on categoryId.
   useEffect(() => {
     if (categoryId) {
       axios
