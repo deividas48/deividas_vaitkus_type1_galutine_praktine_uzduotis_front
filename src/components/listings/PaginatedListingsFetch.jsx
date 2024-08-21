@@ -1,6 +1,7 @@
 // src/components/listings/PaginatedListingsFetch.jsx
 
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ListingsList from './ListingsList';
 // import { useNavigate } from 'react-router-dom';
 
@@ -21,6 +22,10 @@ function PaginatedListingsFetch({
   // });
 
   const [listing, setListing] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams(); //  when you
+  // call setSearchParams(params), it updates the URL so to use searchParams is't necessary
+  // const navigate = useNavigate(); // Used for programmatic navigation
 
   useEffect(() => {
     // Log the current values of the state/props before the API call
@@ -28,15 +33,20 @@ function PaginatedListingsFetch({
     // console.log('Filters:', baseFilters);
     // console.log('Sort Option:', sortOption);
 
-    // Construct query parameters based on the filters, sort, and pagination
-    const params = new URLSearchParams({
+    // Create an object to hold query parameters
+    const params = {
       page: currentPage,
       sort: sortOption,
-      ...(categoryId && { category: categoryId }), // Only add category if it's defined
-      ...baseFilters, // Spread in baseFilters to add them to the URL
-    });
+      ...(categoryId && { category: categoryId }),
+      ...baseFilters,
+    };
 
-    const apiUrl = `/api/listings?${params.toString()}`;
+    // Set URL params
+    setSearchParams(params); // The call will convert the object to a query string and update the
+    // URL like this: http://your-site-url.com/listings?page=2&sort=price-asc&category=3&minPrice=1000&maxPrice=5000&town=New%20York&type=sell
+
+    // Construct query string for the API request
+    const apiUrl = `/api/listings?${new URLSearchParams(params).toString()}`;
     // console.log('Final API URL:', apiUrl); // Log the final URL
 
     // Fetch listings whenever any dependency changes
@@ -46,6 +56,7 @@ function PaginatedListingsFetch({
         const response = await fetch(apiUrl);
         if (!response.ok) {
           // Handle cases where the response is not 2xx
+          // eslint-disable-next-line no-console
           console.error('API Request failed:', response.statusText);
         }
         const data = await response.json();
@@ -58,12 +69,20 @@ function PaginatedListingsFetch({
         // console.log('Final listings:', listing);
         setTotalPages(data.totalPages); // Ensure totalPages is being set
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error fetching listings:', error); // Log any errors
       }
     };
 
     fetchListings(); // Trigger the fetch when any dependencies change
-  }, [currentPage, baseFilters, sortOption, categoryId, setTotalPages]); // Dependencies
+  }, [
+    currentPage,
+    baseFilters,
+    sortOption,
+    categoryId,
+    setTotalPages,
+    setSearchParams,
+  ]); // Dependencies
 
   // console.log('Final listings2:', listing);
 
