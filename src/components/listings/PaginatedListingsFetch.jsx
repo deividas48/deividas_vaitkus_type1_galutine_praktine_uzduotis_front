@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 import ListingsList from './ListingsList';
 // import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ function PaginatedListingsFetch({
   sortOption, // Passed from LayoutBasePages.jsx
   categoryId, // Passed from LayoutBasePages.jsx
   setTotalPages, // Passed from LayoutBasePages.jsx to control pagination
+  setCategoryName, // Passed from LayoutBasePages.jsx
 }) {
   // // Log props received by PaginatedListingsFetch
   // console.log('Props in PaginatedListingsFetch:', {
@@ -61,13 +63,15 @@ function PaginatedListingsFetch({
         }
         const data = await response.json();
 
-        // console.log('API Response Data:', data); // Log the fetched data
+        console.log('API Response Data:', data); // Log the fetched data
         // console.log('API Response Data2:', data.listings); // Log the fetched data
 
         // Update state with the fetched listings and total pages
         setListing(data.listings);
         // console.log('Final listings:', listing);
         setTotalPages(data.totalPages); // Ensure totalPages is being set
+        // setCategoryName(data.listings[0].category_name);
+        // console.log('category_name', data.listings[0].category_name);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Error fetching listings:', error); // Log any errors
@@ -85,6 +89,20 @@ function PaginatedListingsFetch({
   ]); // Dependencies
 
   // console.log('Final listings2:', listing);
+
+  useEffect(() => {
+    if (categoryId) {
+      axios
+        .get(`http://localhost:3000/api/categories/${categoryId}`)
+        .then((response) => {
+          setCategoryName(response.data.name); // #category_TitleToIdentifyCategory.
+          // 'response.data.name' - sql table category variable name.
+        })
+        .catch((error) => {
+          console.warn('Error fetching category name:', error);
+        });
+    }
+  }, [categoryId, setCategoryName]);
 
   return (
     <div>
