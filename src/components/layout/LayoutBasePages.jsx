@@ -142,7 +142,7 @@ function LayoutBasePages({
                 key={index}
                 type="button"
                 onClick={() => handlePageChange(index + 1)}
-                className={`px-3 py-1 mx-1 rounded ${
+                className={`px-3 py-1 mx-1 rounded min-h-10 min-w-10 ${
                   index + 1 === currentPage
                     ? 'bg-custom-primary-color text-white'
                     : 'bg-white text-custom-gray-color'
