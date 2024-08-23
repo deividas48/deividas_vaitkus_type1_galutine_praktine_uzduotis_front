@@ -15,6 +15,7 @@ import PageSingleListing from './pages/PageSingleListing';
 import PageError from './pages/PageError';
 import { AuthProvider } from './components/context/authContext'; // #loginFoundation
 import PrivateRoute from './components/routing/PrivateRoute';
+import PageSearchListings from './pages/PageSearchListings';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PageHome />} />
           <Route path="/categories/:id" element={<PageListingsCategory />} />
+          <Route path="/search" element={<PageSearchListings />} />
           <Route path="/towns" element={<PageTowns />} />
           <Route path="/town/:id" element={<PageTown />} />
           <Route path="/login" element={<PageLogIn />} />
@@ -33,11 +35,11 @@ function App() {
           <Route path="/skelbimas/:id" element={<PageSingleListing />} />
           <Route
             path="/skelbimas/sukurti"
-            element={(
+            element={
               <PrivateRoute>
                 <PageAddListing />
               </PrivateRoute>
-            )}
+            }
           />
           <Route path="/user/:id" element={<PageUser />} />
           <Route path="*" element={<PageError />} />

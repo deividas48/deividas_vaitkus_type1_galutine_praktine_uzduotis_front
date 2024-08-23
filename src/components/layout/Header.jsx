@@ -1,3 +1,5 @@
+// src/components/layout/Header.jsx
+
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../../styles/Header.css';
@@ -7,14 +9,25 @@ import TopBar from './TopBar';
 import { AuthContext } from '../context/authContext';
 import BtnLogIn from '../buttons/BtnLogIn';
 import BtnPersonalList from '../buttons/BtnPersonalList';
+import SearchInput from '../search/SearchInput';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useContext(AuthContext);
 
+  // Define the onSearch function to handle search queries
+  const handleSearch = (query) => {
+    console.log('Search query in Header:', query);
+    // You can implement navigation or search logic here
+  };
+
   // Navigation items
   const authLinks = (
     <>
+      <li className="nav-list">
+        {/* Pass onSearch prop */}
+        <SearchInput onSearch={handleSearch} />
+      </li>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
       </li>
@@ -34,6 +47,10 @@ export default function Header() {
 
   const guestLinks = (
     <>
+      <li className="nav-list">
+        {/* Pass onSearch prop */}
+        <SearchInput onSearch={handleSearch} />
+      </li>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
       </li>
