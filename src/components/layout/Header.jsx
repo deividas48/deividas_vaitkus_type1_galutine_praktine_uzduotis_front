@@ -10,23 +10,19 @@ import { AuthContext } from '../context/authContext';
 import BtnLogIn from '../buttons/BtnLogIn';
 import BtnPersonalList from '../buttons/BtnPersonalList';
 import SearchInput from '../search/SearchInput';
+import { useSearch } from '../context/SearchContext'; // Import the search context
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useContext(AuthContext);
-
-  // Define the onSearch function to handle search queries
-  const handleSearch = (query) => {
-    console.log('Search query in Header:', query);
-    // You can implement navigation or search logic here
-  };
+  const { setSearchTerm } = useSearch(); // Access the setSearchTerm function from the context
 
   // Navigation items
   const authLinks = (
     <>
       <li className="nav-list">
-        {/* Pass onSearch prop */}
-        <SearchInput onSearch={handleSearch} />
+        {/* Use the setSearchTerm function in SearchInput */}
+        <SearchInput onSearch={setSearchTerm} />
       </li>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
@@ -48,8 +44,8 @@ export default function Header() {
   const guestLinks = (
     <>
       <li className="nav-list">
-        {/* Pass onSearch prop */}
-        <SearchInput onSearch={handleSearch} />
+        {/* Use the setSearchTerm function in SearchInput */}
+        <SearchInput onSearch={setSearchTerm} />
       </li>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
