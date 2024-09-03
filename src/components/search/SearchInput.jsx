@@ -1,14 +1,35 @@
 // src/components/search/SearchInput.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 export default function SearchInput({ onSearch }) {
   const [query, setQuery] = useState('');
+  const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Synchronize the input value with the context's search term
+  // useEffect(() => {
+  //   setQuery(searchTerm);
+  //   // console.log('query1===', query);
+  // }, [searchTerm]);
+
+  // Clear input when navigating to the home page
+  useEffect(() => {
+    if (!location.search) {
+      setQuery('');
+      console.log('query2===', query);
+      // console.log('location.pathname+++===', location.search);
+    }
+  }, [location]);
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page refresh
     if (query.trim()) {
+      // setSearchTerm(query.trim()); // Update the search term in the context
+      setSearchParams({ search: query.trim() }); // Update the URL with the search term
       onSearch(query.trim()); // Trigger search with the query
     }
   };

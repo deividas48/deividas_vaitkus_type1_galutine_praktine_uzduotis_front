@@ -1,12 +1,11 @@
 // src/components/listings/PaginatedListingsFetch.jsx
 
 import React, { useEffect, useState, useRef } from 'react';
-import { useSearchParams, useLocation, useNavigate } from 'react-router-dom'; // #URLmaker
+import { useSearchParams, useLocation } from 'react-router-dom'; // #URLmaker
 import axios from 'axios';
 import ListingsList from './ListingsList';
 // import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../context/SearchContext'; // Import the search context
-import { HOME_PAGE_PATH } from '../../config/routes';
 
 // Define the hook to clear the search term
 // Initialize searchTerm from the URL if it's present
@@ -18,7 +17,7 @@ function useInitializeSearchTerm() {
   useEffect(() => {
     const newSearchTerm = searchParams.get('search');
     if (newSearchTerm && initialSearchTerm.current !== newSearchTerm) {
-      setSearchTerm(newSearchTerm);
+      setSearchTerm(newSearchTerm || '');
       initialSearchTerm.current = newSearchTerm;
     }
   }, [searchParams, setSearchTerm]);
@@ -44,18 +43,11 @@ function PaginatedListingsFetch({
   // Initialize searchTerm when the component mounts
   useInitializeSearchTerm();
 
-  const navigate = useNavigate(); // Used for programmatic navigation
   const location = useLocation();
 
   useEffect(() => {
     // To quit base search query when home page is clicked
-    if (location.pathname === HOME_PAGE_PATH && !searchParams.has('search')) {
-      // console.log('location.pathname===', location.pathname);
-      // console.log('HOME_PAGE_PATH===', location.pathname);
-      // console.log(
-      // 'location.pathname === HOME_PAGE_PATH===',
-      // location.pathname === HOME_PAGE_PATH
-      // );
+    if (!searchParams.has('search')) {
       setSearchTerm(''); // Reset search term when navigating to the home page
     }
   }, [location, searchParams, setSearchTerm]);
@@ -76,22 +68,13 @@ function PaginatedListingsFetch({
 
       // Convert the params object to a URLSearchParams instance
       const newSearchParams = new URLSearchParams(params);
-      // console.log('newSearchParams', newSearchParams);
 
       // Only replace the URL if the search parameters have not changed
       if (newSearchParams.toString() !== previousParamsRef.current) {
-        setSearchParams(params); // Update the URL with new query params
+        setSearchParams(params, { replace: true }); // +++Update the URL with new query params
         // Store the current URL parameters in the previousParamsRef
         previousParamsRef.current = newSearchParams.toString();
       }
-
-      // if (newSearchParams.toString() !== searchParams.toString()) {
-      //   console.log('newSearchParams.toString()===', newSearchParams.toString());
-      //   console.log('searchParams.toString()===', searchParams.toString());
-      //   navigate(`?${newSearchParams.toString()}`, { replace: false });
-      // } else {
-      //   navigate(`?${newSearchParams.toString()}`, { replace: true });
-      // }
 
       try {
         // Make the API request with the constructed URL
@@ -122,7 +105,6 @@ function PaginatedListingsFetch({
     categoryId,
     searchTerm, // Add searchTerm as a dependency to trigger search
     setTotalPages,
-    // setSearchParams, // #URLmaker
   ]); // Dependencies
 
   // Add useEffect to fetch and set category name based on categoryId - just a side fetch.
@@ -145,7 +127,6 @@ function PaginatedListingsFetch({
       {loading && <p>Loading...</p>}
 
       {/* Listings Display */}
-      {/* <div>{listing.skelbimai_id}</div> */}
       {listing.length > 0 ? (
         <ListingsList list={listing} />
       ) : (
