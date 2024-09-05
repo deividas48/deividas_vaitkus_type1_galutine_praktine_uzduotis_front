@@ -1,9 +1,9 @@
 import '../../styles/btnHover.css';
 
 export default function BtnBasic({
-  BtnBasicText,
-  additionalClasses = '',
-  BtnBasicIcon,
+  BtnBasicText, // From src/components/filters/FiltersLayoutBasePages.jsx
+  additionalClasses = '', // From src/components/filters/FiltersLayoutBasePages.jsx
+  BtnBasicIcon, // From src/components/filters/FiltersLayoutBasePages.jsx
 }) {
   return (
     <button

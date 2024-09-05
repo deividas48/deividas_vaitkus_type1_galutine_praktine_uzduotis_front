@@ -79,7 +79,7 @@ function PaginatedListingsFetch({
       try {
         // Make the API request with the constructed URL
         const response = await fetch(
-          `/api/listings?${newSearchParams.toString()}`
+          `/api/listings?${newSearchParams.toString()}`,
         );
         if (!response.ok) {
           throw new Error('API Request failed');

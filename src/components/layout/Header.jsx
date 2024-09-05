@@ -21,10 +21,6 @@ export default function Header() {
   const authLinks = (
     <>
       <li className="nav-list">
-        {/* Use the setSearchTerm function in SearchInput */}
-        <SearchInput onSearch={setSearchTerm} />
-      </li>
-      <li className="nav-list">
         <NavLink to="/">Home</NavLink>
       </li>
       <li className="nav-list">
@@ -43,10 +39,6 @@ export default function Header() {
 
   const guestLinks = (
     <>
-      <li className="nav-list">
-        {/* Use the setSearchTerm function in SearchInput */}
-        <SearchInput onSearch={setSearchTerm} />
-      </li>
       <li className="nav-list">
         <NavLink to="/">Home</NavLink>
       </li>
@@ -96,9 +88,13 @@ export default function Header() {
               />
             </Link>
           </h1>
+          <div className="flex-grow mx-4">
+            {/* Use the setSearchTerm function in SearchInput */}
+            <SearchInput onSearch={setSearchTerm} />
+          </div>
           {/* Navigacija */}
           {/* Navigacija. Kai ekranas didelis */}
-          <nav>
+          <nav className="flex items-center justify-center">
             <div className="uždarytas-meniu items-center justify-between w-full hidden md:flex md:w-auto relative">
               <ul className="flex pl-2 flex-row nav-meniu-didelis">
                 {isAuthenticated ? authLinks : guestLinks}

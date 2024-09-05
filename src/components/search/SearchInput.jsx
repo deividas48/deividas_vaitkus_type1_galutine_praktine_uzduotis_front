@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { HOME_PAGE_PATH, CATEGORIES_PAGE_PATH } from '../../config/routes';
+import '../../styles/SearchInput.css';
+import IconSearch from '../icons/IconSearch';
 
 export default function SearchInput({ onSearch }) {
   const [query, setQuery] = useState('');
@@ -34,23 +37,54 @@ export default function SearchInput({ onSearch }) {
     }
   };
 
+  const hideInp = () => {
+    const searchInputEl = document.getElementById('searchForm');
+
+    // Only show the search input if on the home page or categories page
+    if (
+      location.pathname === HOME_PAGE_PATH ||
+      location.pathname.startsWith(CATEGORIES_PAGE_PATH)
+    ) {
+      searchInputEl.style.display = 'block'; // Show the search input
+    } else {
+      searchInputEl.style.display = 'none'; // Hide the search input
+    }
+  };
+
+  // Call hideInp when the location changes
+  useEffect(() => {
+    hideInp();
+  }, [location]); // Depend on the location object
+
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
-      <label htmlFor="search" className="sr-only">
-        Search Listings
-      </label>
-      <input
-        type="text"
-        id="search"
-        className="border border-gray-300 rounded-md p-2 w-full"
-        placeholder="Search listings..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        aria-label="Search Listings"
-      />
-      <button type="submit" className="mt-2 bg-blue-500 text-white p-2 rounded">
-        Search
-      </button>
+    <form
+      id="searchForm"
+      onSubmit={handleSubmit}
+      className="border border-gray-300 w-full rounded-full h-10 flex items-center justify-center"
+    >
+      <div className="pl-2 ml-3 h-full flex items-center w-full justify-center py-1 pr-4">
+        <label htmlFor="search" className="sr-only h-full">
+          Search Listings
+        </label>
+        <input
+          type="text"
+          id="search"
+          className="h-full border-none outline-none bg-transparent text-black mt-0 pt-0 w-full"
+          placeholder="Search listings..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          aria-label="Search Listings"
+        />
+        <button
+          type="submit"
+          className="ml-4 bg-custom-primary-color text-white rounded-full h-full hover:bg-custom-color-secondary"
+          aria-label="Search Listings" // This provides an accessible label for screen readers
+        >
+          <div className="mr-2 ml-4">
+            <IconSearch />
+          </div>
+        </button>
+      </div>
     </form>
   );
 }

@@ -1,3 +1,5 @@
+// src/components/filters/FiltersLayoutBasePages.jsx
+
 // FiltersLayoutBasePages.jsx
 // #CreateFiltersLayoutBasePages
 
