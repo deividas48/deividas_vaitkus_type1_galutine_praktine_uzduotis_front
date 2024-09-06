@@ -42,8 +42,8 @@ export default function SearchInput({ onSearch }) {
 
     // Only show the search input if on the home page or categories page
     if (
-      location.pathname === HOME_PAGE_PATH ||
-      location.pathname.startsWith(CATEGORIES_PAGE_PATH)
+      location.pathname === HOME_PAGE_PATH
+      || location.pathname.startsWith(CATEGORIES_PAGE_PATH)
     ) {
       searchInputEl.style.display = 'block'; // Show the search input
     } else {
@@ -60,7 +60,7 @@ export default function SearchInput({ onSearch }) {
     <form
       id="searchForm"
       onSubmit={handleSubmit}
-      className="border border-gray-300 w-full rounded-full h-10 flex items-center justify-center bg-red-200"
+      className="border border-gray-300 w-full rounded-full h-10 flex items-center justify-center"
     >
       <div className="sm:pl-2 ml-3 h-full flex items-center w-full justify-center py-1 pr-4">
         <label htmlFor="search" className="sr-only h-full">
