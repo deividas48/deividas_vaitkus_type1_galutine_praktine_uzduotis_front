@@ -55,14 +55,14 @@ export default function Header() {
   );
 
   const guestBtnLogIn = (
-    <li className="mr-4 h-full flex">
+    <li className="mr-4 h-full flex hidden md:block">
       {/* Mygtukas vedantis į prisijungimo puslapį */}
       <BtnLogIn className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
   );
 
   const authBtnLogIn = (
-    <li className="mr-4 h-full flex">
+    <li className="mr-4 h-full flex hidden md:block">
       {/* Mygtukas vedantis į asmeninių skelbimų puslapį */}
       <BtnPersonalList className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
@@ -74,36 +74,37 @@ export default function Header() {
       <TopBar />
       <header
         className="bg-white container-workaround
-    header-apatinė-linija height-forSmoothness"
+    header-apatinė-linija height-forSmoothness flex items-center"
       >
-        <div className="container flex flex-wrap items-center justify-between mx-auto p-0">
+        <div className="container flex items-center justify-between mx-auto p-0">
           {/* Įmonės logo */}
-          <h1>
+          <h1 className="min">
             <Link to="/" className="logo-container">
               {/* Logo of company */}
               <img
                 src="/img/ShopLogo.png"
                 alt="EveryShop logo"
-                className="logoo ml-4"
+                className="logoo sm:ml-4 logoo-size-sm"
               />
             </Link>
           </h1>
-          <div className="flex-grow mx-4">
+          <div className="flex-grow md:mx-4">
             {/* Use the setSearchTerm function in SearchInput */}
             <SearchInput onSearch={setSearchTerm} />
           </div>
           {/* Navigacija */}
           {/* Navigacija. Kai ekranas didelis */}
           <nav className="flex items-center justify-center">
-            <div className="uždarytas-meniu items-center justify-between w-full hidden md:flex md:w-auto relative">
-              <ul className="flex pl-2 flex-row nav-meniu-didelis">
+            <div className="uždarytas-meniu items-center justify-between w-full hidden relative">
+              {/* Hidden meniu, because there is to much elements in the header */}
+              <ul className="flex pl-2 flex-row nav-meniu-didelis hidden">
                 {isAuthenticated ? authLinks : guestLinks}
               </ul>
             </div>
             {/* Navigacija. Kai ekranas yra mažas ir yra paspaustas mygtukas */}
             {isMenuOpen ? (
-              <div className="atidarytas-meniu absolute top-full left-0 md:hidden w-full z-10">
-                <div className="items-center justify-between w-full md:w-auto relative">
+              <div className="atidarytas-meniu absolute top-full left-0 w-full z-10">
+                <div className="items-center justify-between w-full relative">
                   <ul
                     className={cl('flex nav-meniu-mažas nav-meniu-mažas-ul', {
                       'flex-col': isMenuOpen, // This will be `flex-col` when the menu is not open
@@ -121,14 +122,15 @@ export default function Header() {
 
           <ul className="flex">
             {isAuthenticated ? authBtnLogIn : guestBtnLogIn}
-            <li className="mr-4">
+            {/* Add btn */}
+            <li className="mr-4 hidden md:block">
               {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
               <AddBtn className="mr-4" />
             </li>
           </ul>
 
           {/* Navigacijos (meniu) paleidimo mygtukas */}
-          <div className="md:hidden mr-4">
+          <div className="sm:mr-4 toggle-m-onlySm">
             <button // Button to toggle the menu
               type="button" // Specify the button type just for good practice
               onClick={() => setIsMenuOpen(!isMenuOpen)}

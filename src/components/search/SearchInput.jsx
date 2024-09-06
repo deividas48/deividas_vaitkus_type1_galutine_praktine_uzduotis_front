@@ -60,16 +60,16 @@ export default function SearchInput({ onSearch }) {
     <form
       id="searchForm"
       onSubmit={handleSubmit}
-      className="border border-gray-300 w-full rounded-full h-10 flex items-center justify-center"
+      className="border border-gray-300 w-full rounded-full h-10 flex items-center justify-center bg-red-200"
     >
-      <div className="pl-2 ml-3 h-full flex items-center w-full justify-center py-1 pr-4">
+      <div className="sm:pl-2 ml-3 h-full flex items-center w-full justify-center py-1 pr-4">
         <label htmlFor="search" className="sr-only h-full">
           Search Listings
         </label>
         <input
           type="text"
           id="search"
-          className="h-full border-none outline-none bg-transparent text-black mt-0 pt-0 w-full"
+          className="h-full border-none outline-none bg-transparent text-black w-full flex"
           placeholder="Search listings..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -77,7 +77,7 @@ export default function SearchInput({ onSearch }) {
         />
         <button
           type="submit"
-          className="ml-4 bg-custom-primary-color text-white rounded-full h-full hover:bg-custom-color-secondary"
+          className="ml-1 bg-custom-primary-color text-white rounded-full h-full hover:bg-custom-color-secondary flex-shrink-0"
           aria-label="Search Listings" // This provides an accessible label for screen readers
         >
           <div className="mr-2 ml-4">

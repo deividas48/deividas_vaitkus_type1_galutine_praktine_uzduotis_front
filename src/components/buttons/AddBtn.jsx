@@ -40,7 +40,7 @@ export default function AddBtn() {
           <div className="header-įdėti-button2">{btnSvg}</div>
         </span>
       )}
-      <span className="ml-3 header-įdėti-button-pavadinimas hidden sm:block">
+      <span className="ml-3 header-įdėti-button-pavadinimas hidden md:block">
         Add Listing
       </span>
     </NavLink>
