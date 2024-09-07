@@ -116,6 +116,7 @@ function PaginatedListingsFetch({
           setCategoryName(response.data.name); // #category_TitleToIdentifyCategory.
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.warn('Error fetching category name:', error);
         });
     }

@@ -22,7 +22,7 @@ export default function SearchInput({ onSearch }) {
   useEffect(() => {
     if (!location.search) {
       setQuery('');
-      console.log('query2===', query);
+      // console.log('query2===', query);
       // console.log('location.pathname+++===', location.search);
     }
   }, [location]);
