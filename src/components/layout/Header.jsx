@@ -20,36 +20,56 @@ export default function Header() {
   // Navigation items
   const authLinks = (
     <>
-      <li className="nav-list">
-        <NavLink to="/">Home</NavLink>
+      <li className="">
+        <NavLink to="/">
+          <div className="w-full h-full flex items-center">Home</div>
+        </NavLink>
       </li>
-      <li className="nav-list">
-        <NavLink to="/towns">Towns</NavLink>
+      <li className="">
+        <NavLink to="/login">
+          <div className="w-full h-full flex items-center">Log in</div>
+        </NavLink>
       </li>
-      <li className="nav-list">
-        <NavLink to="/skelbimas/sukurti">Add Listing</NavLink>
+      <li className="">
+        <NavLink to="/skelbimas/sukurti">
+          <div className="w-full h-full flex items-center">Add Listing</div>
+        </NavLink>
       </li>
-      <li className="nav-list">
-        <button type="button" onClick={logout}>
-          Logout
-        </button>
+      <li className="">
+        <div className="w-full h-full flex items-center">
+          <button
+            className="w-full h-full flex items-center"
+            type="button"
+            onClick={logout}
+          >
+            Logout
+          </button>
+        </div>
       </li>
     </>
   );
 
   const guestLinks = (
     <>
-      <li className="nav-list">
-        <NavLink to="/">Home</NavLink>
+      <li className="">
+        <NavLink to="/">
+          <div className="w-full h-full flex items-center">Home</div>
+        </NavLink>
       </li>
-      <li className="nav-list">
-        <NavLink to="/towns">Towns</NavLink>
+      <li className="">
+        <NavLink to="/login">
+          <div className="w-full h-full flex items-center">Login</div>
+        </NavLink>
       </li>
-      <li className="nav-list">
-        <NavLink to="/login">Login</NavLink>
+      <li className="">
+        <NavLink to="/skelbimas/sukurti">
+          <div className="w-full h-full flex items-center">Add Listing</div>
+        </NavLink>
       </li>
-      <li className="nav-list">
-        <NavLink to="/register">Register</NavLink>
+      <li className="">
+        <NavLink to="/register">
+          <div className="w-full h-full flex items-center">Register</div>
+        </NavLink>
       </li>
     </>
   );
