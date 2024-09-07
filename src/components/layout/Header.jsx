@@ -8,7 +8,7 @@ import AddBtn from '../buttons/AddBtn';
 import TopBar from './TopBar';
 import { AuthContext } from '../context/authContext';
 import BtnLogIn from '../buttons/BtnLogIn';
-import BtnPersonalList from '../buttons/BtnPersonalList';
+import BtnPageUsrSet from '../buttons/BtnPageUsrSet';
 import SearchInput from '../search/SearchInput';
 import { useSearch } from '../context/SearchContext'; // Import the search context
 
@@ -84,7 +84,7 @@ export default function Header() {
   const authBtnLogIn = (
     <li className="mr-4 h-full flex hidden md:block">
       {/* Mygtukas vedantis į asmeninių skelbimų puslapį */}
-      <BtnPersonalList className="items-center justify-center self-center place-items-center ml-auto text-center" />
+      <BtnPageUsrSet className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
   );
 

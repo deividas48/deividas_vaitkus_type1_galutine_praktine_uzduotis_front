@@ -1,10 +1,10 @@
-// src/components/buttons/BtnPersonalList.jsx
+// src/components/buttons/BtnPageUsrSet.jsx
 
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../styles/Header.css';
 
-export default function BtnPersonalList() {
+export default function BtnPageUsrSet() {
   const [isHovered, setIsHovered] = useState(false);
 
   const btnLogIn = (
@@ -22,7 +22,7 @@ export default function BtnPersonalList() {
 
   return (
     <NavLink
-      to="/login"
+      to="/userSettings"
       className="text-white rounded-full relative z-10 font-black flex items-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

@@ -17,6 +17,7 @@ import { AuthProvider } from './components/context/authContext'; // #loginFounda
 import PrivateRoute from './components/routing/PrivateRoute';
 import PageSearchListings from './pages/PageSearchListings';
 import { SearchProvider } from './components/context/SearchContext';
+import PageUsrSet from './pages/PageUsrSet';
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
               element={(
                 <PrivateRoute>
                   <PageAddListing />
+                </PrivateRoute>
+              )}
+            />
+            <Route
+              path="/userSettings"
+              element={(
+                <PrivateRoute>
+                  <PageUsrSet />
                 </PrivateRoute>
               )}
             />
