@@ -44,3 +44,56 @@ body {
   height: 2.7rem;
   padding: 0.5rem;
 }
+
+.cssTitle {
+  position: relative; /* For #text_doubleLine. Necessary for the absolute positioning of the pseudo-element */
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+  border-bottom: 0.188rem solid var(--custom-gray-color-02); /* for #text_doubleLine. Gray border for the entire width */
+  padding-bottom: 0.625rem;
+  margin-bottom: 0.938rem;
+  width: 100%; /* for #text_doubleLine */
+  /*display: inline-block;*/ /* Ensure it wraps only around the content */
+}
+
+/* For #text_doubleLine. Add pseudo line */
+.cssTitle::after {
+  content: '';
+  position: absolute; /* Allows positioning within the parent element */
+  bottom: -0.17rem; /* Moves down by 0.150rem to align with the gray border */
+  left: 0; /* Moves left to align with start of the gray border */
+  width: 18%;
+  border-bottom: 0.188rem solid var(--color-primary);
+}
+
+.gray-line {
+  position: relative; /* For #text_doubleLine. Necessary for the absolute positioning of the pseudo-element */
+  margin-bottom: 0.625rem;
+  border-bottom: 0.063rem solid var(--custom-gray-color-02); /* for #text_doubleLine. Gray border for the entire width */
+  padding-bottom: 0.625rem;
+  margin-bottom: 0.938rem;
+  width: 100%; /* for #text_doubleLine */
+  /*display: inline-block;*/ /* Ensure it wraps only around the content */
+}
+
+.cssTitle2 {
+  position: relative; /* For #text_doubleLine. Necessary for the absolute positioning of the pseudo-element */
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+  border-bottom: 0.188rem solid var(--custom-gray-color-02); /* for #text_doubleLine. Gray border for the entire width */
+  padding-bottom: 0.625rem;
+  margin-bottom: 0.938rem;
+  /*display: inline-block;*/ /* Ensure it wraps only around the content */
+}
+
+/* For #text_doubleLine. Add pseudo line */
+.cssTitle2::after {
+  content: '';
+  position: absolute; /* Allows positioning within the parent element */
+  bottom: -0.17rem; /* Moves down by 0.150rem to align with the gray border */
+  left: 0; /* Moves left to align with start of the gray border */
+  width: 18%;
+  border-bottom: 0.188rem solid var(--color-primary);
+}

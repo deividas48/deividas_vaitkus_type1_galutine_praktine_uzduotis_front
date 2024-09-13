@@ -12,27 +12,40 @@ export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // State to store user details like name, email, etc.
-  const [userDetails, setUserDetails] = useState(null);
+  let [userDetails, setUserDetails] = useState(null);
 
   // useEffect to check local storage for token and user details when the app starts
   useEffect(() => {
     // Get the authentication token from local storage (if exists)
     const token = localStorage.getItem('authToken');
 
-    // Get the user details from local storage (if exists) and parse it into a JavaScript object
-    const storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
+    // Get the stored user details as a string from localStorage
+    const storedUserDetails = localStorage.getItem('userDetails');
+
+    // Check if the string is valid and not undefined or null, then parse it
+    // let userDetails = null;
+    if (storedUserDetails && storedUserDetails !== 'undefined') {
+      try {
+        userDetails = JSON.parse(storedUserDetails);
+      } catch (error) {
+        console.error('Error parsing user details:', error);
+      }
+    }
 
     // Set isAuthenticated to true if there is a token in local storage
     setIsAuthenticated(!!token);
 
-    // If user details exist, store them in state
-    if (storedUserDetails) {
-      setUserDetails(storedUserDetails);
+    // If valid user details were parsed, set them in state
+    if (userDetails) {
+      setUserDetails(userDetails);
     }
   }, []); // This effect runs only once when the component mounts
 
   // Function to log the user in, storing the token and user details
   const login = (token, user) => {
+    // console.log('Token in AuthContext:', token);
+    // console.log('User in AuthContext:', user);
+
     // Store the authentication token in local storage
     localStorage.setItem('authToken', token);
 

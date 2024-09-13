@@ -2,9 +2,9 @@
 
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // +#afterLogInSubmitToPreviosPage
+import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../components/context/authContext'; // #loginFoundation
+import { AuthContext } from '../components/context/authContext';
 
 export default function PageLogIn() {
   const { login } = useContext(AuthContext);
@@ -18,14 +18,25 @@ export default function PageLogIn() {
     try {
       const response = await axios.post(
         'http://localhost:3000/api/auth/login',
-        { email, password }, // { email, password } is used to send (to back-end) these variables
-        // as part of the HTTP POST request's body when trying to log
-        // in = { email: email, password: password }
+        { email, password }, // Sending email and password to the backend
       );
-      login(response.data.token);
+
+      // Extracting the token and user details from the response
+      const { token, user } = response.data;
+
+      // Debugging logs to check values
+      // console.log('Login successful, token:', token);
+      // console.log('User details:', user);
+
+      // Call the login function with both token and user data
+      login(token, user); // Passing both token and user to the login function
+
+      // Navigate back to the previous page
       navigate(-1); // #afterLogInSubmitToPreviosPage
     } catch (err) {
+      // Handle any errors and display the error message
       setError('Invalid email or password');
+      console.error('Login failed:', err);
     }
   };
 
