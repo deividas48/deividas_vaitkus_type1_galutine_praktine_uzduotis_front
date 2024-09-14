@@ -73,8 +73,10 @@ body {
   border-bottom: 0.063rem solid var(--custom-gray-color-02); /* for #text_doubleLine. Gray border for the entire width */
   padding-bottom: 0.625rem;
   margin-bottom: 0.938rem;
-  width: 100%; /* for #text_doubleLine */
+  /* width: 100%; for #text_doubleLine */
   /*display: inline-block;*/ /* Ensure it wraps only around the content */
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .cssTitle2 {
