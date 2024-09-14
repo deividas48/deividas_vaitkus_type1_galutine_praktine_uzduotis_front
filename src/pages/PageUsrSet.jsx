@@ -23,7 +23,16 @@ function PageUsrSet() {
     <main className="bg-white rounded-lg mt-4 p-4">
       <h2 className="title1 text-center mb-4 titleOfForm">User settings</h2>
       <div className="">
-        <div className="gray-line"></div>
+        <div className="gray-line" />
+        <div className="gray-line">
+          <p className="pairs mb-4">
+            <span className="pairs_label_full pairs_label_full_register font-bold">
+              ID:
+            </span>
+            {' '}
+            <span className="">{userDetails.id}</span>
+          </p>
+        </div>
         <div className="gray-line">
           <SetUserName />
         </div>
