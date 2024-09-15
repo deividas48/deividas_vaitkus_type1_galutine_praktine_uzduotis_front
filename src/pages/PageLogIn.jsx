@@ -36,7 +36,7 @@ export default function PageLogIn() {
     } catch (err) {
       // Handle any errors and display the error message
       setError('Invalid email or password');
-      console.error('Login failed:', err);
+      // console.error('Login failed:', err);
     }
   };
 

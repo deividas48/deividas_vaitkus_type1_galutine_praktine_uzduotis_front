@@ -2,7 +2,9 @@
 
 /* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../../../styles/Forms.css';
@@ -23,7 +25,7 @@ const UserSettingsSchema = Yup.object().shape({
     .matches(/\d/, '• Password must contain at least one number')
     .matches(
       /[@$!%*?&#]/,
-      '• Password must contain at least one special character'
+      '• Password must contain at least one special character',
     ),
 
   // Confirm new password validation
@@ -53,7 +55,7 @@ function SetUserPassword() {
       const response = await axios.put(
         `http://localhost:3000/api/auth/user/${userDetails.id}`,
         // values = initialValues
-        values
+        values,
       );
       console.log('User updated:', response.data);
       toast.success('Your password has been successfully updated', {
@@ -84,8 +86,9 @@ function SetUserPassword() {
               <p className="pairs mb-4">
                 <span className="pairs_label_full pairs_label_full_register font-bold">
                   Password
-                </span>{' '}
-                <span className=""></span>
+                </span>
+                {' '}
+                <span className="" />
               </p>
             </div>
 
