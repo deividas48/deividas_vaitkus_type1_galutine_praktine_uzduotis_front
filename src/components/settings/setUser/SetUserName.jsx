@@ -30,6 +30,8 @@ function SetUserName() {
 
   const [isVisible, setIsVisible] = useState(false); // State for the edit button
 
+  const { updateUserDetails } = useContext(AuthContext);
+
   // Toggle the state when button is clicked
   const toggleDiv = () => {
     setIsVisible(!isVisible);
@@ -43,7 +45,8 @@ function SetUserName() {
         values,
       );
       console.log('User updated:', response.data);
-      // Redirect to the previous page
+      // After successful name or email update
+      updateUserDetails({ name: values.name }); // update a usename text elements
       toast.success('Your name has been successfully updated', {
         duration: 8000,
       });

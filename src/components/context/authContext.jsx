@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // State to store user details like name, email, etc.
-  let [userDetails, setUserDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
 
   // useEffect to check local storage for token and user details when the app starts
   useEffect(() => {
@@ -26,7 +26,11 @@ export function AuthProvider({ children }) {
     // let userDetails = null;
     if (storedUserDetails && storedUserDetails !== 'undefined') {
       try {
-        userDetails = JSON.parse(storedUserDetails);
+        const userDetails = JSON.parse(storedUserDetails);
+
+        if (userDetails) {
+          setUserDetails(userDetails);
+        }
       } catch (error) {
         console.error('Error parsing user details:', error);
       }
@@ -34,11 +38,6 @@ export function AuthProvider({ children }) {
 
     // Set isAuthenticated to true if there is a token in local storage
     setIsAuthenticated(!!token);
-
-    // If valid user details were parsed, set them in state
-    if (userDetails) {
-      setUserDetails(userDetails);
-    }
   }, []); // This effect runs only once when the component mounts
 
   // Function to log the user in, storing the token and user details
@@ -74,6 +73,15 @@ export function AuthProvider({ children }) {
     setUserDetails(null);
   };
 
+  const updateUserDetails = (updates) => {
+    // Create a new object with updated userDetails
+    const updatedDetails = { ...userDetails, ...updates };
+    // Update localStorage
+    localStorage.setItem('userDetails', JSON.stringify(updatedDetails));
+    // Update state
+    setUserDetails(updatedDetails);
+  };
+
   // Memoizing the context value to avoid unnecessary re-renders when the values haven't changed
   const contextValue = useMemo(
     () => ({
@@ -81,6 +89,7 @@ export function AuthProvider({ children }) {
       userDetails, // The details of the currently logged-in user
       login, // The function to log the user in
       logout, // The function to log the user out
+      updateUserDetails, // Make this function available in the context
     }),
     [isAuthenticated, userDetails], // Only recompute if these values change
   );

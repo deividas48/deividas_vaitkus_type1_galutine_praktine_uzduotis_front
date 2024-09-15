@@ -2,7 +2,9 @@
 
 /* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../../../styles/Forms.css';
@@ -17,7 +19,7 @@ const UserSettingsSchema = Yup.object().shape({
     .required('Please enter your new email')
     .matches(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      '• Email must be a valid format'
+      '• Email must be a valid format',
     ),
 
   // Password validation
@@ -39,7 +41,7 @@ function SetUserEmail() {
       const response = await axios.put(
         `http://localhost:3000/api/auth/user/${userDetails.id}`,
         // values = initialValues
-        values
+        values,
       );
       console.log('User updated:', response.data);
       // Redirect to the previous page
@@ -70,7 +72,8 @@ function SetUserEmail() {
               <p className="pairs mb-4">
                 <span className="pairs_label_full pairs_label_full_register font-bold">
                   Email:
-                </span>{' '}
+                </span>
+                {' '}
                 <span className="">{userDetails.email}</span>
               </p>
             </div>
