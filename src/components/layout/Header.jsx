@@ -40,6 +40,7 @@ export default function Header() {
           <button
             className="w-full h-full flex items-center"
             type="button"
+            aria-label="Logout"
             onClick={logout}
           >
             Logout
