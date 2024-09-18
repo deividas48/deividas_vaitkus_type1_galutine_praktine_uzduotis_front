@@ -126,6 +126,19 @@
   color: var(--color-secondary);
 }
 
+.hover-slow-white-text {
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  border-bottom: 2px solid transparent; /* Default border set to transparent */
+}
+
+.hover-slow-white-text:hover {
+  /* color: var(--color-secondary); */
+  color: white;
+  /* border-color: white; Border color on hover */
+  /* box-shadow: 0 4px 8px rgba(248, 4, 4, 0.5); Shadow for a 3D effect */
+  box-shadow: inset 0 -0px 5px rgba(255, 255, 255, 0.5);
+}
+
 .hover-slow-blue-text {
   transition: color 0.3s ease-in-out 0.1s;
 }

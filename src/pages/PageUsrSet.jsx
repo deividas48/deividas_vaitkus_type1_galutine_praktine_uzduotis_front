@@ -32,7 +32,8 @@ function PageUsrSet() {
           <p className="pairs mb-4">
             <span className="pairs_label_full pairs_label_full_register font-bold">
               ID:
-            </span>{' '}
+            </span>
+            {' '}
             <span className="">{userDetails.id}</span>
           </p>
         </div>

@@ -1,7 +1,9 @@
 // src\components\context\authContext.jsx
 
 // Importing necessary React hooks and functions
-import React, { createContext, useState, useEffect, useMemo } from 'react';
+import React, {
+  createContext, useState, useEffect, useMemo,
+} from 'react';
 
 // Creating the AuthContext, which will be used to pass down authentication-related values
 export const AuthContext = createContext();
@@ -98,7 +100,7 @@ export function AuthProvider({ children }) {
       updateUserDetails, // Make this function available in the context
       loading, // Include loading in the context
     }),
-    [isAuthenticated, userDetails, loading]
+    [isAuthenticated, userDetails, loading],
   );
 
   // Providing the AuthContext to children components
