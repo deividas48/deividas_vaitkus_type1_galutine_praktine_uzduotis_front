@@ -36,6 +36,8 @@ function App() {
             <Route path="/login" element={<PageLogIn />} />
             <Route path="/register" element={<PageRegister />} />
             <Route path="/skelbimas/:id" element={<PageSingleListing />} />
+
+            {/* Protected Routes */}
             <Route
               path="/skelbimas/sukurti"
               element={(
@@ -52,6 +54,7 @@ function App() {
                 </PrivateRoute>
               )}
             />
+
             <Route path="/user/:id" element={<PageUser />} />
             <Route path="*" element={<PageError />} />
           </Routes>

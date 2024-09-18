@@ -1,7 +1,7 @@
+// src\components\context\authContext.jsx
+
 // Importing necessary React hooks and functions
-import React, {
-  createContext, useState, useEffect, useMemo,
-} from 'react';
+import React, { createContext, useState, useEffect, useMemo } from 'react';
 
 // Creating the AuthContext, which will be used to pass down authentication-related values
 export const AuthContext = createContext();
@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
 
   // State to store user details like name, email, etc.
   const [userDetails, setUserDetails] = useState(null);
+  const [loading, setLoading] = useState(true); // New loading state
 
   // useEffect to check local storage for token and user details when the app starts
   useEffect(() => {
@@ -26,18 +27,22 @@ export function AuthProvider({ children }) {
     // let userDetails = null;
     if (storedUserDetails && storedUserDetails !== 'undefined') {
       try {
-        const userDetails = JSON.parse(storedUserDetails);
+        const parsedUserDetails = JSON.parse(storedUserDetails);
 
-        if (userDetails) {
-          setUserDetails(userDetails);
+        if (parsedUserDetails) {
+          setUserDetails(parsedUserDetails);
         }
       } catch (error) {
         console.error('Error parsing user details:', error);
+        localStorage.removeItem('userDetails');
       }
     }
 
     // Set isAuthenticated to true if there is a token in local storage
     setIsAuthenticated(!!token);
+
+    // Set loading to false after authentication status is determined
+    setLoading(false);
   }, []); // This effect runs only once when the component mounts
 
   // Function to log the user in, storing the token and user details
@@ -73,6 +78,7 @@ export function AuthProvider({ children }) {
     setUserDetails(null);
   };
 
+  // Function to update user details
   const updateUserDetails = (updates) => {
     // Create a new object with updated userDetails
     const updatedDetails = { ...userDetails, ...updates };
@@ -90,8 +96,9 @@ export function AuthProvider({ children }) {
       login, // The function to log the user in
       logout, // The function to log the user out
       updateUserDetails, // Make this function available in the context
+      loading, // Include loading in the context
     }),
-    [isAuthenticated, userDetails], // Only recompute if these values change
+    [isAuthenticated, userDetails, loading]
   );
 
   // Providing the AuthContext to children components

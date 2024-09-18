@@ -2,13 +2,17 @@
 
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
+import { AuthContext } from '../components/context/authContext';
 import SetUserName from '../components/settings/setUser/SetUserName';
 import SetUserEmail from '../components/settings/setUser/SetUserEmail';
 import SetUserPassword from '../components/settings/setUser/SetUserPassword';
-import { AuthContext } from '../components/context/authContext';
 
 function PageUsrSet() {
-  const { userDetails } = useContext(AuthContext);
+  const { userDetails, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return null; // Or a loading spinner
+  }
 
   // Ensure userDetails is loaded before trying to render the form
   if (!userDetails) {
@@ -28,8 +32,7 @@ function PageUsrSet() {
           <p className="pairs mb-4">
             <span className="pairs_label_full pairs_label_full_register font-bold">
               ID:
-            </span>
-            {' '}
+            </span>{' '}
             <span className="">{userDetails.id}</span>
           </p>
         </div>
