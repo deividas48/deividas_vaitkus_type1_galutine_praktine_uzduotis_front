@@ -76,7 +76,7 @@ export default function Header() {
   );
 
   const guestBtnLogIn = (
-    <li className="mr-4 h-full flex hidden md:block">
+    <li className="mr-4 h-full flex md:block">
       {/* Mygtukas vedantis į prisijungimo puslapį */}
       <BtnLogIn className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
@@ -123,7 +123,7 @@ export default function Header() {
           <nav className="flex items-center justify-center">
             <div className="uždarytas-meniu items-center justify-between w-full hidden relative">
               {/* Hidden meniu, because there is to much elements in the header */}
-              <ul className="flex pl-2 flex-row nav-meniu-didelis hidden">
+              <ul className="flex pl-2 flex-row nav-meniu-didelis ">
                 {isAuthenticated ? authLinks : guestLinks}
               </ul>
             </div>
