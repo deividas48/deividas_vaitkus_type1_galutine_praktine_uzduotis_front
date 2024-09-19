@@ -26,6 +26,8 @@ export default function BtnLogIn() {
       className="text-white rounded-full relative z-10 font-black flex items-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      aria-label="Log in" // Screen reader-friendly text
+      title="Log in" // Tooltip text
     >
       {isHovered ? (
         <span className="inline-grid rounded-full bg-custom-primary-color duration-500 ease-out border border-custom-primary-color">

@@ -83,7 +83,7 @@ export default function Header() {
   );
 
   const authBtnLogIn = (
-    <li className="mr-4 h-full flex hidden md:block">
+    <li className="mr-4 h-full flex md:block">
       {/* Mygtukas vedantis į asmeninių skelbimų puslapį */}
       <BtnPageUsrSet className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
@@ -100,7 +100,12 @@ export default function Header() {
         <div className="container flex items-center justify-between mx-auto p-0">
           {/* Įmonės logo */}
           <h1 className="min">
-            <Link to="/" className="logo-container">
+            <Link
+              to="/"
+              className="logo-container"
+              aria-label="Home" // Screen reader-friendly text
+              title="Home" // Tooltip text
+            >
               {/* Logo of company */}
               <img
                 src="/img/ShopLogo.png"
@@ -157,6 +162,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="btn"
               aria-label="Toggle menu"
+              title="Toggle menu"
             >
               {/* Icon to toggle the menu */}
               <i

@@ -42,8 +42,8 @@ export default function SearchInput({ onSearch }) {
 
     // Only show the search input if on the home page or categories page
     if (
-      location.pathname === HOME_PAGE_PATH
-      || location.pathname.startsWith(CATEGORIES_PAGE_PATH)
+      location.pathname === HOME_PAGE_PATH ||
+      location.pathname.startsWith(CATEGORIES_PAGE_PATH)
     ) {
       searchInputEl.style.display = 'block'; // Show the search input
     } else {
@@ -79,6 +79,7 @@ export default function SearchInput({ onSearch }) {
           type="submit"
           className="ml-1 bg-custom-primary-color text-white rounded-full h-full hover:bg-custom-color-secondary flex-shrink-0"
           aria-label="Search Listings" // This provides an accessible label for screen readers
+          title="Search Listings" // This provides an accessible label for screen readers
         >
           <div className="mr-2 ml-4">
             <IconSearch />
