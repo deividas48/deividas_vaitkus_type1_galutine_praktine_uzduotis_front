@@ -3,7 +3,10 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: 'airbnb',
+  extends: [
+    'airbnb',
+    // 'plugin:prettier/recommended', // Adds prettier configurations
+  ],
   overrides: [
     {
       env: {

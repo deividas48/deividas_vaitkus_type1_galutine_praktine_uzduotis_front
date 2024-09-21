@@ -18,6 +18,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import PageSearchListings from './pages/PageSearchListings';
 import { SearchProvider } from './components/context/SearchContext';
 import PageUsrSet from './pages/PageUsrSet';
+import RoutePublic from './components/routing/RoutePublic';
 
 function App() {
   return (
@@ -33,26 +34,42 @@ function App() {
             <Route path="/search" element={<PageSearchListings />} />
             <Route path="/towns" element={<PageTowns />} />
             <Route path="/town/:id" element={<PageTown />} />
-            <Route path="/login" element={<PageLogIn />} />
-            <Route path="/register" element={<PageRegister />} />
+
+            <Route
+              path="/login"
+              element={
+                <RoutePublic>
+                  <PageLogIn />
+                </RoutePublic>
+              } // *Redirect else if it's only for public
+            />
+
+            <Route
+              path="/register"
+              element={
+                <RoutePublic>
+                  <PageRegister />
+                </RoutePublic>
+              } // *Redirect else if it's only for public
+            />
             <Route path="/skelbimas/:id" element={<PageSingleListing />} />
 
-            {/* Protected Routes */}
             <Route
               path="/skelbimas/sukurti"
-              element={(
+              element={
                 <PrivateRoute>
                   <PageAddListing />
                 </PrivateRoute>
-              )}
+              } // *Redirect else if it's only for private users
             />
+
             <Route
               path="/userSettings"
-              element={(
+              element={
                 <PrivateRoute>
                   <PageUsrSet />
                 </PrivateRoute>
-              )}
+              } // *Redirect else if it's only for private users
             />
 
             <Route path="/user/:id" element={<PageUser />} />

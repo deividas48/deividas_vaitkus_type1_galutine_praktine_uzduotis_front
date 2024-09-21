@@ -42,8 +42,8 @@ export default function SearchInput({ onSearch }) {
 
     // Only show the search input if on the home page or categories page
     if (
-      location.pathname === HOME_PAGE_PATH ||
-      location.pathname.startsWith(CATEGORIES_PAGE_PATH)
+      location.pathname === HOME_PAGE_PATH
+      || location.pathname.startsWith(CATEGORIES_PAGE_PATH)
     ) {
       searchInputEl.style.display = 'block'; // Show the search input
     } else {
