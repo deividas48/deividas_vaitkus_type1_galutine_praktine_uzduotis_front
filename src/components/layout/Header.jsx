@@ -26,11 +26,6 @@ export default function Header() {
         </NavLink>
       </li>
       <li className="">
-        <NavLink to="/login">
-          <div className="w-full h-full flex items-center">Log in</div>
-        </NavLink>
-      </li>
-      <li className="">
         <NavLink to="/skelbimas/sukurti">
           <div className="w-full h-full flex items-center">Add Listing</div>
         </NavLink>
