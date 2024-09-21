@@ -71,14 +71,14 @@ export default function Header() {
   );
 
   const guestBtnLogIn = (
-    <li className="mr-4 h-full flex md:block">
+    <li className="mr-2 md:mr-4 h-full flex md:block">
       {/* Mygtukas vedantis į prisijungimo puslapį */}
       <BtnLogIn className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
   );
 
   const authBtnLogIn = (
-    <li className="mr-4 h-full flex md:block">
+    <li className="mr-2 md:mr-4 h-full flex md:block">
       {/* Mygtukas vedantis į asmeninių skelbimų puslapį */}
       <BtnPageUsrSet className="items-center justify-center self-center place-items-center ml-auto text-center" />
     </li>
@@ -109,7 +109,7 @@ export default function Header() {
               />
             </Link>
           </h1>
-          <div className="flex-grow md:mx-4">
+          <div className="flex-grow md:mx-4 mx-2">
             {/* Use the setSearchTerm function in SearchInput */}
             <SearchInput onSearch={setSearchTerm} />
           </div>
@@ -144,7 +144,7 @@ export default function Header() {
           <ul className="flex">
             {isAuthenticated ? authBtnLogIn : guestBtnLogIn}
             {/* Add btn */}
-            <li className="mr-4 hidden md:block">
+            <li className="mr-2 md:mr-4 hidden md:block">
               {/* Rožinis animuotas mygtukas vedantis į skelbimų įkėlimo puslapį */}
               <AddBtn className="mr-4" />
             </li>
