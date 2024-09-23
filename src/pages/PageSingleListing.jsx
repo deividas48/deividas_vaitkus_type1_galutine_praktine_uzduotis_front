@@ -1,3 +1,5 @@
+// src\pages\PageSingleListing.jsx
+
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -49,9 +51,12 @@ export default function SingleAdPage() {
       // console.log('resp ===', resp);
       navigate('/'); // Redirect to the home page
       // Display a success message
-      toast.success(`${ad.title[0].toUpperCase() + ad.title.slice(1)} was deleted`, {
-        duration: 8000,
-      });
+      toast.success(
+        `${ad.title[0].toUpperCase() + ad.title.slice(1)} was deleted`,
+        {
+          duration: 8000,
+        },
+      );
     } catch (error) {
       // console.warn('axiosErr.response.data ===', error.response?.data);
       // console.warn('Delete error');
@@ -81,22 +86,25 @@ export default function SingleAdPage() {
             ].filter(Boolean)} // This will remove all falsy values from the array
           />
         </section>
+
         <section className="mb-4 mt-4 bg-white p-4 md:mr-4 rounded-lg">
           {/* Description */}
           <h2 className="text-xl font-semibold pb-2">{ad.title}</h2>
           {ad.description}
           <p className="text-custom-primary-color mt-1 justify-end flex ">
-            Price: $
-            {ad.price}
+            Price: ${ad.price}
           </p>
         </section>
       </main>
       <aside className="md:w-1/4">
         <section className=" bg-white p-4 mb-4 mt-4 rounded-lg">
           <h2 className="text-xl font-semibold pb-2">Personal info</h2>
-          <i className="bi bi-telephone text-custom-primary-color" />
-          {' '}
-          {ad.phone}
+          <img
+            className="sm:none inset-0 w-full h-full object-cover rounded-l-lg"
+            src={`/img/userPhoto/${ad.user_photo}`}
+            alt={ad.skelbimai_title}
+          />
+          <i className="bi bi-telephone text-custom-primary-color" /> {ad.phone}
           {/* <i class="bi bi-geo-alt"></i> */}
         </section>
         <section className=" bg-white p-4 rounded-lg">
