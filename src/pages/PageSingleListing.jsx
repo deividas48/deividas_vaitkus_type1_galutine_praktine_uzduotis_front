@@ -98,14 +98,60 @@ export default function SingleAdPage() {
       </main>
       <aside className="md:w-1/4">
         <section className=" bg-white p-4 mb-4 mt-4 rounded-lg">
-          <h2 className="text-xl font-semibold pb-2">Personal info</h2>
-          <img
-            className="sm:none inset-0 w-full h-full object-cover rounded-l-lg"
-            src={`/img/userPhoto/${ad.user_photo}`}
-            alt={ad.skelbimai_title}
-          />
-          <i className="bi bi-telephone text-custom-primary-color" /> {ad.phone}
-          {/* <i class="bi bi-geo-alt"></i> */}
+          <h2 className="cssTitle3 text-xl font-medium pb-3">Personal info</h2>
+          {/* User photo */}
+          <section className="flex mb-3">
+            <div className="w-20 min-w-20 h-20 min-h-20 bg-black rounded-full mr-3 mb-3 border-2 border-white">
+              {ad.user_photo ? (
+                <img
+                  className="object-contain w-full h-full rounded-full"
+                  style={{
+                    maskImage:
+                      'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
+                  }}
+                  src={`/img/userPhoto/${ad.user_photo}`}
+                  alt={ad.skelbimai_title}
+                />
+              ) : (
+                <img
+                  className="object-contain w-full h-full rounded-full"
+                  style={{
+                    maskImage:
+                      'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
+                  }}
+                  src={'/img/userPhoto/default.png'}
+                  alt="anonym"
+                />
+              )}
+            </div>
+            <p className="flex flex-col mt-3 mb-3">
+              <span className="text-lg font-semibold">{ad.user_name}</span>
+              {/* Log in status or something */}
+              <span className="text-sm text-custom-gray-color font-semibold hidden">
+                {ad.user_name}
+              </span>
+            </p>
+          </section>
+          <p className="flex flex-col mb-4">
+            <span className="flex my-1.5">
+              <i className="bi bi-telephone text-custom-primary-color" />
+              <div className="ml-1.5 text-custom-gray-color">
+                {ad.phone ? ad.phone : ' - '}
+              </div>
+            </span>
+            <span className="flex my-1.5">
+              <i className="bi bi-envelope-at text-custom-primary-color" />
+              <div className="ml-1.5 text-custom-gray-color">
+                {ad.user_email ? ad.user_email : ' - '}
+              </div>
+            </span>
+            <span className="flex my-1.5">
+              <i className="bi bi-geo-alt text-custom-primary-color" />
+              <div className="ml-1.5 text-custom-gray-color">
+                {ad.miestai_name ? ad.miestai_name : ' - '}
+              </div>
+            </span>
+          </p>
         </section>
         <section className=" bg-white p-4 rounded-lg">
           <h2 className="text-xl font-semibold pb-2">Settings</h2>
