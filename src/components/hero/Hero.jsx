@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Hero.css';
+import '../../styles/Hero.css';
 
 // - 'currentCategory' is taken from LayoutBasePages.jsx
-export default function Hero2({ welcome, ifcategory, currentCategory }) {
+export default function Hero({ welcome, ifcategory, currentCategory }) {
   const [opacity, setOpacity] = useState('bg-black opacity-20');
 
   useEffect(() => {
@@ -29,16 +29,13 @@ export default function Hero2({ welcome, ifcategory, currentCategory }) {
         </h2> */}
         <h2 className="mt-2 text-3xl leading-8 font-semibold tracking-tight md:text-4xl text-white">
           {/* If it's home page  */}
-          {welcome}
-          {' '}
-          {/* If it's a category page  */}
+          {welcome} {/* If it's a category page  */}
           {ifcategory}
           <span>{currentCategory}</span>
         </h2>
         {/* Path to navigate */}
         <p className="mt-3 text-center text-gray-100 hidden">
-          <Link to="/">All Categories</Link>
-          {' '}
+          <Link to="/">All Categories</Link>{' '}
           {currentCategory && (
             <>
               <span> &gt; </span>

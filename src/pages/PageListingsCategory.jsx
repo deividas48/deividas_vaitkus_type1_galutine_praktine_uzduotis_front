@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Hero from '../components/Hero';
+import Hero from '../components/hero/Hero';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
 // import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside_category
 import FiltersLayoutBasePages from '../components/filters/FiltersLayoutBasePages'; // #CreateFiltersLayoutBasePages

@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import LayoutBasePages from '../components/layout/LayoutBasePages';
-import Hero from '../components/Hero';
+import Hero from '../components/hero/Hero';
 import CategoryListFetch from '../components/categories/CategoryListFetch'; // #PassToAside_category
 import FiltersLayoutBasePages from '../components/filters/FiltersLayoutBasePages'; // #CreateFiltersLayoutBasePages
 import TownsOptionsListFetch from '../components/towns/TownsOptionsListFetch'; // #townsOptionsInput
@@ -28,13 +28,13 @@ function PageHome() {
       /* #PassToAside_category */
       aside1={<CategoryListFetch />} // #PassToAside
       // #CreateFiltersLayoutBasePages
-      aside2={(
+      aside2={
         <FiltersLayoutBasePages
           onFilterChange={handleFilterChange}
           townsOptionsListFetch={<TownsOptionsListFetch />} // #townsOptionsInput
           usersOptionsListFetch={<UsersOptionsListFetch />} // #usersOptionsInput
         />
-      )}
+      }
     />
   );
 }
