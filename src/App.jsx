@@ -72,7 +72,7 @@ function App() {
               } // *Redirect else if it's only for private users
             />
 
-            <Route path="/user/:id" element={<PageUser />} />
+            <Route path="/user/:userID" element={<PageUser />} />
             <Route path="*" element={<PageError />} />
           </Routes>
         </div>
