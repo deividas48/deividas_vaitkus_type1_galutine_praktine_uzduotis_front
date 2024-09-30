@@ -75,12 +75,16 @@ export default function TopBar() {
           </Link>
         </li> */}
         <li>
-          <Link
-            to={`/user/${userDetails.id}`}
-            className="bi bi-person-lines-fill hover-slow-white-text px-3 py-2"
-            aria-label="User listings" // Screen reader-friendly text
-            title="User listings" // Tooltip text
-          />
+          {userDetails && userDetails.id ? (
+            <Link
+              to={`/user/${userDetails.id}`}
+              className="bi bi-person-lines-fill hover-slow-white-text px-3 py-2"
+              aria-label="User listings"
+              title="User listings"
+            />
+          ) : (
+            <p>Loading...</p> // You can also replace this with a skeleton loader or a placeholder link
+          )}
         </li>
         <li>
           <Link
