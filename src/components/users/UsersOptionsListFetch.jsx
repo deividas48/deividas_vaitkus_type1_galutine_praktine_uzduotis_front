@@ -29,8 +29,16 @@ function UsersOptionsListFetch() {
     getPosts('http://localhost:3000/api/users');
   }, []);
 
-  if (isLoading) return <option>Loading...</option>;
-  if (isError) return <option>Failed to fetch users</option>;
+  if (isLoading)
+    return (
+      <option className="bg-white p-4 mb-4 mt-4 rounded-lg">Loading...</option>
+    );
+  if (isError)
+    return (
+      <option className="bg-white p-4 mb-4 mt-4 rounded-lg">
+        Failed to fetch users
+      </option>
+    );
 
   return usersArr.map((user) => (
     <option key={user.id} value={user.name}>

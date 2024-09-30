@@ -36,9 +36,20 @@ export default function PageUserListings() {
     getPosts(cUrl);
   }, [userID]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Failed to fetch user data</p>;
-  if (!data.length) return <p>No user listings found!</p>; // Check if data array is empty
+  if (isLoading)
+    return <p className="bg-white p-4 mb-4 mt-4 rounded-lg">Loading...</p>;
+  if (isError)
+    return (
+      <p className="bg-white p-4 mb-4 mt-4 rounded-lg">
+        Failed to fetch user data
+      </p>
+    );
+  if (!data.length)
+    return (
+      <p className="bg-white p-4 mb-4 mt-4 rounded-lg">
+        No user listings found!
+      </p>
+    ); // Check if data array is empty
 
   return (
     <>

@@ -35,9 +35,16 @@ export default function PageUserUser() {
     getPosts(cUrl);
   }, [userID]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Failed to fetch user data</p>;
-  if (!userFrom) return <p>No user data!</p>; // Check if userFrom is null
+  if (isLoading)
+    return <p className="bg-white p-4 mb-4 mt-4 rounded-lg">Loading...</p>;
+  if (isError)
+    return (
+      <p className="bg-white p-4 mb-4 mt-4 rounded-lg">
+        Failed to fetch user data
+      </p>
+    );
+  if (!userFrom)
+    return <p className="bg-white p-4 mb-4 mt-4 rounded-lg">No user data!</p>; // Check if userFrom is null
 
   return (
     <>
