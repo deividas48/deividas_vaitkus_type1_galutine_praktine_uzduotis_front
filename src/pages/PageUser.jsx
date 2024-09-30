@@ -32,7 +32,7 @@ export default function PageUser() {
   // console.log('Fetched listing title:', resp.data.title);
   // console.log('Fetched listing title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/listings/byUser/${userID}`;
+  const cUrl = `http://localhost:3000/api/users/${userID}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [userID]);
