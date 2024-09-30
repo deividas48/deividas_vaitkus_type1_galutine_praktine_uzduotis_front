@@ -76,6 +76,14 @@ export default function TopBar() {
         </li> */}
         <li>
           <Link
+            to={`/user/${userDetails.id}`}
+            className="bi bi-person-lines-fill hover-slow-white-text px-3 py-2"
+            aria-label="User listings" // Screen reader-friendly text
+            title="User listings" // Tooltip text
+          />
+        </li>
+        <li>
+          <Link
             to="/skelbimas/sukurti"
             className="bi bi-plus-circle hover-slow-white-text px-3 py-2"
             aria-label="Create a listing" // Screen reader-friendly text
