@@ -11,7 +11,7 @@ export default function ListingForLi({ item }) {
         <div className="w-1/3 relative hidden sm:block">
           <img
             className="sm:none absolute inset-0 w-full h-full object-cover rounded-l-lg"
-            src={`/img/sell/${item.skelbimai_main_image_url}`}
+            src={`/img/sell/${item.skelbimai_main_image_url ? item.skelbimai_main_image_url : 'sellDefault.png'}`}
             alt={item.skelbimai_title}
           />
         </div>
@@ -25,17 +25,12 @@ export default function ListingForLi({ item }) {
               {item.skelbimai_title}
             </h5>
             <p className="text-sm text-custom-gray-color overflow-hidden hidden md:block">
-              {item.skelbimai_description.slice(0, 40)}
-              {' '}
-              ...
+              {item.skelbimai_description.slice(0, 40)} ...
             </p>
           </div>
           <div className="md:mt-4">
             <p className="text-sm text-gray-600">{item.skelbimai_phone}</p>
-            <p className="text-xl">
-              $
-              {item.skelbimai_price}
-            </p>
+            <p className="text-xl">${item.skelbimai_price}</p>
           </div>
           {/* 3. #create_listings_list. Link to listing detail page */}
           <Link to={`/skelbimas/${item.skelbimai_id}`}>
