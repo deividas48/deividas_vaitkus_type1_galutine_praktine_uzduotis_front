@@ -19,7 +19,7 @@ export default function PageUserUser() {
     try {
       setIsLoading(true);
       const resp = await axios.get(url);
-      // console.log(resp.data);
+      // console.log('1', resp.data[0]);
       setUserFrom(resp.data[0]);
     } catch (error) {
       // console.warn('getTrip', error);
@@ -30,7 +30,7 @@ export default function PageUserUser() {
   // console.log('Fetched userFrom title:', resp.data.title);
   // console.log('Fetched userFrom title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/listings/byUser/${userID}`;
+  const cUrl = `http://localhost:3000/api/users/${userID}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [userID]);
@@ -45,15 +45,15 @@ export default function PageUserUser() {
       {/* User photo */}
       <section className="flex mb-3 min-w-56">
         <div className="w-24 min-w-24 h-24 min-h-24 bg-black rounded-full mr-8 mb-3 border-2 border-white">
-          {userFrom.user_photo ? (
+          {userFrom.avatar_url ? (
             <img
               className="object-contain w-full h-full rounded-full"
               style={{
                 maskImage:
                   'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
               }}
-              src={`/img/userPhoto/${userFrom.user_photo}`}
-              alt={userFrom.skelbimai_title}
+              src={`/img/userPhoto/${userFrom.avatar_url}`}
+              alt={userFrom.name}
             />
           ) : (
             <img
@@ -68,29 +68,29 @@ export default function PageUserUser() {
           )}
         </div>
         <p className="">
-          <span className="text-3xl font-semibold">{userFrom.user_name}</span>
+          <span className="text-3xl font-semibold">{userFrom.name}</span>
           {/* Log in status or something */}
           <span className="text-sm text-custom-gray-color font-semibold hidden">
-            {userFrom.user_name}
+            {userFrom.name}
           </span>
           <span className="h-full w-full grid place-items-end">
             <span className="mb-4 w-full items-end flex flex-wrap gap-x-4">
               <span className="flex my-1.5">
                 <i className="bi bi-telephone text-custom-primary-color" />
                 <span className="ml-1.5 text-custom-gray-color">
-                  {userFrom.phone ? userFrom.phone : ' - '}
+                  {userFrom.user_phone ? userFrom.user_phone : ' - '}
                 </span>
               </span>
               <span className="flex my-1.5">
                 <i className="bi bi-envelope-at text-custom-primary-color" />
                 <span className="ml-1.5 text-custom-gray-color">
-                  {userFrom.user_email ? userFrom.user_email : ' - '}
+                  {userFrom.email ? userFrom.email : ' - '}
                 </span>
               </span>
               <span className="flex my-1.5">
                 <i className="bi bi-geo-alt text-custom-primary-color" />
                 <span className="ml-1.5 text-custom-gray-color">
-                  {userFrom.miestai_name ? userFrom.miestai_name : ' - '}
+                  {userFrom.user_city ? userFrom.user_city : ' - '}
                 </span>
               </span>
             </span>
