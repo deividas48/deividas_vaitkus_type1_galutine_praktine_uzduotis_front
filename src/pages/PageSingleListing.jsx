@@ -79,7 +79,7 @@ export default function SingleAdPage() {
           {/* Ad img */}
           <AdImgCarousel
             images={[
-              ad.main_image_url,
+              ad.main_image_url ? ad.main_image_url : 'sellDefault.png',
               ad.main_image_url_3,
               ad.main_image_url_1,
               ad.main_image_url_2,

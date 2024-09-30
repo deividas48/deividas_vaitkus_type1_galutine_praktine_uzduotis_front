@@ -6,7 +6,9 @@ import '../../styles/AdImgCarousel.css'; // custom styles for this component
 
 import { Carousel } from 'react-responsive-carousel';
 
-export default function AdImgCarousel({ images }) {
+export default function AdImgCarousel({
+  images, // from src\pages\PageSingleListing.jsx
+}) {
   return (
     <Carousel dynamicHeight>
       {images.map((imgUrl, i) => (
