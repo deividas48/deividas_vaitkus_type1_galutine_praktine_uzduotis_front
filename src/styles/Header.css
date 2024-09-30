@@ -126,6 +126,14 @@
   color: var(--color-secondary);
 }
 
+.hover-fast-red-text {
+  transition: color 0.1s ease-in-out 0.1s;
+}
+
+.hover-fast-red-text:hover {
+  color: var(--color-secondary);
+}
+
 .hover-slow-white-text {
   transition: all 0.3s ease; /* Smooth transition for hover effects */
   border-bottom: 2px solid transparent; /* Default border set to transparent */

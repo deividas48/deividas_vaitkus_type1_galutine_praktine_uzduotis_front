@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import AdImgCarousel from '../components/UI/AdImgCarousel';
 import DeleteBtn from '../components/buttons/DeleteBtn';
@@ -103,29 +103,52 @@ export default function SingleAdPage() {
           <section className="flex mb-3">
             <div className="w-20 min-w-20 h-20 min-h-20 bg-black rounded-full mr-3 mb-3 border-2 border-white">
               {ad.user_photo ? (
-                <img
-                  className="object-contain w-full h-full rounded-full"
-                  style={{
-                    maskImage:
-                      'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
-                  }}
-                  src={`/img/userPhoto/${ad.user_photo}`}
-                  alt={ad.skelbimai_title}
-                />
+                <Link
+                  to={`/user/${ad.user_id}`}
+                  className="hover-fast-red-text"
+                  aria-label="User profile" // Screen reader-friendly text
+                  title="User profile" // Tooltip text
+                >
+                  <img
+                    className="object-contain w-full h-full rounded-full"
+                    style={{
+                      maskImage:
+                        'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
+                    }}
+                    src={`/img/userPhoto/${ad.user_photo}`}
+                    alt={ad.skelbimai_title}
+                  />
+                </Link>
               ) : (
-                <img
-                  className="object-contain w-full h-full rounded-full"
-                  style={{
-                    maskImage:
-                      'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
-                  }}
-                  src={'/img/userPhoto/default.png'}
-                  alt="anonym"
-                />
+                <Link
+                  to={`/user/${ad.user_id}`}
+                  className="hover-fast-red-text"
+                  aria-label="User profile" // Screen reader-friendly text
+                  title="User profile" // Tooltip text
+                >
+                  <img
+                    className="object-contain w-full h-full rounded-full"
+                    style={{
+                      maskImage:
+                        'radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 80%)',
+                    }}
+                    src={'/img/userPhoto/default.png'}
+                    alt="anonym"
+                  />
+                </Link>
               )}
             </div>
             <p className="flex flex-col mt-3 mb-3">
-              <span className="text-lg font-semibold">{ad.user_name}</span>
+              <span className="text-lg font-semibold">
+                <Link
+                  to={`/user/${ad.user_id}`}
+                  className="hover-fast-red-text"
+                  aria-label="User profile" // Screen reader-friendly text
+                  title="User profile" // Tooltip text
+                >
+                  {ad.user_name}
+                </Link>
+              </span>
               {/* Log in status or something */}
               <span className="text-sm text-custom-gray-color font-semibold hidden">
                 {ad.user_name}
