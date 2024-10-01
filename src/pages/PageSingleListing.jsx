@@ -80,9 +80,15 @@ export default function SingleAdPage() {
           <AdImgCarousel
             images={[
               ad.main_image_url ? ad.main_image_url : 'sellDefault.png',
-              ad.main_image_url_3,
-              ad.main_image_url_1,
-              ad.main_image_url_2,
+              ad.list_image_url_9,
+              ad.list_image_url_8,
+              ad.list_image_url_7,
+              ad.list_image_url_6,
+              ad.list_image_url_5,
+              ad.list_image_url_4,
+              ad.list_image_url_3,
+              ad.list_image_url_1,
+              ad.list_image_url_2,
             ].filter(Boolean)} // This will remove all falsy values from the array
           />
         </section>
