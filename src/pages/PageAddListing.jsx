@@ -141,7 +141,9 @@ export default function PageAddListing() {
         </div>
         {/* If the title field has been touched and has an error, display the error message */}
         {formik.touched.title && formik.errors.title ? (
-          <div className="YupValidation">{formik.errors.title}</div>
+          <div className="YupValidation mt-0 md:-mt-4">
+            {formik.errors.title}
+          </div>
         ) : null}
         {/* Create a form field for the description */}
         <div className="pairs">
@@ -163,7 +165,9 @@ export default function PageAddListing() {
           />
         </div>
         {formik.touched.description && formik.errors.description ? (
-          <div className="YupValidation">{formik.errors.description}</div>
+          <div className="YupValidation mt-0 md:-mt-4">
+            {formik.errors.description}
+          </div>
         ) : null}
         {/* Create a form field for the price */}
         <div className="pairsOfTwo">
@@ -275,7 +279,9 @@ export default function PageAddListing() {
         </div>
         {/* If the type field has been touched and has an error, display the error message */}
         {formik.touched.type && formik.errors.type ? (
-          <div className="YupValidation">{formik.errors.type}</div>
+          <div className="YupValidation mt-0 md:-mt-4">
+            {formik.errors.type}
+          </div>
         ) : null}
         {/* Create a form field for the town */}
         <div className="pairs">
@@ -298,7 +304,9 @@ export default function PageAddListing() {
         </div>
         {/* If the town field has been touched and has an error, display the error message */}
         {formik.touched.town && formik.errors.town ? (
-          <div className="YupValidation">{formik.errors.town}</div>
+          <div className="YupValidation mt-0 md:-mt-4">
+            {formik.errors.town}
+          </div>
         ) : null}
         {/* Create a form field for the category */}
         <div className="pairs">
@@ -322,7 +330,9 @@ export default function PageAddListing() {
         {/* If the category field has been touched and has an error,
          display the error message */}
         {formik.touched.category && formik.errors.category ? (
-          <div className="YupValidation">{formik.errors.category}</div>
+          <div className="YupValidation mt-0 md:-mt-4">
+            {formik.errors.category}
+          </div>
         ) : null}
         {/* Submit form button */}
         <Submit />
