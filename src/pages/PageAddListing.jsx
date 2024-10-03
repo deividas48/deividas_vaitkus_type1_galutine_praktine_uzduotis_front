@@ -103,7 +103,7 @@ export default function PageAddListing() {
           }
         }
 
-        // 6. Make the API request using axios
+        // 6. Make the API request using axios. // Send POST request
         const response = await axios.post(
           'http://localhost:3000/api/listings',
           formData,
