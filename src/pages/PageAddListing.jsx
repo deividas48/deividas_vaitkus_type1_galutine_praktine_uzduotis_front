@@ -11,11 +11,13 @@ export default function PageAddListing() {
   // Dummy data for town and category mappings
   const townMappings = {
     Vilnius: 3,
+    Kaunas: 4,
     // Add more town mappings here
   };
 
   const categoryMappings = {
     Kompiuteriai: 1,
+    Telefonai: 2,
     // Add more category mappings here
   };
   const formik = useFormik({
@@ -29,6 +31,7 @@ export default function PageAddListing() {
       user_id: '5', // user_id I'll not be used in the form. Default value is set because the value can't be null.
       town: '', // Default value for testing
       category: '', // Default value for testing
+      photos: null,
     },
     // Create a validation schema using Yup
     validationSchema: Yup.object({
@@ -65,31 +68,56 @@ export default function PageAddListing() {
       type: Yup.string().required('• Type is required'),
       town: Yup.string().required('• Town is required'),
       category: Yup.string().required('• Category is required'),
+      photos: Yup.mixed(),
     }),
 
     // Create a function to handle form submission.
     // Currently, it just displays the form values in an alert
     onSubmit: async (values) => {
       try {
-        // Map town and category to their respective IDs
+        // 1. Map town and category names to their respective IDs
         const mappedValues = {
           ...values,
           town_id: townMappings[values.town],
           category_id: categoryMappings[values.category],
         };
 
-        // Remove original town and category fields from the payload
+        // 2. Remove original town and category fields (names) from the payload
         delete mappedValues.town;
         delete mappedValues.category;
 
-        console.log('Submitting data:', mappedValues);
+        // 3. Create a FormData object
+        const formData = new FormData();
+
+        // 4. Append all other form fields to FormData
+        Object.keys(mappedValues).forEach((key) => {
+          if (key !== 'photos') {
+            formData.append(key, mappedValues[key]);
+          }
+        });
+
+        // 5. Append each selected file to FormData
+        if (values.photos) {
+          for (let i = 0; i < values.photos.length; i++) {
+            formData.append('photos', values.photos[i]);
+          }
+        }
+
+        // 6. Make the API request using axios
         const response = await axios.post(
           'http://localhost:3000/api/listings',
-          mappedValues,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
         );
+
+        // 7. Handle the response
         console.log('Data submitted successfully:', response.data);
-        // alert(JSON.stringify(mappedValues, null, 2)); // Just for demonstration
       } catch (error) {
+        // 8. Error handling
         console.error('Error submitting data:', error.message);
       }
     },
@@ -334,6 +362,40 @@ export default function PageAddListing() {
             {formik.errors.category}
           </div>
         ) : null}
+
+        <div className="pairs">
+          <label htmlFor="photos" className="pairs_label_full">
+            Photos:
+          </label>
+          <input
+            id="photos"
+            name="photos"
+            type="file"
+            multiple
+            onChange={(event) => {
+              formik.setFieldValue('photos', event.currentTarget.files);
+            }}
+            className="pairs_input_full"
+          />
+        </div>
+        {/* Handle Validation Errors (Optional) */}
+        {formik.touched.photos && formik.errors.photos ? (
+          <div className="YupValidation mt-0 md:-mt-4">
+            {formik.errors.photos}
+          </div>
+        ) : null}
+        {/* Display Selected Files (User Feedback) */}
+        {formik.values.photos && (
+          <div className="selected-files">
+            <h3>Selected Photos:</h3>
+            <ul>
+              {Array.from(formik.values.photos).map((file, index) => (
+                <li key={index}>{file.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {/* Submit form button */}
         <Submit />
       </form>
