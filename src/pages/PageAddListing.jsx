@@ -75,7 +75,7 @@ export default function PageAddListing() {
     // Currently, it just displays the form values in an alert
     onSubmit: async (values) => {
       try {
-        // 1. Map town and category names to their respective IDs
+        // 1. Map town and category names to their respective IDs. Output: Values + mapped values.
         const mappedValues = {
           ...values,
           town_id: townMappings[values.town],
@@ -86,18 +86,20 @@ export default function PageAddListing() {
         delete mappedValues.town;
         delete mappedValues.category;
 
-        // 3. Create a FormData object
+        // 3. Create a FormData object. What it does: Allows you to bundle all the form fields and files together to send in one request.
         const formData = new FormData();
 
-        // 4. Append all other form fields to FormData
+        // 4. Append all other form fields to FormData. Purpose: Adds all form fields to formData except the 'photos' field.
         Object.keys(mappedValues).forEach((key) => {
           if (key !== 'photos') {
-            formData.append(key, mappedValues[key]);
+            // exept 'photos'
+            formData.append(key, mappedValues[key]); // Pack this information into a special package called formData to send it to the server. Key - forms heders, mappedValues[key] - values. Like: (color, raudona) and etc.
           }
         });
 
         // 5. Append each selected file to FormData
         if (values.photos) {
+          // values - just all submitted values
           for (let i = 0; i < values.photos.length; i++) {
             formData.append('photos', values.photos[i]);
           }
@@ -106,10 +108,10 @@ export default function PageAddListing() {
         // 6. Make the API request using axios. // Send POST request
         const response = await axios.post(
           'http://localhost:3000/api/listings',
-          formData,
+          formData, // The all values that is submitted and arranged
           {
             headers: {
-              'Content-Type': 'multipart/form-data',
+              'Content-Type': 'multipart/form-data', // When uploading files (like photos), using 'multipart/form-data' allows both text and binary data to be transmitted.
             },
           },
         );
@@ -373,7 +375,10 @@ export default function PageAddListing() {
             type="file"
             multiple
             onChange={(event) => {
-              formik.setFieldValue('photos', event.currentTarget.files);
+              formik.setFieldValue(
+                'photos', // store the selected files in the form state under the key 'photos'
+                event.currentTarget.files, // Take the selected files
+              );
             }}
             className="pairs_input_full"
           />
@@ -389,6 +394,13 @@ export default function PageAddListing() {
           <div className="selected-files">
             <h3>Selected Photos:</h3>
             <ul>
+              {/* 
+              - formik.values.photos holds the selected files.
+              - Array.from() turns this list of files into a regular array we can loop through.
+              Create a List of File Names:
+              - .map((file, index) => (...)) goes through each file in the array. 
+              - {file.name} displays the name of the file inside the list item */}
+              {/* Convert Files to an Array: */}
               {Array.from(formik.values.photos).map((file, index) => (
                 <li key={index}>{file.name}</li>
               ))}
