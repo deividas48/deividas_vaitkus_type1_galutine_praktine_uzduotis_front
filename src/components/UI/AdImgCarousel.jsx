@@ -13,7 +13,10 @@ export default function AdImgCarousel({
     <Carousel dynamicHeight>
       {images.map((imgUrl, i) => (
         <div key={i}>
-          <img src={`/img/sell/${imgUrl}`} alt="Ad" />
+          <img
+            src={`http://localhost:3000/uploads/images/sell/${imgUrl}`}
+            alt="Ad"
+          />
         </div>
       ))}
     </Carousel>
