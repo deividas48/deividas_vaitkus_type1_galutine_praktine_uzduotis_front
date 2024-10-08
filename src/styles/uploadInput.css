@@ -10,9 +10,9 @@
   background: rgba(145, 255, 10, 0.433);
 }
 
-/* .ss {
-    overflow: hidden
-} */
+.formImageValidation {
+    width: 9.75rem;  
+}
 
 .selected-files {
   background: rgba(255, 0, 0, 0.51);
@@ -32,6 +32,10 @@
   height: 6rem;
 }
 
+.formImageValidation {
+    width: 6rem;  
+}
+
 .selected-files {
   width: 6rem;  
   height: 6rem;
@@ -46,6 +50,10 @@
   height: 5rem;
 }
 
+.formImageValidation {
+    width: 5rem;  
+}
+
 .selected-files {
   width: 5rem;  
   height: 5rem;
@@ -58,6 +66,10 @@
 .formInputImg {
   padding-left: 3rem;
   height: 3rem;
+}
+
+.formImageValidation {
+    width: 3rem;  
 }
 
 .selected-files {

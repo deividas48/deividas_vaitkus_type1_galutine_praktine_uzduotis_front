@@ -34,7 +34,7 @@ export default function IPageAddListingImg({ name, label, formik }) {
         />
         {/* Handle Validation Errors (Optional) */}
         {formik.touched[name] && formik.errors[name] ? (
-          <div className="YupValidation mt-0 md:-mt-4">
+          <div className="YupValidation mt-0 md:-mt-4 formImageValidation">
             {formik.errors[name]}
           </div>
         ) : null}
