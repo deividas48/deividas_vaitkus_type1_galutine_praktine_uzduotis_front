@@ -5,6 +5,9 @@
   --custom-gray-color-02: #6464643b;
   --custom-color-secondary: #cc1119;
   --custom-color-grey2: #cccccc;
+  --custom-color-grey-light: rgb(249, 249, 249);
+  /* For text */
+  --custom-color-grey-light2: #9ca3af;
 }
 
 * {

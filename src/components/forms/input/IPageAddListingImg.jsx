@@ -46,21 +46,32 @@ export default function IPageAddListingImg({ name, label, formik }) {
           </div>
         ) : null}
         {/* Display Selected Files (User Feedback) */}
-        {formik.values[name] && (
+        {formik.values[name] ? (
           <div className="selected-files">
-            <h3>Selected {name}:</h3>
+            {/* <h3 className="h-2">Selected:</h3> */}
             <ul>
               {/* formik.values[name].name holds the selected files */}
-              <li>{formik.values[name].name}</li>
+              <li className="h-5 text-sm">{formik.values[name].name}</li>
               {/* Only show the single file's name */}
             </ul>
             {/* Display the image preview */}
             <img
               id={`${name}-preview`}
               alt="Preview"
-              className="image-preview"
-              style={{ maxWidth: '100px', marginTop: '10px' }}
+              style={{
+                width: '200px',
+                height: '200px',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
             />
+          </div>
+        ) : (
+          <div>
+            <div className="selected-files selected-files-ask h-11 relative text-sm">
+              Select an image or drag and drop it here
+            </div>
           </div>
         )}
       </div>
