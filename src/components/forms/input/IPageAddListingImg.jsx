@@ -18,15 +18,22 @@ export default function IPageAddListingImg({ name, label, formik }) {
           // P.S. The purpose of the onChange function with formik.setFieldValue()
           // is to handle the front-end, and it doesn't have any role in sending images to the back-end.
           onChange={(event) => {
+            // Get the first file from the FileList object
             const file = event.currentTarget.files[0];
+            // Set the selected file into Formik's field value to manage form state
             formik.setFieldValue(name, file);
-            // Create an image preview
+            // If a file was selected, proceed to create an image preview
             if (file) {
+              // Instantiate a new FileReader object to read the file data
               const reader = new FileReader();
+              // Define an onload callback to set the image's src attribute
+              // to the file's data URL once the file is successfully read
               reader.onload = (e) => {
+                // Set the image preview element's src to the file's data URL
                 document.getElementById(`${name}-preview`).src =
                   e.target.result;
               };
+              // Start reading the file as a data URL, which will trigger the onload event
               reader.readAsDataURL(file);
             }
           }}
