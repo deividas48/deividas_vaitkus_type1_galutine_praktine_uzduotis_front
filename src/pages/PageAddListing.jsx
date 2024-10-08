@@ -6,11 +6,11 @@ import * as Yup from 'yup';
 import '../styles/Forms.css';
 import axios from 'axios';
 import Submit from '../components/buttons/Submit';
-import VPageAddListing from '../components/forms/validations/VPageAddListing';
+import VPageAddListingImg from '../components/forms/validations/VPageAddListingImg';
 
 export default function PageAddListing() {
   // Get the image validation schema
-  const { imageValidation } = VPageAddListing();
+  const { imageValidation } = VPageAddListingImg();
 
   // Dummy data for town and category mappings
   const townMappings = {

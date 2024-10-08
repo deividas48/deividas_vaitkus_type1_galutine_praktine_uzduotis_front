@@ -1,6 +1,9 @@
+// src\components\forms\validations\VPageAddListingImg.jsx
+// Files (images) validation
+
 import * as Yup from 'yup';
 
-export default function VPageAddListing() {
+export default function VPageAddListingImg() {
   // Function to validate the dimensions of the image
   const validateImageDimensions = (file, minWidth = 500, minHeight = 500) => {
     return new Promise((resolve) => {
