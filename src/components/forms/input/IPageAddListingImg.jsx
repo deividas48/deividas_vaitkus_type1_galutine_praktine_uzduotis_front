@@ -18,10 +18,17 @@ export default function IPageAddListingImg({ name, label, formik }) {
           // P.S. The purpose of the onChange function with formik.setFieldValue()
           // is to handle the front-end, and it doesn't have any role in sending images to the back-end.
           onChange={(event) => {
-            formik.setFieldValue(
-              name,
-              event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-            );
+            const file = event.currentTarget.files[0];
+            formik.setFieldValue(name, file);
+            // Create an image preview
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                document.getElementById(`${name}-preview`).src =
+                  e.target.result;
+              };
+              reader.readAsDataURL(file);
+            }
           }}
           className="formInputImg"
         />
@@ -40,6 +47,13 @@ export default function IPageAddListingImg({ name, label, formik }) {
               <li>{formik.values[name].name}</li>
               {/* Only show the single file's name */}
             </ul>
+            {/* Display the image preview */}
+            <img
+              id={`${name}-preview`}
+              alt="Preview"
+              className="image-preview"
+              style={{ maxWidth: '100px', marginTop: '10px' }}
+            />
           </div>
         )}
       </div>
