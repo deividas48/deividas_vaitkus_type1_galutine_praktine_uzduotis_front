@@ -20,6 +20,51 @@ export default function PageAddListing() {
     Telefonai: 2,
     // Add more category mappings here
   };
+
+  // Function to validate the dimensions of the image
+  const validateImageDimensions = (file, minWidth = 500, minHeight = 500) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          resolve(img.width >= minWidth && img.height >= minHeight);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Image validation schema
+  const imageValidation = Yup.mixed()
+    .nullable() // Allows the field to be null
+    .notRequired() // Makes it not required,
+    .test(
+      'fileType',
+      'Only .jpeg, .jpg, .png, and .webp files are allowed',
+      (
+        uploadedFile, // file (image). 'uploadedFile' is just created with a random name here.
+      ) => {
+        if (!uploadedFile) return true; // Stop if it's 'true'.
+        return ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(
+          uploadedFile.type,
+        );
+      },
+    )
+    .test('fileSize', 'File must be less than 5 MB', (uploadedFile) => {
+      if (!uploadedFile) return true; // If no file, it's fine
+      return uploadedFile.size <= 5 * 1024 * 1024;
+    })
+    .test(
+      'dimensions',
+      'Image must be at least 500x500 pixels',
+      async (uploadedFile) => {
+        if (!uploadedFile) return true; // If no file, it's fine
+        return await validateImageDimensions(uploadedFile);
+      },
+    );
+
   const formik = useFormik({
     initialValues: {
       // Create initial values for the form
@@ -77,36 +122,16 @@ export default function PageAddListing() {
       type: Yup.string().required('• Type is required'),
       town: Yup.string().required('• Town is required'),
       category: Yup.string().required('• Category is required'),
-      photoLMain: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL1: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL2: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL3: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL4: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL5: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL6: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL7: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL8: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
-      photoL9: Yup.mixed()
-        .nullable() // Allows the field to be null
-        .notRequired(), // Makes it not required,
+      photoLMain: imageValidation,
+      photoL1: imageValidation,
+      photoL2: imageValidation,
+      photoL3: imageValidation,
+      photoL4: imageValidation,
+      photoL5: imageValidation,
+      photoL6: imageValidation,
+      photoL7: imageValidation,
+      photoL8: imageValidation,
+      photoL9: imageValidation,
     }),
 
     // Create a function to handle form submission.
