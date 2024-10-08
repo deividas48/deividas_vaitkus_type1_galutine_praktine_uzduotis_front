@@ -7,6 +7,7 @@ import '../styles/Forms.css';
 import axios from 'axios';
 import Submit from '../components/buttons/Submit';
 import VPageAddListingImg from '../components/forms/validations/VPageAddListingImg';
+import IPageAddListingImg from '../components/forms/input/IPageAddListingImg';
 
 export default function PageAddListing() {
   // Get the image validation schema
@@ -194,6 +195,19 @@ export default function PageAddListing() {
       formik.setFieldValue('price', value.toFixed(2)); // setFieldValue is a Formik function to set the value of a field in the form. It takes two arguments: the field name (input name) and the value to set.
     }
   };
+
+  const photoFields = [
+    { name: 'photoLMain', label: 'Main Photo:' },
+    { name: 'photoL1', label: 'Photo 1:' },
+    { name: 'photoL2', label: 'Photo 2:' },
+    { name: 'photoL3', label: 'Photo 3:' },
+    { name: 'photoL4', label: 'Photo 4:' },
+    { name: 'photoL5', label: 'Photo 5:' },
+    { name: 'photoL6', label: 'Photo 6:' },
+    { name: 'photoL7', label: 'Photo 7:' },
+    { name: 'photoL8', label: 'Photo 8:' },
+    { name: 'photoL9', label: 'Photo 9:' },
+  ];
 
   return (
     // Add a container to center the form and provide padding
@@ -424,404 +438,19 @@ export default function PageAddListing() {
         ) : null}
 
         <section>
-          {/* photoLMain */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotos" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotos"
-                name="photoLMain"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoLMain', // store the selected files in the form state under the key 'photoLMain'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
+          <div className="pairs">
+            <div className="pairs_label_full">Photos:</div>
+            <div className="pairs_input_full flex-wrap bg-transparent outline-0 p-0">
+              {/* Loop through each photo field and render PhotoUpload component */}
+              {photoFields.map((field) => (
+                <IPageAddListingImg
+                  key={field.name}
+                  name={field.name}
+                  // label={field.label}
+                  formik={formik}
+                />
+              ))}
             </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoLMain && formik.errors.photoLMain ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoLMain}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoLMain && (
-              <div className="selected-files">
-                <h3>Selected photoLMain:</h3>
-                <ul>
-                  {/* formik.values.photoLMain.name holds the selected files */}
-                  <li>{formik.values.photoLMain.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL1 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL1" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL1"
-                name="photoL1"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL1', // store the selected files in the form state under the key 'photoL1'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL1 && formik.errors.photoL1 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL1}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL1 && (
-              <div className="selected-files">
-                <h3>Selected photoL1:</h3>
-                <ul>
-                  {/* formik.values.photoL1.name holds the selected files */}
-                  <li>{formik.values.photoL1.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL2 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL2" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL2"
-                name="photoL2"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL2', // store the selected files in the form state under the key 'photoL2'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL2 && formik.errors.photoL2 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL2}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL2 && (
-              <div className="selected-files">
-                <h3>Selected photoL2:</h3>
-                <ul>
-                  {/* formik.values.photoL2.name holds the selected files */}
-                  <li>{formik.values.photoL2.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL3 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL3" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL3"
-                name="photoL3"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL3', // store the selected files in the form state under the key 'photoL3'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL3 && formik.errors.photoL3 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL3}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL3 && (
-              <div className="selected-files">
-                <h3>Selected photoL3:</h3>
-                <ul>
-                  {/* formik.values.photoL3.name holds the selected files */}
-                  <li>{formik.values.photoL3.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL4 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL4" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL4"
-                name="photoL4"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL4', // store the selected files in the form state under the key 'photoL4'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL4 && formik.errors.photoL4 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL4}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL4 && (
-              <div className="selected-files">
-                <h3>Selected photoL4:</h3>
-                <ul>
-                  {/* formik.values.photoL4.name holds the selected files */}
-                  <li>{formik.values.photoL4.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL5 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL5" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL5"
-                name="photoL5"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL5', // store the selected files in the form state under the key 'photoL5'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL5 && formik.errors.photoL5 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL5}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL5 && (
-              <div className="selected-files">
-                <h3>Selected photoL5:</h3>
-                <ul>
-                  {/* formik.values.photoL5.name holds the selected files */}
-                  <li>{formik.values.photoL5.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL6 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL6" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL6"
-                name="photoL6"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL6', // store the selected files in the form state under the key 'photoL6'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL6 && formik.errors.photoL6 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL6}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL6 && (
-              <div className="selected-files">
-                <h3>Selected photoL6:</h3>
-                <ul>
-                  {/* formik.values.photoL6.name holds the selected files */}
-                  <li>{formik.values.photoL6.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL7 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL7" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL7"
-                name="photoL7"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL7', // store the selected files in the form state under the key 'photoL7'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL7 && formik.errors.photoL7 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL7}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL7 && (
-              <div className="selected-files">
-                <h3>Selected photoL7:</h3>
-                <ul>
-                  {/* formik.values.photoL7.name holds the selected files */}
-                  <li>{formik.values.photoL7.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL8 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL8" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL8"
-                name="photoL8"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL8', // store the selected files in the form state under the key 'photoL8'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL8 && formik.errors.photoL8 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL8}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL8 && (
-              <div className="selected-files">
-                <h3>Selected photoL8:</h3>
-                <ul>
-                  {/* formik.values.photoL8.name holds the selected files */}
-                  <li>{formik.values.photoL8.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* photoL9 */}
-          <div>
-            <div className="pairs">
-              <label htmlFor="IDPhotoL9" className="pairs_label_full">
-                Photos:
-              </label>
-              <input
-                id="IDPhotoL9"
-                name="photoL9"
-                type="file"
-                // "P.S. The purpose of the onChange function with formik.setFieldValue() is to handle the front-end, and it doesn't have any role in sending images to the back-end."
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    'photoL9', // store the selected files in the form state under the key 'photoL9'.
-                    // Take the selected files
-                    event.currentTarget.files[0], // Handle only the first file in the FileList for single upload
-                  );
-                }}
-                className="pairs_input_full"
-              />
-            </div>
-            {/* Handle Validation Errors (Optional) */}
-            {formik.touched.photoL9 && formik.errors.photoL9 ? (
-              <div className="YupValidation mt-0 md:-mt-4">
-                {formik.errors.photoL9}
-              </div>
-            ) : null}
-            {/* Display Selected Files (User Feedback) */}
-            {formik.values.photoL9 && (
-              <div className="selected-files">
-                <h3>Selected photoL9:</h3>
-                <ul>
-                  {/* formik.values.photoL9.name holds the selected files */}
-                  <li>{formik.values.photoL9.name}</li>
-                  {/* Only show the single file's name */}
-                </ul>
-              </div>
-            )}
           </div>
         </section>
         {/* Submit form button */}
