@@ -6,8 +6,12 @@ import * as Yup from 'yup';
 import '../styles/Forms.css';
 import axios from 'axios';
 import Submit from '../components/buttons/Submit';
+import VPageAddListing from '../components/forms/validations/VPageAddListing';
 
 export default function PageAddListing() {
+  // Get the image validation schema
+  const { imageValidation } = VPageAddListing();
+
   // Dummy data for town and category mappings
   const townMappings = {
     Vilnius: 3,
@@ -20,50 +24,6 @@ export default function PageAddListing() {
     Telefonai: 2,
     // Add more category mappings here
   };
-
-  // Function to validate the dimensions of the image
-  const validateImageDimensions = (file, minWidth = 500, minHeight = 500) => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => {
-          resolve(img.width >= minWidth && img.height >= minHeight);
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    });
-  };
-
-  // Image validation schema
-  const imageValidation = Yup.mixed()
-    .nullable() // Allows the field to be null
-    .notRequired() // Makes it not required,
-    .test(
-      'fileType',
-      'Only .jpeg, .jpg, .png, and .webp files are allowed',
-      (
-        uploadedFile, // file (image). 'uploadedFile' is just created with a random name here.
-      ) => {
-        if (!uploadedFile) return true; // Stop if it's 'true'.
-        return ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(
-          uploadedFile.type,
-        );
-      },
-    )
-    .test('fileSize', 'File must be less than 5 MB', (uploadedFile) => {
-      if (!uploadedFile) return true; // If no file, it's fine
-      return uploadedFile.size <= 5 * 1024 * 1024;
-    })
-    .test(
-      'dimensions',
-      'Image must be at least 500x500 pixels',
-      async (uploadedFile) => {
-        if (!uploadedFile) return true; // If no file, it's fine
-        return await validateImageDimensions(uploadedFile);
-      },
-    );
 
   const formik = useFormik({
     initialValues: {
