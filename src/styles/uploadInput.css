@@ -1,0 +1,69 @@
+.formInputAll {
+    flex-wrap: wrap;
+  }
+
+.formInputImg {
+  width: 0px;
+  padding-left: 9.75rem;
+  height: 9.75rem;
+  /* margin: 0 5% 5% 0; */
+  background: rgba(145, 255, 10, 0.433);
+}
+
+/* .ss {
+    overflow: hidden
+} */
+
+.selected-files {
+  background: rgba(255, 0, 0, 0.51);
+  width: 9.75rem;  
+  /* max-width: 9.75rem; */
+  /* min-width: 5rem;  */
+  height: 9.75rem;
+  transform: translateX(-9.75rem);
+  /* margin-top: -9.75rem; */
+  margin-right: -9.75rem;
+  overflow: hidden
+}
+
+@media screen and (max-width: 1024px) {
+.formInputImg {
+  padding-left: 6rem;
+  height: 6rem;
+}
+
+.selected-files {
+  width: 6rem;  
+  height: 6rem;
+  transform: translateX(-6rem);
+  margin-right: -6rem;
+}
+}
+
+@media screen and (max-width: 454px) {
+.formInputImg {
+  padding-left: 5rem;
+  height: 5rem;
+}
+
+.selected-files {
+  width: 5rem;  
+  height: 5rem;
+  transform: translateX(-5rem);
+  margin-right: -5rem;
+}
+}
+
+@media screen and (max-width: 395px) {
+.formInputImg {
+  padding-left: 3rem;
+  height: 3rem;
+}
+
+.selected-files {
+  width: 3rem;  
+  height: 3rem;
+  transform: translateX(-3rem);
+  margin-right: -3rem;
+}
+}

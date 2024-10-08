@@ -5,7 +5,11 @@ import * as Yup from 'yup';
 
 export default function VPageAddListingImg() {
   // Function to validate the dimensions of the image
-  const validateImageDimensions = (file, minWidth = 500, minHeight = 500) => {
+  const validateImageDimensions = (
+    uploadedFile,
+    minWidth = 500,
+    minHeight = 500,
+  ) => {
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -15,7 +19,7 @@ export default function VPageAddListingImg() {
         };
         img.src = e.target.result;
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(uploadedFile);
     });
   };
 

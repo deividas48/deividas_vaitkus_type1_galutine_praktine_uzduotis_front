@@ -8,6 +8,7 @@ import axios from 'axios';
 import Submit from '../components/buttons/Submit';
 import VPageAddListingImg from '../components/forms/validations/VPageAddListingImg';
 import IPageAddListingImg from '../components/forms/input/IPageAddListingImg';
+import '../styles/uploadInput.css';
 
 export default function PageAddListing() {
   // Get the image validation schema
@@ -440,7 +441,7 @@ export default function PageAddListing() {
         <section>
           <div className="pairs">
             <div className="pairs_label_full">Photos:</div>
-            <div className="pairs_input_full flex-wrap bg-transparent outline-0 p-0">
+            <div className="pairs_input_full bg-transparent outline-0 p-0 formInputAll">
               {/* Loop through each photo field and render PhotoUpload component */}
               {photoFields.map((field) => (
                 <IPageAddListingImg
