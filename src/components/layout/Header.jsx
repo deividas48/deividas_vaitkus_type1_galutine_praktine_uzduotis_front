@@ -103,7 +103,7 @@ export default function Header() {
             >
               {/* Logo of company */}
               <img
-                src="/img/ShopLogo.png"
+                src="/img/teikasLogo2.webp"
                 alt="EveryShop logo"
                 className="logoo sm:ml-4 logoo-size-sm"
               />
