@@ -6,6 +6,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ListingsList from './ListingsList';
+import { baseUrl } from '../../config/config';
 
 // #3_create_sort. Add the sortOption prop to the ListingsListFetch function. The
 // prop is passed from the PageHome component.
@@ -59,7 +60,7 @@ function ListingsListFetch({
   useEffect(() => {
     if (categoryId) {
       axios
-        .get(`http://localhost:3000/api/categories/${categoryId}`)
+        .get(`${baseUrl}/api/categories/${categoryId}`)
         .then((response) => {
           setCategoryName(response.data.name); // 4_#category_TitleToIdentifyCategory. 'response.data.name' - sql table category variable name.
         })
@@ -71,7 +72,7 @@ function ListingsListFetch({
 
   // Fetch the listings from the server
   useEffect(() => {
-    let url = 'http://localhost:3000/api/listings';
+    let url = `${baseUrl}/api/listings`;
     const params = [];
 
     if (categoryId) {
@@ -79,9 +80,7 @@ function ListingsListFetch({
     }
 
     if (baseFilters) {
-      const {
-        minPrice, maxPrice, town, type, seller,
-      } = baseFilters;
+      const { minPrice, maxPrice, town, type, seller } = baseFilters;
       if (minPrice) params.push(`minPrice=${minPrice}`);
       if (maxPrice) params.push(`maxPrice=${maxPrice}`);
       if (town) params.push(`town=${town}`);

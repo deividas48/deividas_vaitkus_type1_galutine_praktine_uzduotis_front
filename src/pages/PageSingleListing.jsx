@@ -7,6 +7,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import AdImgCarousel from '../components/UI/AdImgCarousel';
 import DeleteBtn from '../components/buttons/DeleteBtn';
+import { baseUrl } from '../config/config';
 // import AdImgSwiper from '../components/UI/AdImgSwiper';
 
 export default function SingleAdPage() {
@@ -35,7 +36,7 @@ export default function SingleAdPage() {
   // console.log('Fetched ad title:', resp.data.title);
   // console.log('Fetched ad title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/listings/${id}`;
+  const cUrl = `${baseUrl}/api/listings/${id}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [id]);

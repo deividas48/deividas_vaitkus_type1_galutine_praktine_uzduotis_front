@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PageUserUser from '../components/listings/PageUser/PageUserUser';
 import PageUserListings from '../components/listings/PageUser/PageUserListings';
+import { baseUrl } from '../config/config';
 // import toast from 'react-hot-toast';
 
 export default function PageUser() {
@@ -32,7 +33,7 @@ export default function PageUser() {
   // console.log('Fetched listing title:', resp.data.title);
   // console.log('Fetched listing title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/users/${userID}`;
+  const cUrl = `${baseUrl}/api/users/${userID}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [userID]);

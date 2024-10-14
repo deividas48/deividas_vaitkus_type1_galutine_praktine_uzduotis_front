@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../components/context/authContext';
+import { baseUrl } from '../config/config';
 
 export default function PageLogIn() {
   const { login } = useContext(AuthContext);
@@ -17,7 +18,7 @@ export default function PageLogIn() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/auth/login',
+        `${baseUrl}/api/auth/login`,
         { email, password }, // Sending email and password to the backend
       );
 

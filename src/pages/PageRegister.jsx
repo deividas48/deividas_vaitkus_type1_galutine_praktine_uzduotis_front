@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../styles/Forms.css';
@@ -44,10 +42,7 @@ function PageRegister() {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await axios.post(
-        'http://localhost:3000/api/auth/register',
-        values,
-      );
+      const response = await axios.post(`${baseUrl}/api/auth/register`, values);
       console.log('User registered:', response.data);
       // Redirect to the previous page
       navigate(-1); // #afterRegSubmitToPreviosPage

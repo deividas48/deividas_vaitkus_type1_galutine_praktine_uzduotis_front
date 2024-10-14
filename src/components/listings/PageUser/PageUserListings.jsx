@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ListingsList from '../ListingsList';
+import { baseUrl } from '../../../config/config';
 // import toast from 'react-hot-toast';
 
 export default function PageUserListings() {
@@ -31,7 +32,7 @@ export default function PageUserListings() {
   // console.log('Fetched data title:', resp.data.title);
   // console.log('Fetched data title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/listings/byUser/${userID}`;
+  const cUrl = `${baseUrl}/api/listings/byUser/${userID}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [userID]);

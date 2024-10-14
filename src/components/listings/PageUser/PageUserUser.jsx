@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { baseUrl } from '../../../config/config';
 // import toast from 'react-hot-toast';
 
 export default function PageUserUser() {
@@ -30,7 +31,7 @@ export default function PageUserUser() {
   // console.log('Fetched userFrom title:', resp.data.title);
   // console.log('Fetched userFrom title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/users/${userID}`;
+  const cUrl = `${baseUrl}/api/users/${userID}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [userID]);

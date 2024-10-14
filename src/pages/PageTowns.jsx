@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import TownsList from '../components/towns/TownsList';
+import { baseUrl } from '../config/config';
 
 function PageTowns() {
   const [townsArr, settownsArr] = useState([]);
@@ -25,7 +26,7 @@ function PageTowns() {
   }
 
   useEffect(() => {
-    getPosts('http://localhost:3000/api/towns');
+    getPosts(`${baseUrl}/api/towns`);
   }, []);
 
   return (

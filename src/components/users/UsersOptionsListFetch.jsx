@@ -3,6 +3,7 @@
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { baseUrl } from '../../config/config';
 
 function UsersOptionsListFetch() {
   const [usersArr, setusersArr] = useState([]);
@@ -26,7 +27,7 @@ function UsersOptionsListFetch() {
   }
 
   useEffect(() => {
-    getPosts('http://localhost:3000/api/users');
+    getPosts(`${baseUrl}/api/users`);
   }, []);
 
   if (isLoading)

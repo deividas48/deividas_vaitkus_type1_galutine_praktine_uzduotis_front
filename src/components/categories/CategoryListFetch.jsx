@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import CategoryListLiMap from './CategoryListLiMap';
+import { baseUrl } from '../../config/config';
+import dotenv from 'dotenv';
 
 function CategoryListFetch() {
   const [categoriesArr, setcategoriesArr] = useState([]);
@@ -25,7 +27,7 @@ function CategoryListFetch() {
   }
 
   useEffect(() => {
-    getCategories('http://localhost:3000/api/categories');
+    getCategories(`${baseUrl}/api/categories`);
   }, []);
 
   return (

@@ -111,7 +111,7 @@ function PaginatedListingsFetch({
   useEffect(() => {
     if (categoryId) {
       axios
-        .get(`http://localhost:3000/api/categories/${categoryId}`)
+        .get(`${baseUrl}/api/categories/${categoryId}`)
         .then((response) => {
           setCategoryName(response.data.name); // #category_TitleToIdentifyCategory.
         })

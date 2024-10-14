@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { baseUrl } from '../config/config';
 // import AdImgSwiper from '../components/UI/AdImgSwiper';
 
 export default function PageTown() {
@@ -26,7 +27,7 @@ export default function PageTown() {
   // console.log('Fetched town title:', resp.data.title);
   // console.log('Fetched town title:', resp.data);
 
-  const cUrl = `http://localhost:3000/api/towns/${id}`;
+  const cUrl = `${baseUrl}/api/towns/${id}`;
   useEffect(() => {
     getPosts(cUrl);
   }, [id]);
@@ -44,15 +45,11 @@ export default function PageTown() {
           <h2 className="text-xl font-semibold pb-2">{town.name}</h2>
           <p className="mt-1">
             <i className="bi bi-person-arms-up pr-1 text-custom-primary-color" />
-            Population:
-            {' '}
-            {town.population}
+            Population: {town.population}
           </p>
           <p>
             <i className="bi bi-pin-map pr-1 text-custom-primary-color" />
-            Area:
-            {' '}
-            {town.area}
+            Area: {town.area}
           </p>
         </section>
       </main>

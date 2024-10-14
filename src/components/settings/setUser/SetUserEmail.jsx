@@ -2,15 +2,14 @@
 
 /* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../../../styles/Forms.css';
 import '../../../styles/PageRegister.css';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/authContext';
+import { baseUrl } from '../../../config/config';
 
 const UserSettingsSchema = Yup.object().shape({
   // Email validation
@@ -39,7 +38,7 @@ function SetUserEmail() {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/auth/user/${userDetails.id}`,
+        `${baseUrl}/api/auth/user/${userDetails.id}`,
         // values = initialValues
         values,
       );
@@ -72,8 +71,7 @@ function SetUserEmail() {
               <p className="pairs mb-4">
                 <span className="pairs_label_full pairs_label_full_register font-bold">
                   Email:
-                </span>
-                {' '}
+                </span>{' '}
                 <span className="">{userDetails.email}</span>
               </p>
             </div>

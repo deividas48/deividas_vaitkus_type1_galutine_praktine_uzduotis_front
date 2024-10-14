@@ -1,6 +1,7 @@
 // src/components/listings/ListingForLi.jsx
 
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../config/config';
 
 // #create_listings_list. Component to render a single listing item
 export default function ListingForLi({ item }) {
@@ -11,7 +12,7 @@ export default function ListingForLi({ item }) {
         <div className="w-1/3 relative hidden sm:block">
           <img
             className="sm:none absolute inset-0 w-full h-full object-cover rounded-l-lg"
-            src={`http://localhost:3000/uploads/images/sell/${item.skelbimai_main_image_url ? item.skelbimai_main_image_url : 'sellDefault.png'}`}
+            src={`${baseUrl}/uploads/images/sell/${item.skelbimai_main_image_url ? item.skelbimai_main_image_url : 'sellDefault.png'}`}
             alt={item.skelbimai_title}
           />
         </div>

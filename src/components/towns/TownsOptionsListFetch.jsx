@@ -3,6 +3,7 @@
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { baseUrl } from '../../config/config';
 
 function TownsOptionsListFetch() {
   const [townsArr, settownsArr] = useState([]);
@@ -26,7 +27,7 @@ function TownsOptionsListFetch() {
   }
 
   useEffect(() => {
-    getPosts('http://localhost:3000/api/towns');
+    getPosts(`${baseUrl}/api/towns`);
   }, []);
 
   if (isLoading) return <option>Loading...</option>;

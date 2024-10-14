@@ -9,6 +9,7 @@ import Submit from '../components/buttons/Submit';
 import VPageAddListingImg from '../components/forms/validations/VPageAddListingImg';
 import IPageAddListingImg from '../components/forms/input/IPageAddListingImg';
 import '../styles/uploadInput.css';
+import { baseUrl } from '../config/config';
 
 export default function PageAddListing() {
   // Get the image validation schema
@@ -167,7 +168,7 @@ export default function PageAddListing() {
 
         // 6. Make the API request using axios. // Send POST request
         const response = await axios.post(
-          'http://localhost:3000/api/listings',
+          `${baseUrl}/api/listings`,
           formData, // - all the values that is submitted and arranged. Pepared to send to the back-end.
           {
             headers: {
