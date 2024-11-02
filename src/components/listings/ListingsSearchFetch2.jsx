@@ -13,7 +13,7 @@ export default function ListingsSearchFetch2() {
     setLoading(true);
     try {
       const response = await fetch(
-        `/api/listings?search=${encodeURIComponent(search)}`,
+        `${baseUrl}/api/listings?search=${encodeURIComponent(search)}`,
       );
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -21,7 +21,10 @@ export default function ListingsSearchFetch2() {
       const data = await response.json();
       setListings(data.listings || []);
     } catch (error) {
-      console.error('Error fetching listings:', error);
+      console.error(
+        'Error fetching listings (ListingsSearchFetch2.jsx):',
+        error,
+      );
     } finally {
       setLoading(false);
     }

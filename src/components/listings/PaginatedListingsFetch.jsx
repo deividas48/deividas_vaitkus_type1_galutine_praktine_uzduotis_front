@@ -6,6 +6,7 @@ import axios from 'axios';
 import ListingsList from './ListingsList';
 // import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../context/SearchContext'; // Import the search context
+import { baseUrl } from '../../config/config';
 
 // Define the hook to clear the search term
 // Initialize searchTerm from the URL if it's present
@@ -79,8 +80,9 @@ function PaginatedListingsFetch({
       try {
         // Make the API request with the constructed URL
         const response = await fetch(
-          `/api/listings?${newSearchParams.toString()}`,
+          `${baseUrl}/api/listings?${newSearchParams.toString()}`,
         );
+        console.log('response===', response, baseUrl);
         if (!response.ok) {
           throw new Error('API Request failed');
         }
@@ -91,7 +93,10 @@ function PaginatedListingsFetch({
         setTotalPages(data.totalPages || 1); // Ensure totalPages is being set
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.error('Error fetching listings:', error); // Log any errors
+        console.error(
+          'Error fetching listings (PaginatedListingsFetch.jsx):',
+          error,
+        ); // Log any errors
       } finally {
         setLoading(false);
       }
