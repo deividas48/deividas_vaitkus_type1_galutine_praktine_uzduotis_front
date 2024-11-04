@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // src/components/layout/LayoutBasePages.jsx
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/LayoutBasePages.css';
 import PaginatedListingsFetch from '../listings/PaginatedListingsFetch';
@@ -35,15 +35,21 @@ function LayoutBasePages({
   // 'price-asc' - sort by price ascending.
   const [sortOption, setSortOption] = useState('date-desc');
   // 1_#category_TitleToIdentifyCategory.
-  const [categoryName, setCategoryName] = useState('');
+  const [categoryName, setCategoryNameState] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPagesState] = useState(1);
+
+  // Memoize functions
+  const setTotalPages = useCallback((pages) => setTotalPagesState(pages), []);
+  const setCategoryName = useCallback((name) => setCategoryNameState(name), []);
 
   // #basePagination
   const handlePageChange = (page) => {
     setCurrentPage(page); // Update the current page
     // Automatically trigger the listing fetch with the new page
   };
+
+  console.log('currentPage===', currentPage);
 
   return (
     <div>

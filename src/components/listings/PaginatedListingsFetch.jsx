@@ -1,6 +1,6 @@
 // src/components/listings/PaginatedListingsFetch.jsx
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, memo } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom'; // #URLmaker
 import axios from 'axios';
 import ListingsList from './ListingsList';
@@ -24,7 +24,7 @@ function useInitializeSearchTerm() {
   }, [searchParams, setSearchTerm]);
 }
 
-function PaginatedListingsFetch({
+const PaginatedListingsFetch = memo(function PaginatedListingsFetch({
   currentPage, // Passed from LayoutBasePages.jsx
   baseFilters, // Passed from LayoutBasePages.jsx
   sortOption, // Passed from LayoutBasePages.jsx
@@ -51,7 +51,8 @@ function PaginatedListingsFetch({
     if (!searchParams.has('search')) {
       setSearchTerm(''); // Reset search term when navigating to the home page
     }
-  }, [location, searchParams, setSearchTerm]);
+  }, [searchParams, setSearchTerm]);
+  // location
 
   // For a main fetch.
   useEffect(() => {
@@ -67,8 +68,11 @@ function PaginatedListingsFetch({
         ...(searchTerm && { search: searchTerm }), // Send searchTerm (search text) to the backend.
       };
 
+      console.log('params===', params);
+
       // Convert the params object to a URLSearchParams instance
       const newSearchParams = new URLSearchParams(params);
+      console.log('newSearchParams===', newSearchParams);
 
       // Only replace the URL if the search parameters have not changed
       if (newSearchParams.toString() !== previousParamsRef.current) {
@@ -80,9 +84,10 @@ function PaginatedListingsFetch({
       try {
         // Make the API request with the constructed URL
         const response = await fetch(
+          // jjj: is it realy constructed good? Example: fetch(`/api/items?page=${page}&filter=${filter}`)
           `${baseUrl}/api/listings?${newSearchParams.toString()}`,
         );
-        console.log('response===', response, baseUrl);
+        console.log('response===', response);
         if (!response.ok) {
           throw new Error('API Request failed');
         }
@@ -103,14 +108,41 @@ function PaginatedListingsFetch({
     };
 
     fetchListings(); // Trigger the fetch when any dependencies change
-  }, [
-    currentPage,
-    baseFilters,
-    sortOption,
-    categoryId,
-    searchTerm, // Add searchTerm as a dependency to trigger search
-    setTotalPages,
-  ]); // Dependencies
+  }, [currentPage, baseFilters, sortOption, categoryId, setTotalPages]); // Dependencies
+  // searchTerm, // Add searchTerm as a dependency to trigger search
+
+  // Separate useEffect to watch for changes in searchTerm specifically
+  useEffect(() => {
+    const fetchListingsForSearchTerm = async () => {
+      setLoading(true);
+      const params = {
+        page: currentPage,
+        sort: sortOption,
+        ...(categoryId && { category: categoryId }),
+        ...baseFilters,
+        search: searchTerm,
+      };
+      const newSearchParams = new URLSearchParams(params);
+
+      try {
+        const response = await fetch(
+          `${baseUrl}/api/listings?${newSearchParams.toString()}`,
+        );
+        if (!response.ok) throw new Error('API Request failed');
+        const data = await response.json();
+        setListing(data.listings || []);
+        setTotalPages(data.totalPages || 1);
+      } catch (error) {
+        console.error('Error fetching listings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (searchTerm) {
+      fetchListingsForSearchTerm(); // Trigger fetch only when searchTerm changes
+    }
+  }, [searchTerm]); // Only depend on searchTerm here
 
   // Add useEffect to fetch and set category name based on categoryId - just a side fetch.
   useEffect(() => {
@@ -125,7 +157,8 @@ function PaginatedListingsFetch({
           console.warn('Error fetching category name:', error);
         });
     }
-  }, [categoryId, setCategoryName]);
+  }, [categoryId]);
+  // setCategoryName
 
   return (
     <div>
@@ -140,6 +173,6 @@ function PaginatedListingsFetch({
       )}
     </div>
   );
-}
+});
 
 export default PaginatedListingsFetch;
