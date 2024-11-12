@@ -17,14 +17,6 @@ function PageHome() {
       welcome="Welcome to EveryShop Home Page"
       /* #PassToAside_category */
       aside1={<CategoryListFetch />} // #PassToAside
-      // #CreateFiltersLayoutBasePages
-      // aside2={
-      //   <FiltersLayoutBasePages
-      //     onFilterChange={handleFilterChange}
-      //     townsOptionsListFetch={<TownsOptionsListFetch />} // #townsOptionsInput
-      //     usersOptionsListFetch={<UsersOptionsListFetch />} // #usersOptionsInput
-      //   />
-      // }
     />
   );
 }

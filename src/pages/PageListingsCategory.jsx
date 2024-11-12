@@ -13,11 +13,6 @@ function PageListingsCategory() {
   const [baseFilters, setBaseFilters] = useState({}); // #CreateFiltersLayoutBasePages
   const { id } = useParams(); // Get category ID from URL params
 
-  // Log the category ID received from URL params
-  console.log('Category ID:', id);
-
-  console.log('Base Filters:', baseFilters); // Log to see the current state of baseFilters
-
   const handleFilterChange = (newFilters) => {
     console.log('New Filters:', newFilters); // Debug log to check filter values
     setBaseFilters(newFilters);

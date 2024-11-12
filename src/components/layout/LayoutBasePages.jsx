@@ -18,7 +18,6 @@ function LayoutBasePages({
   welcome,
   ifcategory,
   aside1,
-  aside2,
   ifCategoryPageDisplayed,
   listingsFetchComponentProps, // Props needed for fetching data
 }) {
