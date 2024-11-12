@@ -155,7 +155,7 @@ export default function Header() {
             <button // Button to toggle the menu
               type="button" // Specify the button type just for good practice
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="btn"
+              className="btn hidden"
               aria-label="Toggle menu"
               title="Toggle menu"
             >
