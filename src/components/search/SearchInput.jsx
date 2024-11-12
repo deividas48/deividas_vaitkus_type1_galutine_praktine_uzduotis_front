@@ -1,45 +1,51 @@
 // src/components/search/SearchInput.jsx
 
 import React, { useState, useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HOME_PAGE_PATH, CATEGORIES_PAGE_PATH } from '../../config/routes';
 import '../../styles/SearchInput.css';
 import IconSearch from '../icons/IconSearch';
 
-export default function SearchInput({
-  onSearch, // Header.jsx
-}) {
-  const [query, setQuery] = useState('');
-  console.log('query===', query);
+export default function SearchInput({ onSearch }) {
   const location = useLocation();
-  // eslint-disable-next-line no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  // Synchronize the input value with the context's search term
-  // useEffect(() => {
-  //   setQuery(searchTerm);
-  //   // console.log('query1===', query);
-  // }, [searchTerm]);
+  const [query, setQuery] = useState('');
 
-  // Clear input when navigating to the home page
+  // Initialize 'query' from the URL's 'search' parameter on component mount and when location.search changes
   useEffect(() => {
-    if (!location.search) {
-      setQuery('');
-      // console.log('query2===', query);
-      // console.log('location.pathname+++===', location.search);
-    }
-  }, [location]);
+    const searchParams = new URLSearchParams(location.search);
+    const initialSearch = searchParams.get('search') || '';
+    setQuery(initialSearch);
+  }, [location.search]);
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page refresh
-    if (query.trim()) {
+    // Trim the query to remove extra whitespace
+    const trimmedQuery = query.trim();
+    // Update the URL and trigger search only if the query is not empty
+    if (trimmedQuery) {
       // Create a new instance of URLSearchParams
-      const newSearchParams = new URLSearchParams(searchParams.toString());
-      newSearchParams.set('search', query.trim());
-      newSearchParams.set('page', '1'); // Reset page to 1
-      setSearchParams(newSearchParams); // Update the URL with the new parameters
-      onSearch(query.trim()); // Trigger search with the query
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('search', trimmedQuery);
+      searchParams.set('page', '1'); // Reset page to 1
+      // Update the URL with the new parameters
+      navigate({
+        pathname: location.pathname,
+        search: searchParams.toString(),
+      });
+      onSearch(trimmedQuery); // Trigger search with the query
+    } else {
+      // If the query is empty, remove the 'search' parameter from the URL
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.delete('search');
+      searchParams.set('page', '1'); // Reset page to 1
+      navigate({
+        pathname: location.pathname,
+        search: searchParams.toString(),
+      });
+      onSearch(''); // Trigger search with an empty query
     }
   };
 
