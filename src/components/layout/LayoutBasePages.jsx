@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 // src/components/layout/LayoutBasePages.jsx
-// Version 1.1.0
+// Version 1.1.1
 
 import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -55,7 +55,7 @@ function LayoutBasePages({
   const [sortOption, setSortOption] = useState(initialSort); // E.g., sortOption = "date-desc"
   const [categoryName, setCategoryName] = useState(''); // E.g., categoryName = "Electronics"
   const [currentPage, setCurrentPage] = useState(initialPage); // E.g., currentPage = 2
-  const [totalPages, setTotalPages] = useState(1); // E.g., totalPages = 5
+  const [totalPages, setTotalPages] = useState(null); // Initialize to null E.g., totalPages = null
 
   const categoryId = listingsFetchComponentProps.categoryId; // E.g., categoryId = "123"
 
@@ -102,10 +102,11 @@ function LayoutBasePages({
 
   // Adjust currentPage when totalPages changes
   useEffect(() => {
-    if (currentPage > totalPages) {
+    /* Only evaluates to true only if totalPages is a truthy value (not null, undefined, 0, false, etc.) and currentPage is greater than totalPages. */
+    if (totalPages && currentPage > totalPages) {
       setCurrentPage(totalPages); // E.g., if currentPage = 4 and totalPages = 3, set currentPage = 3
     }
-  }, [totalPages, currentPage]);
+  }, [totalPages]);
 
   // **Filter out empty parameters**
   const params = useMemo(() => {
@@ -327,7 +328,7 @@ function LayoutBasePages({
 
           {/* Pagination Controls */}
           <div className="flex justify-center mt-4">
-            {[...Array(totalPages)].map((_, index) => (
+            {[...Array(totalPages || 1)].map((_, index) => (
               <button
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
