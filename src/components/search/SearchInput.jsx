@@ -6,8 +6,11 @@ import { HOME_PAGE_PATH, CATEGORIES_PAGE_PATH } from '../../config/routes';
 import '../../styles/SearchInput.css';
 import IconSearch from '../icons/IconSearch';
 
-export default function SearchInput({ onSearch }) {
+export default function SearchInput({
+  onSearch, // Header.jsx
+}) {
   const [query, setQuery] = useState('');
+  console.log('query===', query);
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -31,8 +34,11 @@ export default function SearchInput({ onSearch }) {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page refresh
     if (query.trim()) {
-      // setSearchTerm(query.trim()); // Update the search term in the context
-      setSearchParams({ search: query.trim() }); // Update the URL with the search term
+      // Create a new instance of URLSearchParams
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set('search', query.trim());
+      newSearchParams.set('page', '1'); // Reset page to 1
+      setSearchParams(newSearchParams); // Update the URL with the new parameters
       onSearch(query.trim()); // Trigger search with the query
     }
   };
@@ -42,8 +48,8 @@ export default function SearchInput({ onSearch }) {
 
     // Only show the search input if on the home page or categories page
     if (
-      location.pathname === HOME_PAGE_PATH
-      || location.pathname.startsWith(CATEGORIES_PAGE_PATH)
+      location.pathname === HOME_PAGE_PATH ||
+      location.pathname.startsWith(CATEGORIES_PAGE_PATH)
     ) {
       searchInputEl.style.display = 'block'; // Show the search input
     } else {

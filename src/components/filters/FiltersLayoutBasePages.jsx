@@ -3,9 +3,7 @@
 // FiltersLayoutBasePages.jsx
 // #CreateFiltersLayoutBasePages
 
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../styles/Forms.css';
 import '../../styles/FiltersLayoutBasePages.css';
@@ -29,9 +27,14 @@ const FilterSchema = Yup.object().shape({
 // - 'onFilterChange' is from PageHome.jsx
 // - 'townsOptionsListFetch' is from PageHome.jsx
 function FiltersLayoutBasePages({
-  onFilterChange,
+  onFilterChange, // From LayoutBasePages.jsx
   townsOptionsListFetch, // #townsOptionsInput
   usersOptionsListFetch, // #usersOptionsInput
+  uSMinPrice, // From LayoutBasePages.jsx
+  uSMaxPrice, // From LayoutBasePages.jsx
+  uSTown, // From LayoutBasePages.jsx
+  uSType, // From LayoutBasePages.jsx
+  uSSeller, // From LayoutBasePages.jsx
 }) {
   // Function to handle the price input onBlur event
   const handlePriceBlur = (event, setFieldValue) => {
@@ -58,15 +61,15 @@ function FiltersLayoutBasePages({
   return (
     <Formik
       initialValues={{
-        minPrice: '',
-        maxPrice: '',
-        town: '',
-        type: '',
-        seller: '',
+        minPrice: uSMinPrice,
+        maxPrice: uSMaxPrice,
+        town: uSTown,
+        type: uSType,
+        seller: uSSeller,
       }}
+      enableReinitialize // This tells Formik to re-initialize the form values whenever the initialValues prop changes
       validationSchema={FilterSchema}
       onSubmit={(values, { setSubmitting }) => {
-        // console.log('Form values:', values); // Log form values
         onFilterChange(values); // setBaseFilters with 'values'
         setSubmitting(false);
       }}

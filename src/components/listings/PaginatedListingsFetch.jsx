@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom'; // #URLmaker
 import axios from 'axios';
 import ListingsList from './ListingsList';
-// import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../context/SearchContext'; // Import the search context
 import { baseUrl } from '../../config/config';
 
@@ -39,7 +38,7 @@ function PaginatedListingsFetch({
   // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams(); //  #URLmaker. When you
   const previousParamsRef = useRef(); // to store previous parameters
-  // call setSearchParams(params), it updates the URL so to use searchParams is't necessary
+  // call setSearchParams(params), it updates the URL so to use searchParams isn't necessary
 
   // Initialize searchTerm when the component mounts
   useInitializeSearchTerm();
@@ -53,36 +52,26 @@ function PaginatedListingsFetch({
     }
   }, [location, searchParams, setSearchTerm]);
 
-  // For a main fetch.
+  // Main fetch.
   useEffect(() => {
     const fetchListings = async () => {
       setLoading(true);
-
-      // Create an object to hold query parameters
-      const params = {
-        page: currentPage,
-        sort: sortOption,
-        ...(categoryId && { category: categoryId }),
-        ...baseFilters,
-        ...(searchTerm && { search: searchTerm }), // Send searchTerm (search text) to the backend.
-      };
-
-      // Convert the params object to a URLSearchParams instance
-      const newSearchParams = new URLSearchParams(params);
-
-      // Only replace the URL if the search parameters have not changed
-      if (newSearchParams.toString() !== previousParamsRef.current) {
-        setSearchParams(params, { replace: true }); // +++Update the URL with new query params
-        // Store the current URL parameters in the previousParamsRef
-        previousParamsRef.current = newSearchParams.toString();
-      }
-
       try {
-        // Make the API request with the constructed URL
-        const response = await fetch(
-          `${baseUrl}/api/listings?${newSearchParams.toString()}`,
-        );
-        console.log('response===', response, baseUrl);
+        // Combine all query parameters into a single object
+        const params = {
+          page: currentPage,
+          sort: sortOption,
+          ...(categoryId && { category: categoryId }),
+          ...baseFilters,
+          ...(searchTerm && { search: searchTerm }),
+        };
+
+        // Convert params object into a URL query string format. e.g. 'minPrice=&maxPrice=&town=&type=&seller='
+        const queryString = new URLSearchParams(params).toString();
+
+        // API request with all necessary query parameters
+        const response = await fetch(`${baseUrl}/api/listings?${queryString}`);
+
         if (!response.ok) {
           throw new Error('API Request failed');
         }
@@ -110,7 +99,7 @@ function PaginatedListingsFetch({
     categoryId,
     searchTerm, // Add searchTerm as a dependency to trigger search
     setTotalPages,
-  ]); // Dependencies
+  ]);
 
   // Add useEffect to fetch and set category name based on categoryId - just a side fetch.
   useEffect(() => {
