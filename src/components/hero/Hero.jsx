@@ -29,7 +29,9 @@ export default function Hero({ welcome, ifcategory, currentCategory }) {
         </h2> */}
         <h2 className="mt-2 leading-8 font-semibold tracking-tight text-white">
           {/* If it's home page  */}
-          <div className="mb-4 text-xl">{welcome}</div>{' '}
+          <div className={`mb-4 ${ifcategory ? 'text-xl' : 'text-4xl'}`}>
+            {welcome}
+          </div>{' '}
           {/* If it's a category page  */}
           <div className="mb-4 text-3xl md:text-4xl">
             {ifcategory}
