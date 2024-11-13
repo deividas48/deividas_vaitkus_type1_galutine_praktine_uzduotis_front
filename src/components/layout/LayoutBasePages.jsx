@@ -242,11 +242,11 @@ function LayoutBasePages({
       />
 
       {/* Sort Dropdown */}
-      <section className="mb-4 flex mr-4">
+      <section className="mb-4 flex -mr-0.4 justify-between md:mr-4">
         {/* Just to make proportion */}
         <span className="md:w-3/5">
           {/* Navigation Path */}
-          <p className="AllCategoriesName-color">
+          <p className="AllCategoriesName-color hidden md:flex">
             <Link className="mr-1" to="/">
               All Categories
             </Link>
@@ -267,7 +267,7 @@ function LayoutBasePages({
           </label>
           <select
             id="sort"
-            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            className="mt-1 block w-full pl-3 pr-4 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
             // The value of the dropdown is the sortOption state.
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}

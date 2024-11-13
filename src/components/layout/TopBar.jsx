@@ -109,10 +109,12 @@ export default function TopBar() {
             aria-label="User settings" // Screen reader-friendly text
             title="User settings" // Tooltip text
           >
-            <span>Hi </span>
-            {userDetails && userDetails.name
-              ? trimName(userDetails.name)
-              : 'Guest'}
+            <span className="text-xs md:text-base">Hi </span>
+            <span className="text-xs md:text-base">
+              {userDetails && userDetails.name
+                ? trimName(userDetails.name)
+                : 'Guest'}
+            </span>
             {/* <span
               className="bi bi-dot -mr-4 text-green-500"
               aria-label="Signed in" // Screen reader-friendly text

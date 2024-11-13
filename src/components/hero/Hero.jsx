@@ -27,11 +27,14 @@ export default function Hero({ welcome, ifcategory, currentCategory }) {
         {/* <h2 className="leading-6 text-gray-100 uppercase font-medium">
           Here you can freely buy, rent and sell your goods
         </h2> */}
-        <h2 className="mt-2 text-3xl leading-8 font-semibold tracking-tight md:text-4xl text-white">
+        <h2 className="mt-2 leading-8 font-semibold tracking-tight text-white">
           {/* If it's home page  */}
-          {welcome} {/* If it's a category page  */}
-          {ifcategory}
-          <span>{currentCategory}</span>
+          <div className="mb-4 text-xl">{welcome}</div>{' '}
+          {/* If it's a category page  */}
+          <div className="mb-4 text-3xl md:text-4xl">
+            {ifcategory}
+            <span>{currentCategory}</span>
+          </div>
         </h2>
         {/* Path to navigate */}
         <p className="mt-3 text-center text-gray-100 hidden">
